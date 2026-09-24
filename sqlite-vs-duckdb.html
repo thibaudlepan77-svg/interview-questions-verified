@@ -26,44 +26,35 @@
 <h1>Eight one-line queries where SQLite and DuckDB disagree</h1>
 <p>I built a bank of SQL practice questions with one hard rule. Every query had to return exactly the same rows on SQLite and on DuckDB, two engines that share no code, or the question was thrown out. The point was to make sure no answer depended on which database the reader happened to have open.</p>
 <p>Here are eight of the differences that rule exists to catch, measured on SQLite 3.50.4 and DuckDB 1.5.5 through their Python bindings, same table on both. This story was written with the assistance of an AI writing program, and every result in it comes from actually running the statement on both engines.</p>
-<pre><code class="language-sql">CREATE TABLE t (name VARCHAR, dept VARCHAR, pay INTEGER);
+<pre>CREATE TABLE t (name VARCHAR, dept VARCHAR, pay INTEGER);
 INSERT INTO t VALUES
   ('Ann', 'ops', 10),
   ('bob', 'ops', NULL),
   ('Cy',  'dev', 7),
-  (NULL,  'dev', 3);
-</code></pre>
+  (NULL,  'dev', 3);</pre>
 <h2>1. Integer division</h2>
-<pre><code class="language-sql">SELECT 7 / 2;
-</code></pre>
+<pre>SELECT 7 / 2;</pre>
 <p>SQLite returns 3. DuckDB returns 3.5, because its <code>/</code> always divides as floating point. When you want the truncated result in DuckDB you write <code>7 // 2</code>, which gives 3.</p>
 <h2>2. LIKE and letter case</h2>
-<pre><code class="language-sql">SELECT name FROM t WHERE name LIKE 'B%';
-</code></pre>
+<pre>SELECT name FROM t WHERE name LIKE 'B%';</pre>
 <p>SQLite finds bob. Its LIKE ignores case for ASCII letters unless you turn on <code>PRAGMA case_sensitive_like</code>. DuckDB finds nothing, LIKE is case sensitive there, and <code>ILIKE</code> is the case insensitive version.</p>
 <h2>3. Where NULLs land in a sort</h2>
-<pre><code class="language-sql">SELECT pay FROM t ORDER BY pay;
-</code></pre>
+<pre>SELECT pay FROM t ORDER BY pay;</pre>
 <p>SQLite puts the NULL first. DuckDB puts it last. Both engines accept <code>NULLS FIRST</code> and <code>NULLS LAST</code>, so if the position matters, say it.</p>
 <h2>4. A bare column next to GROUP BY</h2>
-<pre><code class="language-sql">SELECT dept, name FROM t GROUP BY dept;
-</code></pre>
+<pre>SELECT dept, name FROM t GROUP BY dept;</pre>
 <p>SQLite answers, one name per department, taken from some row of the group. DuckDB stops with a binder error saying <code>name</code> must appear in the GROUP BY clause or be aggregated. SQLite's leniency is documented and occasionally handy, but a query written against it will break the day it moves.</p>
 <h2>5. Comparing a number with a string</h2>
-<pre><code class="language-sql">SELECT COUNT(*) FROM t WHERE 1 = '1';
-</code></pre>
+<pre>SELECT COUNT(*) FROM t WHERE 1 = '1';</pre>
 <p>On SQLite this counts 0 rows. Both operands are literals, neither has a column affinity, so no conversion happens and an integer is never equal to a text value. DuckDB casts the string and counts all 4.</p>
 <h2>6. Casting something that is not a number</h2>
-<pre><code class="language-sql">SELECT CAST('12abc' AS INTEGER);
-</code></pre>
+<pre>SELECT CAST('12abc' AS INTEGER);</pre>
 <p>SQLite keeps the leading digits and returns 12. DuckDB raises a conversion error. <code>TRY_CAST</code> in DuckDB returns NULL instead, if that is what you want.</p>
 <h2>7. Dividing by zero</h2>
-<pre><code class="language-sql">SELECT 1 / 0;
-</code></pre>
+<pre>SELECT 1 / 0;</pre>
 <p>SQLite returns NULL. DuckDB returns <code>inf</code>, which follows from point 1, the division is done in floating point.</p>
 <h2>8. Sorting text with a NULL in it</h2>
-<pre><code class="language-sql">SELECT name FROM t ORDER BY name;
-</code></pre>
+<pre>SELECT name FROM t ORDER BY name;</pre>
 <p>Both engines put 'Cy' before 'bob', since uppercase letters sort before lowercase in a binary collation. The NULL is where they differ, before 'Ann' on SQLite and after 'bob' on DuckDB. It is the same cause as point 3, it just hides better in a text column.</p>
 <h2>What to take from it</h2>
 <p>None of this is a bug, each engine documents what it does. It matters when you learn on one engine and are tested on another. Points 1, 3 and 5 are the ones that most often change an answer without any error to warn you.</p>
