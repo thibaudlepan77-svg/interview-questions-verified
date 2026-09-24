@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sixty JavaScript, Python and SQL interview questions with real outputs</title>
+<meta name="description" content="Sixty interview questions, twenty per language, each run before its answer was written, with a reason for every wrong option.">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/questions.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="index.html">Play the sample</a></p>
+  <h1>Sixty JavaScript, Python and SQL interview questions, each with its real output</h1>
+  <p>Every snippet below was run before its answer was written. Each page gives the four options, the answer, and a reason for every wrong option.</p>
+  <h2>JavaScript</h2>
+  <ul class="liste">
+    <li><a href="q/javascript-01.html">JavaScript Scope, Hoisting and Closures, what does console.log(x) print after let x = &#x27;outer&#x27;?</a></li>
+    <li><a href="q/javascript-02.html">What does console.log([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;].reduceRight((acc, x) =&gt; acc + x)) print? JavaScript Arrays and Iteration</a></li>
+    <li><a href="q/javascript-03.html">What does .then(v =&gt; console.log(v)) print? JavaScript Promises, async await and the Event Loop</a></li>
+    <li><a href="q/javascript-04.html">What does console.log(&#x27;5&#x27; - 2) print? JavaScript Types, Coercion and Equality</a></li>
+    <li><a href="q/javascript-05.html">JavaScript this, Prototypes and Classes, what does console.log(Named.label()) print after const Named = class MyClass?</a></li>
+    <li><a href="q/javascript-06.html">What does console.log({ a: 1 } === { a: 1 }) print? JavaScript Objects, Destructuring and Immutability</a></li>
+    <li><a href="q/javascript-07.html">What does console.log(handle(new TimeoutError(&#x27;late&#x27;))) print? JavaScript Errors, Control Flow and Sharp Edges</a></li>
+    <li><a href="q/javascript-08.html">What does console.log(obj.hasOwnProperty(&#x27;a&#x27;), obj.hasOwnProperty(&#x27;toString&#x27;)) print? JavaScript this, Prototypes and Classes</a></li>
+    <li><a href="q/javascript-09.html">JavaScript Objects, Destructuring and Immutability, what does console.log(id) print after const response = { data: { user: { id: 7 } } }?</a></li>
+    <li><a href="q/javascript-10.html">What does console.log(5 &lt;&lt; 2) print? JavaScript Numbers, Strings and Regular Expressions</a></li>
+    <li><a href="q/javascript-11.html">JavaScript Scope, Hoisting and Closures, what does console.log(x) print after let x = &#x27;outer&#x27;, sample question 11?</a></li>
+    <li><a href="q/javascript-12.html">What does console.log(JSON.stringify(rest)) print? JavaScript Arrays and Iteration</a></li>
+    <li><a href="q/javascript-13.html">What does console.log(trace.join(&#x27; &#x27;)) print? JavaScript Promises, async await and the Event Loop</a></li>
+    <li><a href="q/javascript-14.html">What does console.log(1 + 2 + &#x27;a&#x27;) print? JavaScript Types, Coercion and Equality</a></li>
+    <li><a href="q/javascript-15.html">JavaScript this, Prototypes and Classes, what does console.log(c.area()) print after function Shape() {}?</a></li>
+    <li><a href="q/javascript-16.html">What does setTimeout(() =&gt; console.log(trace.join(&#x27; &#x27;)), 0) print? JavaScript Promises, async await and the Event Loop</a></li>
+    <li><a href="q/javascript-17.html">What does console.log(e + 8) print? JavaScript Errors, Control Flow and Sharp Edges</a></li>
+    <li><a href="q/javascript-18.html">JavaScript this, Prototypes and Classes, what does console.log(Shape.count) print after class Shape?</a></li>
+    <li><a href="q/javascript-19.html">JavaScript Objects, Destructuring and Immutability, what does console.log(firstItem) print after const { list: [firstItem] } = { list: [&#x27;a&#x27;, &#x27;b&#x27;] }?</a></li>
+    <li><a href="q/javascript-20.html">What does console.log(&#x27;Hello&#x27;.at(-1)) print? JavaScript Numbers, Strings and Regular Expressions</a></li>
+  </ul>
+  <h2>Python</h2>
+  <ul class="liste">
+    <li><a href="q/python-01.html">Python Scope, Functions and Closures, what does print(t()) print after def counter()?</a></li>
+    <li><a href="q/python-02.html">Python Lists, Tuples and Slicing, what does print(b) print after a = [3, 1, 2]?</a></li>
+    <li><a href="q/python-03.html">What does print(hello(&#x27;Sam&#x27;)) print? Python Iterators, Generators and Decorators</a></li>
+    <li><a href="q/python-04.html">What does print(a is b) print? Python Data Types, Numbers and Strings</a></li>
+    <li><a href="q/python-05.html">Python Classes, Objects and Special Methods, what does print(l.x, l.y) print after class Lazy?</a></li>
+    <li><a href="q/python-06.html">What does print(sorted(a | b)) print? Python Dictionaries, Sets and Comprehensions</a></li>
+    <li><a href="q/python-07.html">Python Mutability, References and Copying, what does print(data) print after def grow(lst)?</a></li>
+    <li><a href="q/python-08.html">Python Scope, Functions and Closures, what does print(data) print after def clear_it(container)?</a></li>
+    <li><a href="q/python-09.html">What does print(any([])) print? Python Lists, Tuples and Slicing</a></li>
+    <li><a href="q/python-10.html">Python Mutability, References and Copying, what does print(items) print after def add_item(lst)?</a></li>
+    <li><a href="q/python-11.html">Python Scope, Functions and Closures, what does print(a, c) print after def build(value, acc=[])?</a></li>
+    <li><a href="q/python-12.html">Python Lists, Tuples and Slicing, what does print(a) print after a = [[1, 2], [3, 4]]?</a></li>
+    <li><a href="q/python-13.html">Python Iterators, Generators and Decorators, what does print(ping.calls) print after def counted(func)?</a></li>
+    <li><a href="q/python-14.html">What does print(s.count(&#x27;an&#x27;)) print? Python Data Types, Numbers and Strings</a></li>
+    <li><a href="q/python-15.html">Python Classes, Objects and Special Methods, what does print(c.host, c.port) print after class Config?</a></li>
+    <li><a href="q/python-16.html">What does print(sorted(b - a)) print? Python Dictionaries, Sets and Comprehensions</a></li>
+    <li><a href="q/python-17.html">What does print(original[&#x27;items&#x27;]) print? Python Mutability, References and Copying</a></li>
+    <li><a href="q/python-18.html">What does print(greet(5) if False else greet(&#x27;5&#x27;)) print? Python Scope, Functions and Closures</a></li>
+    <li><a href="q/python-19.html">What does print(all([1, 2, 0])) print? Python Lists, Tuples and Slicing</a></li>
+    <li><a href="q/python-20.html">Python Mutability, References and Copying, what does print(b) print after a = [1, 2]?</a></li>
+  </ul>
+  <h2>SQL</h2>
+  <ul class="liste">
+    <li><a href="q/sql-01.html">What does SELECT stations.label, shifts.label FROM stations CROSS JOIN shifts ... return? SQL Joins</a></li>
+    <li><a href="q/sql-02.html">What does SELECT applicant FROM waitlist WHERE priority NOT IN (1, 2) AND ... return? SQL NULL, CASE and Set Operations</a></li>
+    <li><a href="q/sql-03.html">What does SELECT city FROM temps WHERE ABS(change) &gt; 1 ORDER BY city return? SQL Strings, Numbers and Type Conversion</a></li>
+    <li><a href="q/sql-04.html">What does SELECT name FROM catalog WHERE price BETWEEN 10 AND 50 ORDER BY name return? SQL Selecting, Filtering and Sorting</a></li>
+    <li><a href="q/sql-05.html">What does SELECT account, COUNT(*) FROM withdrawals WHERE amount &gt;= 50 GROUP BY ... return? SQL Grouping and Aggregation</a></li>
+    <li><a href="q/sql-06.html">What does SELECT school, grade_level, student, score, RANK() OVER (PARTITION BY ... return? SQL Window Functions</a></li>
+    <li><a href="q/sql-07.html">What does SELECT * FROM bookings ORDER BY id return? SQL Data Modification and Constraints</a></li>
+    <li><a href="q/sql-08.html">What does SELECT member, COUNT(*), COUNT(returned) FROM loans GROUP BY member ... return? SQL Grouping and Aggregation</a></li>
+    <li><a href="q/sql-09.html">What does SELECT name, points, RANK() OVER (ORDER BY points DESC) AS rnk, ... return? SQL Window Functions</a></li>
+    <li><a href="q/sql-10.html">What does SELECT * FROM parts ORDER BY sku return? SQL Data Modification and Constraints</a></li>
+    <li><a href="q/sql-11.html">What does SELECT machines.tag, thresholds.label FROM machines JOIN thresholds ON ... return? SQL Joins</a></li>
+    <li><a href="q/sql-12.html">What does SELECT product FROM filters WHERE category NOT IN (&#x27;A&#x27;, &#x27;B&#x27;, NULL) return? SQL NULL, CASE and Set Operations</a></li>
+    <li><a href="q/sql-13.html">What does SELECT q FROM queries WHERE q LIKE &#x27;1__\% sure&#x27; ESCAPE &#x27;\&#x27; return? SQL Strings, Numbers and Type Conversion</a></li>
+    <li><a href="q/sql-14.html">What does SELECT id FROM codes WHERE (a = 1 OR a = 2) AND NOT b = 3 return? SQL Selecting, Filtering and Sorting</a></li>
+    <li><a href="q/sql-15.html">What does SELECT event, SUM(revenue) FROM ticket_sales GROUP BY event ORDER BY ... return? SQL Grouping and Aggregation</a></li>
+    <li><a href="q/sql-16.html">What does SELECT artist, track, play_count, DENSE_RANK() OVER (PARTITION BY ... return? SQL Window Functions</a></li>
+    <li><a href="q/sql-17.html">What does SELECT * FROM books ORDER BY id return? SQL Data Modification and Constraints</a></li>
+    <li><a href="q/sql-18.html">What does SELECT CASE WHEN points &gt;= 60 THEN &#x27;pass&#x27; ELSE &#x27;fail&#x27; END AS result, ... return? SQL Grouping and Aggregation</a></li>
+    <li><a href="q/sql-19.html">What does SELECT team, name, hire_date, ROW_NUMBER() OVER (PARTITION BY team ... return? SQL Window Functions</a></li>
+    <li><a href="q/sql-20.html">What does SELECT dish FROM menu WHERE price &gt; 10 ORDER BY dish return? SQL Data Modification and Constraints</a></li>
+  </ul>
+</main>
+</body>
+</html>

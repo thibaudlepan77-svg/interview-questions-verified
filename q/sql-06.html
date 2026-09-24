@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does SELECT school, grade_level, student, score, RANK() OVER (PARTITION BY ... return? SQL Window Functions</title>
+<meta name="description" content="A two column PARTITION BY forms a group for every distinct pair of values, so rows from grade 5 never compete with rows from grade 6 even under the same ...">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/sql-06.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / SQL</p>
+  <h1>What does SELECT school, grade_level, student, score, RANK() OVER (PARTITION BY ... return? SQL Window Functions</h1>
+  <p class="bloc">Block 6, Window Functions, question 6 of the SQL sample</p>
+  <pre><code>CREATE TABLE grade_results (id INTEGER, school TEXT, grade_level INTEGER, student TEXT, score INTEGER);
+INSERT INTO grade_results VALUES
+  (1, &#x27;lakeview&#x27;, 5, &#x27;Nia&#x27;, 88),
+  (2, &#x27;lakeview&#x27;, 5, &#x27;Omar&#x27;, 95),
+  (3, &#x27;lakeview&#x27;, 6, &#x27;Pat&#x27;, 79),
+  (4, &#x27;lakeview&#x27;, 6, &#x27;Qi&#x27;, 84);
+
+
+SELECT school, grade_level, student, score,
+       RANK() OVER (PARTITION BY school, grade_level ORDER BY score DESC) AS rnk
+FROM grade_results
+ORDER BY school, grade_level, rnk
+</code></pre>
+  <p>What does this query return?</p>
+  <ol class="options">
+    <li>A. lakeview | 5 | Omar | 95 | 0
+lakeview | 5 | Nia | 88 | 1
+lakeview | 6 | Qi | 84 | 0
+lakeview | 6 | Pat | 79 | 1</li>
+    <li>B. lakeview | 5 | Omar | 95 | 2
+lakeview | 5 | Nia | 88 | 1
+lakeview | 6 | Qi | 84 | 2
+lakeview | 6 | Pat | 79 | 1</li>
+    <li>C. lakeview | 5 | Omar | 95 | 1
+lakeview | 5 | Nia | 88 | 2
+lakeview | 6 | Qi | 84 | 3
+lakeview | 6 | Pat | 79 | 4</li>
+    <li>D. lakeview | 5 | Omar | 95 | 1
+lakeview | 5 | Nia | 88 | 2
+lakeview | 6 | Qi | 84 | 1
+lakeview | 6 | Pat | 79 | 2</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">D. lakeview | 5 | Omar | 95 | 1
+lakeview | 5 | Nia | 88 | 2
+lakeview | 6 | Qi | 84 | 1
+lakeview | 6 | Pat | 79 | 2</span></p>
+  <dl>
+    <dt>A. lakeview | 5 | Omar | 95 | 0
+lakeview | 5 | Nia | 88 | 1
+lakeview | 6 | Qi | 84 | 0
+lakeview | 6 | Pat | 79 | 1</dt>
+    <dd>This starts each partition at 0 instead of 1, treating RANK as a zero based index rather than the one based position SQL actually assigns.</dd>
+    <dt>B. lakeview | 5 | Omar | 95 | 2
+lakeview | 5 | Nia | 88 | 1
+lakeview | 6 | Qi | 84 | 2
+lakeview | 6 | Pat | 79 | 1</dt>
+    <dd>This orders score ascending instead of descending inside each grade, so the lower score ranks first rather than the higher one.</dd>
+    <dt>C. lakeview | 5 | Omar | 95 | 1
+lakeview | 5 | Nia | 88 | 2
+lakeview | 6 | Qi | 84 | 3
+lakeview | 6 | Pat | 79 | 4</dt>
+    <dd>This partitions by school alone, letting grade 5 and grade 6 share one continuous ranking instead of each grade level restarting its own count.</dd>
+    <dt class="juste">D. lakeview | 5 | Omar | 95 | 1
+lakeview | 5 | Nia | 88 | 2
+lakeview | 6 | Qi | 84 | 1
+lakeview | 6 | Pat | 79 | 2</dt>
+    <dd>Correct. Grade 5 and grade 6 at lakeview form separate partitions even though they share a school, so each grade ranks its own two students starting at 1.</dd>
+  </dl>
+  <p>A two column PARTITION BY forms a group for every distinct pair of values, so rows from grade 5 never compete with rows from grade 6 even under the same school, they are scored as if they belonged to entirely separate tables.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what SQLite and DuckDB both returned when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 502 SQL interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/5128d84869">Get the 502 SQL questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#sql">play the free SQL sample</a>, twenty questions in the browser.</p>
+  </section>
+  <p class="suite">
+    <span><a href="sql-05.html">Previous question</a></span>
+    <span><a href="sql-07.html">Next question</a></span>
+  </p>
+</main>
+</body>
+</html>

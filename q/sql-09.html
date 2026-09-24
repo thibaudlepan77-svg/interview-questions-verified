@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does SELECT name, points, RANK() OVER (ORDER BY points DESC) AS rnk, ... return? SQL Window Functions</title>
+<meta name="description" content="RANK and DENSE_RANK only disagree once a tie has happened, and only about what comes right after it.">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/sql-09.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / SQL</p>
+  <h1>What does SELECT name, points, RANK() OVER (ORDER BY points DESC) AS rnk, ... return? SQL Window Functions</h1>
+  <p class="bloc">Block 6, Window Functions, question 9 of the SQL sample</p>
+  <pre><code>CREATE TABLE contest2 (id INTEGER, name TEXT, points INTEGER);
+INSERT INTO contest2 VALUES
+  (1, &#x27;Fay&#x27;, 70),
+  (2, &#x27;Gus&#x27;, 70),
+  (3, &#x27;Hana&#x27;, 65),
+  (4, &#x27;Ivo&#x27;, 60);
+
+
+SELECT name, points,
+       RANK() OVER (ORDER BY points DESC) AS rnk,
+       DENSE_RANK() OVER (ORDER BY points DESC) AS drnk
+FROM contest2
+ORDER BY points DESC, name
+</code></pre>
+  <p>What does this query return?</p>
+  <ol class="options">
+    <li>A. Fay | 70 | 1 | 1
+Gus | 70 | 1 | 1
+Hana | 65 | 3 | 2
+Ivo | 60 | 4 | 3</li>
+    <li>B. Fay | 70 | 1 | 1
+Gus | 70 | 1 | 1
+Hana | 65 | 2 | 3
+Ivo | 60 | 3 | 4</li>
+    <li>C. Fay | 70 | 1 | 1
+Gus | 70 | 2 | 2
+Hana | 65 | 3 | 3
+Ivo | 60 | 4 | 4</li>
+    <li>D. Fay | 70 | 1 | 1
+Gus | 70 | 1 | 1
+Hana | 65 | 2 | 2
+Ivo | 60 | 3 | 3</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">A. Fay | 70 | 1 | 1
+Gus | 70 | 1 | 1
+Hana | 65 | 3 | 2
+Ivo | 60 | 4 | 3</span></p>
+  <dl>
+    <dt class="juste">A. Fay | 70 | 1 | 1
+Gus | 70 | 1 | 1
+Hana | 65 | 3 | 2
+Ivo | 60 | 4 | 3</dt>
+    <dd>Correct. Both functions tie Fay and Gus at 1, then RANK jumps to 3 for Hana because two rows sit above it, while DENSE_RANK moves to 2 with no gap.</dd>
+    <dt>B. Fay | 70 | 1 | 1
+Gus | 70 | 1 | 1
+Hana | 65 | 2 | 3
+Ivo | 60 | 3 | 4</dt>
+    <dd>This swaps the two columns for the non tied rows, giving RANK the gapless numbers that belong to DENSE_RANK and handing DENSE_RANK the skipped numbers that belong to RANK.</dd>
+    <dt>C. Fay | 70 | 1 | 1
+Gus | 70 | 2 | 2
+Hana | 65 | 3 | 3
+Ivo | 60 | 4 | 4</dt>
+    <dd>This applies ROW_NUMBER logic to both columns, breaking the tie between Fay and Gus instead of letting RANK and DENSE_RANK agree on 1 for both of them.</dd>
+    <dt>D. Fay | 70 | 1 | 1
+Gus | 70 | 1 | 1
+Hana | 65 | 2 | 2
+Ivo | 60 | 3 | 3</dt>
+    <dd>This applies DENSE_RANK logic to both columns, so RANK never skips ahead after the tie even though it counts rows above the current one rather than distinct values.</dd>
+  </dl>
+  <p>RANK and DENSE_RANK only disagree once a tie has happened, and only about what comes right after it. RANK counts rows above the current one, so a tie of size two is followed by a jump of two, while DENSE_RANK counts distinct values and always moves to the next integer.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what SQLite and DuckDB both returned when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 502 SQL interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/5128d84869">Get the 502 SQL questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#sql">play the free SQL sample</a>, twenty questions in the browser.</p>
+  </section>
+  <p class="suite">
+    <span><a href="sql-08.html">Previous question</a></span>
+    <span><a href="sql-10.html">Next question</a></span>
+  </p>
+</main>
+</body>
+</html>

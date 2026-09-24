@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JavaScript this, Prototypes and Classes, what does console.log(c.area()) print after function Shape() {}?</title>
+<meta name="description" content="Object.assign copies properties from its source arguments onto the target object in order, and when multiple sources define the same property name, the ...">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/javascript-15.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / JavaScript</p>
+  <h1>JavaScript this, Prototypes and Classes, what does console.log(c.area()) print after function Shape() {}?</h1>
+  <p class="bloc">Block 3, this, Prototypes and Classes, question 15 of the JavaScript sample</p>
+  <pre><code>function Shape() {}
+Shape.prototype.area = function() { return 0; };
+function Circle(radius) {
+  this.radius = radius;
+}
+Object.assign(Circle.prototype, Shape.prototype, {
+  area() { return this.radius * this.radius * 3; }
+});
+const c = new Circle(2);
+console.log(c.area());</code></pre>
+  <p>What does this print?</p>
+  <ol class="options">
+    <li>A. 12</li>
+    <li>B. undefined</li>
+    <li>C. 0</li>
+    <li>D. TypeError</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">A. 12</span></p>
+  <dl>
+    <dt class="juste">A. 12</dt>
+    <dd>Correct. Object.assign copies properties left to right, so the area method from the plain object argument overwrites the one copied earlier from Shape.prototype, and that final version reads radius.</dd>
+    <dt>B. undefined</dt>
+    <dd>Assumes none of the sources properties actually get copied onto Circle.prototype, leaving area unset. Object.assign genuinely copies own enumerable properties from each source object onto the target, area does end up defined on Circle.prototype by the end of the call.</dd>
+    <dt>C. 0</dt>
+    <dd>Assumes the first area definition encountered among the sources, the one from Shape.prototype, is the one that survives on Circle.prototype. Object.assign copies each source object properties in order, later sources overwrite properties of the same name from earlier sources, so the last area definition wins.</dd>
+    <dt>D. TypeError</dt>
+    <dd>Assumes calling the copied method later on a Circle instance is disallowed because it was attached through Object.assign rather than directly in a class or prototype assignment. A method copied onto a prototype through Object.assign behaves exactly like any other prototype method once it is there, it is called normally through instances.</dd>
+  </dl>
+  <p>Object.assign copies properties from its source arguments onto the target object in order, and when multiple sources define the same property name, the one from the later source argument wins. Here Shape.prototype area is copied first, then overwritten by the area defined in the final plain object argument, since it comes after Shape.prototype in the argument list. Calling c.area() therefore runs that final version, computing 2 times 2 times 3.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what the Node interpreter printed when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 600 JavaScript interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/e564f7a936">Get the 600 JavaScript questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#javascript">play the free JavaScript sample</a>, twenty questions in the browser.</p>
+  </section>
+  <p class="suite">
+    <span><a href="javascript-14.html">Previous question</a></span>
+    <span><a href="javascript-16.html">Next question</a></span>
+  </p>
+</main>
+</body>
+</html>

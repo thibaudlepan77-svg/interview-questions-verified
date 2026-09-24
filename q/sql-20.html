@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does SELECT dish FROM menu WHERE price &gt; 10 ORDER BY dish return? SQL Data Modification and Constraints</title>
+<meta name="description" content="A WHERE clause is applied after the table already holds every row from every INSERT in the schema, it filters the finished data rather than the statements ...">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/sql-20.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / SQL</p>
+  <h1>What does SELECT dish FROM menu WHERE price &gt; 10 ORDER BY dish return? SQL Data Modification and Constraints</h1>
+  <p class="bloc">Block 8, Data Modification and Constraints, question 20 of the SQL sample</p>
+  <pre><code>CREATE TABLE menu (id INTEGER PRIMARY KEY, dish TEXT, price INTEGER);
+INSERT INTO menu VALUES (1, &#x27;soup&#x27;, 8), (2, &#x27;salad&#x27;, 7);
+INSERT INTO menu VALUES (3, &#x27;steak&#x27;, 22), (4, &#x27;pasta&#x27;, 14), (5, &#x27;cake&#x27;, 9);
+
+SELECT dish FROM menu WHERE price &gt; 10 ORDER BY dish</code></pre>
+  <p>A restaurant adds new dishes in one statement. The statements above run, then this query. What comes back?</p>
+  <ol class="options">
+    <li>A. pasta</li>
+    <li>B. pasta
+steak</li>
+    <li>C. cake
+pasta
+steak</li>
+    <li>D. steak
+pasta</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">B. pasta
+steak</span></p>
+  <dl>
+    <dt>A. pasta</dt>
+    <dd>This drops steak, as if only the first of the three rows added by the second INSERT had been kept.</dd>
+    <dt class="juste">B. pasta
+steak</dt>
+    <dd>Correct. Five menu items exist once both INSERT statements run, and only steak at 22 and pasta at 14 clear the price greater than 10 filter, listed alphabetically.</dd>
+    <dt>C. cake
+pasta
+steak</dt>
+    <dd>This includes cake, which costs 9 and does not pass the price greater than 10 filter.</dd>
+    <dt>D. steak
+pasta</dt>
+    <dd>This has the right two dishes but in the wrong order, listing steak before pasta instead of alphabetically.</dd>
+  </dl>
+  <p>A WHERE clause is applied after the table already holds every row from every INSERT in the schema, it filters the finished data rather than the statements that built it. Rows from a multi row INSERT are each tested against the condition individually, only cake among the three new rows fails it here.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what SQLite and DuckDB both returned when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 502 SQL interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/5128d84869">Get the 502 SQL questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#sql">play the free SQL sample</a>, twenty questions in the browser.</p>
+  </section>
+  <p class="suite">
+    <span><a href="sql-19.html">Previous question</a></span>
+    <span></span>
+  </p>
+</main>
+</body>
+</html>

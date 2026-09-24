@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does SELECT artist, track, play_count, DENSE_RANK() OVER (PARTITION BY ... return? SQL Window Functions</title>
+<meta name="description" content="DENSE_RANK counts distinct play counts, not rows, which is why a tie for the top spot is immediately followed by the very next integer rather than a ...">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/sql-16.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / SQL</p>
+  <h1>What does SELECT artist, track, play_count, DENSE_RANK() OVER (PARTITION BY ... return? SQL Window Functions</h1>
+  <p class="bloc">Block 6, Window Functions, question 16 of the SQL sample</p>
+  <pre><code>CREATE TABLE track_plays (id INTEGER, artist TEXT, track TEXT, play_count INTEGER);
+INSERT INTO track_plays VALUES
+  (1, &#x27;nova&#x27;, &#x27;Echo&#x27;, 5000),
+  (2, &#x27;nova&#x27;, &#x27;Static&#x27;, 7200),
+  (3, &#x27;nova&#x27;, &#x27;Drift&#x27;, 7200),
+  (4, &#x27;nova&#x27;, &#x27;Halo&#x27;, 4100);
+
+
+SELECT artist, track, play_count,
+       DENSE_RANK() OVER (PARTITION BY artist ORDER BY play_count DESC) AS drnk
+FROM track_plays
+ORDER BY artist, drnk, track
+</code></pre>
+  <p>What does this query return?</p>
+  <ol class="options">
+    <li>A. nova | Drift | 7200 | 1
+nova | Static | 7200 | 1
+nova | Echo | 5000 | 3
+nova | Halo | 4100 | 4</li>
+    <li>B. nova | Drift | 7200 | 1
+nova | Static | 7200 | 1
+nova | Echo | 5000 | 2
+nova | Halo | 4100 | 3</li>
+    <li>C. nova | Drift | 7200 | 1
+nova | Static | 7200 | 2
+nova | Echo | 5000 | 3
+nova | Halo | 4100 | 4</li>
+    <li>D. nova | Halo | 4100 | 1
+nova | Echo | 5000 | 2
+nova | Drift | 7200 | 3
+nova | Static | 7200 | 3</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">B. nova | Drift | 7200 | 1
+nova | Static | 7200 | 1
+nova | Echo | 5000 | 2
+nova | Halo | 4100 | 3</span></p>
+  <dl>
+    <dt>A. nova | Drift | 7200 | 1
+nova | Static | 7200 | 1
+nova | Echo | 5000 | 3
+nova | Halo | 4100 | 4</dt>
+    <dd>This is what RANK would produce, also tying the top two tracks at 1 but then skipping ahead to 3 for the next track instead of the gapless 2 DENSE_RANK gives.</dd>
+    <dt class="juste">B. nova | Drift | 7200 | 1
+nova | Static | 7200 | 1
+nova | Echo | 5000 | 2
+nova | Halo | 4100 | 3</dt>
+    <dd>Correct. Drift and Static tie for the most plays and both get 1, then DENSE_RANK moves straight to 2 for Echo with no gap, and 3 for Halo.</dd>
+    <dt>C. nova | Drift | 7200 | 1
+nova | Static | 7200 | 2
+nova | Echo | 5000 | 3
+nova | Halo | 4100 | 4</dt>
+    <dd>This is what ROW_NUMBER would produce, splitting the tied top tracks into two different numbers instead of letting them share the same rank.</dd>
+    <dt>D. nova | Halo | 4100 | 1
+nova | Echo | 5000 | 2
+nova | Drift | 7200 | 3
+nova | Static | 7200 | 3</dt>
+    <dd>This orders play_count ascending instead of descending, so the least played track ranks first, the opposite of what DESC in the window ORDER BY specifies.</dd>
+  </dl>
+  <p>DENSE_RANK counts distinct play counts, not rows, which is why a tie for the top spot is immediately followed by the very next integer rather than a number that skips ahead to account for both tied rows.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what SQLite and DuckDB both returned when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 502 SQL interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/5128d84869">Get the 502 SQL questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#sql">play the free SQL sample</a>, twenty questions in the browser.</p>
+  </section>
+  <p class="suite">
+    <span><a href="sql-15.html">Previous question</a></span>
+    <span><a href="sql-17.html">Next question</a></span>
+  </p>
+</main>
+</body>
+</html>

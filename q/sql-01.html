@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does SELECT stations.label, shifts.label FROM stations CROSS JOIN shifts ... return? SQL Joins</title>
+<meta name="description" content="A CROSS JOIN always produces rows equal to the product of the two row counts, three stations and two shifts multiply to six, never a sum and never a row ...">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/sql-01.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / SQL</p>
+  <h1>What does SELECT stations.label, shifts.label FROM stations CROSS JOIN shifts ... return? SQL Joins</h1>
+  <p class="bloc">Block 2, Joins, question 1 of the SQL sample</p>
+  <pre><code>CREATE TABLE stations (label TEXT);
+INSERT INTO stations VALUES
+  (&#x27;Gate1&#x27;),
+  (&#x27;Gate2&#x27;),
+  (&#x27;Gate3&#x27;);
+CREATE TABLE shifts (label TEXT);
+INSERT INTO shifts VALUES
+  (&#x27;Morning&#x27;),
+  (&#x27;Evening&#x27;);
+
+SELECT stations.label, shifts.label FROM stations CROSS JOIN shifts ORDER BY stations.label, shifts.label</code></pre>
+  <p>What does this query return?</p>
+  <ol class="options">
+    <li>A. Gate1 | Morning
+Gate2 | Evening</li>
+    <li>B. (no rows)</li>
+    <li>C. Gate1 | Evening
+Gate1 | Morning
+Gate2 | Evening
+Gate2 | Morning
+Gate3 | Evening</li>
+    <li>D. Gate1 | Evening
+Gate1 | Morning
+Gate2 | Evening
+Gate2 | Morning
+Gate3 | Evening
+Gate3 | Morning</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">D. Gate1 | Evening
+Gate1 | Morning
+Gate2 | Evening
+Gate2 | Morning
+Gate3 | Evening
+Gate3 | Morning</span></p>
+  <dl>
+    <dt>A. Gate1 | Morning
+Gate2 | Evening</dt>
+    <dd>This pairs the tables row by row as if zipping two lists together, which only produces as many rows as the shorter table and drops Gate3 and most of the combinations entirely.</dd>
+    <dt>B. (no rows)</dt>
+    <dd>This assumes a CROSS JOIN needs some equality condition to link the tables, but a CROSS JOIN has no condition at all, every row of one side pairs with every row of the other regardless of any matching column.</dd>
+    <dt>C. Gate1 | Evening
+Gate1 | Morning
+Gate2 | Evening
+Gate2 | Morning
+Gate3 | Evening</dt>
+    <dd>This undercounts the result as if it only had three stations plus two shifts minus one, five rows, instead of the full product of three times two, six rows, and it drops Gate3 with Morning entirely.</dd>
+    <dt class="juste">D. Gate1 | Evening
+Gate1 | Morning
+Gate2 | Evening
+Gate2 | Morning
+Gate3 | Evening
+Gate3 | Morning</dt>
+    <dd>Correct. CROSS JOIN pairs every station with every shift, three stations times two shifts gives six combinations in total.</dd>
+  </dl>
+  <p>A CROSS JOIN always produces rows equal to the product of the two row counts, three stations and two shifts multiply to six, never a sum and never a row by row pairing that stops at the shorter table.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what SQLite and DuckDB both returned when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 502 SQL interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/5128d84869">Get the 502 SQL questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#sql">play the free SQL sample</a>, twenty questions in the browser.</p>
+  </section>
+  <p class="suite">
+    <span></span>
+    <span><a href="sql-02.html">Next question</a></span>
+  </p>
+</main>
+</body>
+</html>

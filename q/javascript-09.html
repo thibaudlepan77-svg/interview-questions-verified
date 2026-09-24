@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JavaScript Objects, Destructuring and Immutability, what does console.log(id) print after const response = { data: { user: { id: 7 } } }?</title>
+<meta name="description" content="Object destructuring can nest arbitrarily deep, each colon steps into a property of the previous level.">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/javascript-09.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / JavaScript</p>
+  <h1>JavaScript Objects, Destructuring and Immutability, what does console.log(id) print after const response = { data: { user: { id: 7 } } }?</h1>
+  <p class="bloc">Block 5, Objects, Destructuring and Immutability, question 9 of the JavaScript sample</p>
+  <pre><code>const response = { data: { user: { id: 7 } } };
+const { data: { user: { id } } } = response;
+console.log(id);</code></pre>
+  <p>What does this print?</p>
+  <ol class="options">
+    <li>A. ReferenceError</li>
+    <li>B. {&quot;id&quot;:7}</li>
+    <li>C. 7</li>
+    <li>D. undefined</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">C. 7</span></p>
+  <dl>
+    <dt>A. ReferenceError</dt>
+    <dd>Assumes id is never declared because the pattern only introduces bindings for data and user.</dd>
+    <dt>B. {&quot;id&quot;:7}</dt>
+    <dd>Assumes the innermost pattern binds the whole user object rather than just its id property.</dd>
+    <dt class="juste">C. 7</dt>
+    <dd>Correct. Nested destructuring walks down through data and user and binds id to the number stored three levels deep.</dd>
+    <dt>D. undefined</dt>
+    <dd>Assumes destructuring through several nested levels in one pattern is not valid and silently produces undefined.</dd>
+  </dl>
+  <p>Object destructuring can nest arbitrarily deep, each colon steps into a property of the previous level. Only the innermost names actually become variables, the intermediate names like data and user are just path segments.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what the Node interpreter printed when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 600 JavaScript interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/e564f7a936">Get the 600 JavaScript questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#javascript">play the free JavaScript sample</a>, twenty questions in the browser.</p>
+  </section>
+  <p class="suite">
+    <span><a href="javascript-08.html">Previous question</a></span>
+    <span><a href="javascript-10.html">Next question</a></span>
+  </p>
+</main>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does SELECT team, name, hire_date, ROW_NUMBER() OVER (PARTITION BY team ... return? SQL Window Functions</title>
+<meta name="description" content="The ORDER BY inside OVER and the ORDER BY at the end of the query are unrelated, one decides the values a window function computes and the other decides ...">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/sql-19.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / SQL</p>
+  <h1>What does SELECT team, name, hire_date, ROW_NUMBER() OVER (PARTITION BY team ... return? SQL Window Functions</h1>
+  <p class="bloc">Block 6, Window Functions, question 19 of the SQL sample</p>
+  <pre><code>CREATE TABLE hires (id INTEGER, team TEXT, name TEXT, hire_date TEXT);
+INSERT INTO hires VALUES
+  (1, &#x27;ops&#x27;, &#x27;Dez&#x27;, &#x27;2019-06-15&#x27;),
+  (2, &#x27;ops&#x27;, &#x27;Cole&#x27;, &#x27;2021-03-01&#x27;),
+  (3, &#x27;ops&#x27;, &#x27;Ann&#x27;, &#x27;2020-01-10&#x27;);
+
+
+SELECT team, name, hire_date,
+       ROW_NUMBER() OVER (PARTITION BY team ORDER BY hire_date ASC) AS seniority
+FROM hires
+ORDER BY name
+</code></pre>
+  <p>What does this query return?</p>
+  <ol class="options">
+    <li>A. ops | Ann | 2020-01-10 | 2
+ops | Cole | 2021-03-01 | 1
+ops | Dez | 2019-06-15 | 3</li>
+    <li>B. ops | Ann | 2020-01-10 | 1
+ops | Cole | 2021-03-01 | 2
+ops | Dez | 2019-06-15 | 0</li>
+    <li>C. ops | Ann | 2020-01-10 | 2
+ops | Cole | 2021-03-01 | 3
+ops | Dez | 2019-06-15 | 1</li>
+    <li>D. ops | Ann | 2020-01-10 | 1
+ops | Cole | 2021-03-01 | 2
+ops | Dez | 2019-06-15 | 3</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">C. ops | Ann | 2020-01-10 | 2
+ops | Cole | 2021-03-01 | 3
+ops | Dez | 2019-06-15 | 1</span></p>
+  <dl>
+    <dt>A. ops | Ann | 2020-01-10 | 2
+ops | Cole | 2021-03-01 | 1
+ops | Dez | 2019-06-15 | 3</dt>
+    <dd>This ranks the most recent hire first, the opposite of ASC, so Cole would get seniority 1 instead of the last position that a newer hire date actually earns.</dd>
+    <dt>B. ops | Ann | 2020-01-10 | 1
+ops | Cole | 2021-03-01 | 2
+ops | Dez | 2019-06-15 | 0</dt>
+    <dd>This starts the count at 0 for the earliest hire instead of 1, treating ROW_NUMBER as a zero based index rather than the one based row position SQL defines.</dd>
+    <dt class="juste">C. ops | Ann | 2020-01-10 | 2
+ops | Cole | 2021-03-01 | 3
+ops | Dez | 2019-06-15 | 1</dt>
+    <dd>Correct. The window orders by hire_date, so Dez, the earliest hire, gets seniority 1, while the final ORDER BY name displays the rows alphabetically.</dd>
+    <dt>D. ops | Ann | 2020-01-10 | 1
+ops | Cole | 2021-03-01 | 2
+ops | Dez | 2019-06-15 | 3</dt>
+    <dd>This assumes seniority follows the alphabetical order the rows are displayed in, as if the window ORDER BY copied the outer ORDER BY name instead of using hire_date.</dd>
+  </dl>
+  <p>The ORDER BY inside OVER and the ORDER BY at the end of the query are unrelated, one decides the values a window function computes and the other decides the order rows are displayed in. Sorting the display alphabetically does not change which hire counts as the most senior.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what SQLite and DuckDB both returned when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 502 SQL interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/5128d84869">Get the 502 SQL questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#sql">play the free SQL sample</a>, twenty questions in the browser.</p>
+  </section>
+  <p class="suite">
+    <span><a href="sql-18.html">Previous question</a></span>
+    <span><a href="sql-20.html">Next question</a></span>
+  </p>
+</main>
+</body>
+</html>

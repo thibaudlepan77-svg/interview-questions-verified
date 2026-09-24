@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JavaScript this, Prototypes and Classes, what does console.log(Named.label()) print after const Named = class MyClass?</title>
+<meta name="description" content="Writing class MyClass { .">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/javascript-05.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / JavaScript</p>
+  <h1>JavaScript this, Prototypes and Classes, what does console.log(Named.label()) print after const Named = class MyClass?</h1>
+  <p class="bloc">Block 3, this, Prototypes and Classes, question 5 of the JavaScript sample</p>
+  <pre><code>const Named = class MyClass {
+  static label() {
+    return MyClass.name;
+  }
+};
+console.log(Named.label());</code></pre>
+  <p>What does this print?</p>
+  <ol class="options">
+    <li>A. Named</li>
+    <li>B. ReferenceError</li>
+    <li>C. MyClass</li>
+    <li>D. undefined</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">C. MyClass</span></p>
+  <dl>
+    <dt>A. Named</dt>
+    <dd>Assumes the inner name is just an alias for whatever variable the class expression was assigned to on the outside, so it would reflect the outer binding name instead. The name given in a class expression is a separate binding visible only inside the class body, it always refers to the class itself, not to the outer variable it happens to be stored in.</dd>
+    <dt>B. ReferenceError</dt>
+    <dd>Assumes referencing the internal name from a static method fails because that name is only meant for recursive references and not for general use. The internal binding created by a named class expression works like any normal reference to the class, it can be used for recursion or for anything else, including simply reading its name property.</dd>
+    <dt class="juste">C. MyClass</dt>
+    <dd>Correct. A named class expression makes its own name available inside its body only, so the static method reads MyClass, which is the class own name regardless of the outer variable it was assigned to.</dd>
+    <dt>D. undefined</dt>
+    <dd>Assumes the internal class name is not actually usable from inside the class own static methods, resulting in a missing value. A named class expression name is fully valid and readable from any method defined in that class body, static or not, exactly like an ordinary function reference.</dd>
+  </dl>
+  <p>Writing class MyClass { ... } as an expression assigned to Named creates an internal binding named MyClass that is visible only from within the class body itself, separate from the outer variable Named. Inside label, MyClass refers to the class itself, and its name property reflects that internal name, not the variable it was ultimately stored in. So Named.label() reads MyClass.name, giving the string MyClass.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what the Node interpreter printed when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 600 JavaScript interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/e564f7a936">Get the 600 JavaScript questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#javascript">play the free JavaScript sample</a>, twenty questions in the browser.</p>
+  </section>
+  <p class="suite">
+    <span><a href="javascript-04.html">Previous question</a></span>
+    <span><a href="javascript-06.html">Next question</a></span>
+  </p>
+</main>
+</body>
+</html>

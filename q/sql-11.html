@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does SELECT machines.tag, thresholds.label FROM machines JOIN thresholds ON ... return? SQL Joins</title>
+<meta name="description" content="The less a machine has been used, the more maintenance thresholds it satisfies under a &lt;= comparison, since a small hours_run clears more of the max_hours ...">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/sql-11.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / SQL</p>
+  <h1>What does SELECT machines.tag, thresholds.label FROM machines JOIN thresholds ON ... return? SQL Joins</h1>
+  <p class="bloc">Block 2, Joins, question 11 of the SQL sample</p>
+  <pre><code>CREATE TABLE machines (id INTEGER, tag TEXT, hours_run INTEGER);
+INSERT INTO machines VALUES
+  (1, &#x27;M1&#x27;, 120),
+  (2, &#x27;M2&#x27;, 300),
+  (3, &#x27;M3&#x27;, 480);
+CREATE TABLE thresholds (label TEXT, max_hours INTEGER);
+INSERT INTO thresholds VALUES
+  (&#x27;Green&#x27;, 200),
+  (&#x27;Yellow&#x27;, 400),
+  (&#x27;Red&#x27;, 600);
+
+SELECT machines.tag, thresholds.label FROM machines JOIN thresholds ON machines.hours_run &lt;= thresholds.max_hours ORDER BY machines.tag, thresholds.label</code></pre>
+  <p>What does this query return?</p>
+  <ol class="options">
+    <li>A. M1 | Green
+M1 | Red
+M1 | Yellow
+M2 | Red
+M2 | Yellow
+M3 | Red</li>
+    <li>B. M2 | Green
+M3 | Green
+M3 | Yellow</li>
+    <li>C. (no rows)</li>
+    <li>D. M1 | Green
+M2 | Yellow
+M3 | Red</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">A. M1 | Green
+M1 | Red
+M1 | Yellow
+M2 | Red
+M2 | Yellow
+M3 | Red</span></p>
+  <dl>
+    <dt class="juste">A. M1 | Green
+M1 | Red
+M1 | Yellow
+M2 | Red
+M2 | Yellow
+M3 | Red</dt>
+    <dd>Correct. M1 has run the fewest hours so it fits under all three thresholds, M2 fits under Yellow and Red, and M3, the most used, only fits under Red.</dd>
+    <dt>B. M2 | Green
+M3 | Green
+M3 | Yellow</dt>
+    <dd>This flips the inequality direction, matching thresholds whose max_hours is at or below the machine&#x27;s hours_run instead of at or above, the opposite of a maintenance lookup.</dd>
+    <dt>C. (no rows)</dt>
+    <dd>This assumes hours_run must exactly equal max_hours, but the condition is an inequality, and none of the machines have run for exactly a threshold value.</dd>
+    <dt>D. M1 | Green
+M2 | Yellow
+M3 | Red</dt>
+    <dd>This assumes each machine can only match the tightest threshold it fits into, but the ON condition is satisfied by every threshold whose max_hours is at least the machine&#x27;s hours_run, not only the lowest one.</dd>
+  </dl>
+  <p>The less a machine has been used, the more maintenance thresholds it satisfies under a &lt;= comparison, since a small hours_run clears more of the max_hours limits. This is the same shape of inequality join as matching a score against a set of grade cutoffs.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what SQLite and DuckDB both returned when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 502 SQL interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/5128d84869">Get the 502 SQL questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#sql">play the free SQL sample</a>, twenty questions in the browser.</p>
+  </section>
+  <p class="suite">
+    <span><a href="sql-10.html">Previous question</a></span>
+    <span><a href="sql-12.html">Next question</a></span>
+  </p>
+</main>
+</body>
+</html>

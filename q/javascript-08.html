@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does console.log(obj.hasOwnProperty(&#x27;a&#x27;), obj.hasOwnProperty(&#x27;toString&#x27;)) print? JavaScript this, Prototypes and Classes</title>
+<meta name="description" content="hasOwnProperty checks only the properties that live directly on the object it is called on, completely ignoring the prototype chain.">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/javascript-08.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / JavaScript</p>
+  <h1>What does console.log(obj.hasOwnProperty(&#x27;a&#x27;), obj.hasOwnProperty(&#x27;toString&#x27;)) print? JavaScript this, Prototypes and Classes</h1>
+  <p class="bloc">Block 3, this, Prototypes and Classes, question 8 of the JavaScript sample</p>
+  <pre><code>const obj = { a: 1 };
+console.log(obj.hasOwnProperty(&#x27;a&#x27;), obj.hasOwnProperty(&#x27;toString&#x27;));</code></pre>
+  <p>What does this print?</p>
+  <ol class="options">
+    <li>A. true false</li>
+    <li>B. true true</li>
+    <li>C. false false</li>
+    <li>D. false true</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">A. true false</span></p>
+  <dl>
+    <dt class="juste">A. true false</dt>
+    <dd>Correct. a is an own property of obj, while toString is only reachable through the inherited Object.prototype, so hasOwnProperty reports it as false.</dd>
+    <dt>B. true true</dt>
+    <dd>Assumes hasOwnProperty reports true for anything reachable on the object, whether it lives directly on the object or somewhere up its prototype chain. hasOwnProperty deliberately ignores inherited properties, it only checks the object itself.</dd>
+    <dt>C. false false</dt>
+    <dd>Assumes toString somehow fails to exist on obj at all, when it is reachable through Object.prototype and calling obj.toString() would work fine. hasOwnProperty is about where a property lives, not about whether it can be accessed.</dd>
+    <dt>D. false true</dt>
+    <dd>Assumes the order is reversed, that the built in toString counts as owned while the literal property a does not. a was written directly into the object literal, making it the clearly own property, while toString only comes from the shared prototype.</dd>
+  </dl>
+  <p>hasOwnProperty checks only the properties that live directly on the object it is called on, completely ignoring the prototype chain. a was set in the object literal, so it counts as own. toString is never defined on obj itself, it is inherited from Object.prototype, so hasOwnProperty correctly reports false even though obj.toString() would still work through inheritance.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what the Node interpreter printed when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 600 JavaScript interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/e564f7a936">Get the 600 JavaScript questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#javascript">play the free JavaScript sample</a>, twenty questions in the browser.</p>
+  </section>
+  <p class="suite">
+    <span><a href="javascript-07.html">Previous question</a></span>
+    <span><a href="javascript-09.html">Next question</a></span>
+  </p>
+</main>
+</body>
+</html>
