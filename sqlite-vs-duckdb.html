@@ -25,7 +25,7 @@
 <main>
 <h1>Eight one-line queries where SQLite and DuckDB disagree</h1>
 <p>I built a bank of SQL practice questions with one hard rule. Every query had to return exactly the same rows on SQLite and on DuckDB, two engines that share no code, or the question was thrown out. The point was to make sure no answer depended on which database the reader happened to have open.</p>
-<p>Here are eight of the differences that rule exists to catch, measured on SQLite 3.50.4 and DuckDB 1.5.5 through their Python bindings, same table on both.</p>
+<p>Here are eight of the differences that rule exists to catch, measured on SQLite 3.50.4 and DuckDB 1.5.5 through their Python bindings, same table on both. This story was written with the assistance of an AI writing program, and every result in it comes from actually running the statement on both engines.</p>
 <pre><code class="language-sql">CREATE TABLE t (name VARCHAR, dept VARCHAR, pay INTEGER);
 INSERT INTO t VALUES
   ('Ann', 'ops', 10),
