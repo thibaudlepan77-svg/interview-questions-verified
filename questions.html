@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sixty JavaScript, Python and SQL interview questions with real outputs</title>
-<meta name="description" content="Sixty interview questions, twenty per language, each run before its answer was written, with a reason for every wrong option.">
+<title>Eighty JavaScript, Python, SQL and pandas interview questions with real outputs</title>
+<meta name="description" content="Eighty interview questions, twenty per language, each run before its answer was written, with a reason for every wrong option.">
 <link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/questions.html">
 <style>
   :root {
@@ -46,7 +46,7 @@
 <body>
 <main>
   <p class="fil"><a href="index.html">Play the sample</a></p>
-  <h1>Sixty JavaScript, Python and SQL interview questions, each with its real output</h1>
+  <h1>Eighty JavaScript, Python, SQL and pandas interview questions, each with its real output</h1>
   <p>Every snippet below was run before its answer was written. Each page gives the four options, the answer, and a reason for every wrong option.</p>
   <h2>JavaScript</h2>
   <ul class="liste">
@@ -116,6 +116,29 @@
     <li><a href="q/sql-18.html">What does SELECT CASE WHEN points &gt;= 60 THEN &#x27;pass&#x27; ELSE &#x27;fail&#x27; END AS result, ... return? SQL Grouping and Aggregation</a></li>
     <li><a href="q/sql-19.html">What does SELECT team, name, hire_date, ROW_NUMBER() OVER (PARTITION BY team ... return? SQL Window Functions</a></li>
     <li><a href="q/sql-20.html">What does SELECT dish FROM menu WHERE price &gt; 10 ORDER BY dish return? SQL Data Modification and Constraints</a></li>
+  </ul>
+  <h2>pandas</h2>
+  <ul class="liste">
+    <li><a href="q/pandas-01.html">pandas Series, Index and dtypes, what does print(s.tolist()) print after s = pd.Series([1, True])?</a></li>
+    <li><a href="q/pandas-02.html">What does print(s.astype(int)) print? pandas Series, Index and dtypes</a></li>
+    <li><a href="q/pandas-03.html">What does print(s[s &gt; 3].tolist()) print? pandas Series, Index and dtypes</a></li>
+    <li><a href="q/pandas-04.html">What does print(df[df[&#x27;a&#x27;].isin([1, 4])][&#x27;b&#x27;].tolist()) print? pandas Selecting with loc, iloc and Masks</a></li>
+    <li><a href="q/pandas-05.html">What does print(df.iloc[-1][&#x27;a&#x27;]) print? pandas Selecting with loc, iloc and Masks</a></li>
+    <li><a href="q/pandas-06.html">pandas Missing Data, NaN and NA, what does print(s.sum()) print after s = pd.Series([1, 2, None])?</a></li>
+    <li><a href="q/pandas-07.html">pandas Missing Data, NaN and NA, what does print(s.tolist()) print after s = pd.Series([1, None, 3])?</a></li>
+    <li><a href="q/pandas-08.html">What does print((a + b).tolist()) print? pandas Missing Data, NaN and NA</a></li>
+    <li><a href="q/pandas-09.html">What does print(df.groupby(&#x27;k&#x27;)[&#x27;v&#x27;].sum().index.tolist()) print? pandas GroupBy and Aggregation</a></li>
+    <li><a href="q/pandas-10.html">What does print(df.groupby(&#x27;k&#x27;)[&#x27;v&#x27;].agg(lambda s: (s ** 2).sum()).to_dict()) print? pandas GroupBy and Aggregation</a></li>
+    <li><a href="q/pandas-11.html">pandas Merge, Join and Concat, what does print(merged.shape) print after left = pd.DataFrame({&#x27;k&#x27;: [1, 1, 2], &#x27;a&#x27;: [&#x27;a1&#x27;, &#x27;a2&#x27;, &#x27;a3&#x27;]})?</a></li>
+    <li><a href="q/pandas-12.html">What does print(list(combined.columns)) print? pandas Merge, Join and Concat</a></li>
+    <li><a href="q/pandas-13.html">What does print(type(combined).__name__, combined.tolist()) print? pandas Merge, Join and Concat</a></li>
+    <li><a href="q/pandas-14.html">What does print(list(melted.columns)) print? pandas Reshaping, Pivot and Melt</a></li>
+    <li><a href="q/pandas-15.html">pandas Reshaping, Pivot and Melt, what does print(sorted_df.shape) print after df = pd.DataFrame({&#x27;a&#x27;: [1, 1, 2], &#x27;b&#x27;: [3, 1, 2], &#x27;orig&#x27;: [0, 1, 2]})?</a></li>
+    <li><a href="q/pandas-16.html">What does print(df[&#x27;b&#x27;].tolist()) print? pandas Copy-on-Write, Views and Assignment</a></li>
+    <li><a href="q/pandas-17.html">What does print(resultat, df[&#x27;a&#x27;].tolist()) print? pandas Copy-on-Write, Views and Assignment</a></li>
+    <li><a href="q/pandas-18.html">What does print(df[&#x27;a&#x27;].tolist()) print? pandas Copy-on-Write, Views and Assignment</a></li>
+    <li><a href="q/pandas-19.html">What does print(s.str.startswith(&#x27;a&#x27;).tolist()) print? pandas Strings, Dates and apply</a></li>
+    <li><a href="q/pandas-20.html">pandas Strings, Dates and apply, what does print(out.shape) print after df = pd.DataFrame({&#x27;a&#x27;: [1, 2], &#x27;b&#x27;: [3, 4]})?</a></li>
   </ul>
 </main>
 </body>

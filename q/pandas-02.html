@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does print(s.astype(int)) print? pandas Series, Index and dtypes</title>
+<meta name="description" content="astype(int) has no fallback for a value it cannot parse, it either converts every entry or raises.">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/pandas-02.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / pandas</p>
+  <h1>What does print(s.astype(int)) print? pandas Series, Index and dtypes</h1>
+  <p class="bloc">Block 1, Series, Index and dtypes, question 2 of the pandas sample</p>
+  <pre><code>import pandas as pd
+s = pd.Series([&#x27;1&#x27;, &#x27;2&#x27;, &#x27;x&#x27;])
+print(s.astype(int))</code></pre>
+  <p>What does this print?</p>
+  <ol class="options">
+    <li>A. ValueError</li>
+    <li>B. nan</li>
+    <li>C. 0    1\n1    2\n2    NaN\ndtype: float64</li>
+    <li>D. 0    1\n1    2\n2    0\ndtype: int64</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">A. ValueError</span></p>
+  <dl>
+    <dt class="juste">A. ValueError</dt>
+    <dd>Correct. astype(int) tries to convert every entry, and since &#x27;x&#x27; cannot be parsed as an integer, the conversion fails for the whole Series and raises a ValueError rather than silently skipping or defaulting that one entry.</dd>
+    <dt>B. nan</dt>
+    <dd>Assumes the whole operation quietly produces a single missing value instead of raising an error.</dd>
+    <dt>C. 0    1\n1    2\n2    NaN\ndtype: float64</dt>
+    <dd>Assumes an unparseable entry becomes a missing float value while the dtype falls back to float64, rather than the conversion raising an error.</dd>
+    <dt>D. 0    1\n1    2\n2    0\ndtype: int64</dt>
+    <dd>Assumes an unparseable entry gets silently replaced by 0 while the rest convert normally.</dd>
+  </dl>
+  <p>astype(int) has no fallback for a value it cannot parse, it either converts every entry or raises. Unlike pd.to_numeric with errors=&#x27;coerce&#x27;, there is no way to ask astype to turn unparseable entries into missing values instead of failing.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what pandas 3.0.5 printed when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 255 pandas interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/4b32c5be4f">Get the 255 pandas questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#pandas">play the free pandas sample</a>, twenty questions in the browser, also as a <a href="../pandas-interview-questions-free-sample.pdf">free PDF</a>.</p>
+  </section>
+  <p class="suite">
+    <span><a href="pandas-01.html">Previous question</a></span>
+    <span><a href="pandas-03.html">Next question</a></span>
+  </p>
+</main>
+</body>
+</html>
