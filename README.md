@@ -514,6 +514,8 @@ Longer write-ups, every output produced by running the code.
 - [Six SQL mistakes that give you a wrong number and no error](https://thibaudlepan77-svg.github.io/interview-questions-verified/sql-null-traps.html)
 - [Eight one-line queries where SQLite and DuckDB disagree](https://thibaudlepan77-svg.github.io/interview-questions-verified/sqlite-vs-duckdb.html)
 
+The free PDFs also live in one repository per topic, [SQL](https://github.com/thibaudlepan77-svg/sql-interview-questions-pdf), [Python](https://github.com/thibaudlepan77-svg/python-interview-questions-pdf), [pandas](https://github.com/thibaudlepan77-svg/pandas-interview-questions-pdf), [NumPy](https://github.com/thibaudlepan77-svg/numpy-interview-questions-pdf).
+
 ## The full banks
 
 The samples come from larger banks sold as PDFs, questions first and the answer key after, with the same four explanations on every question.
