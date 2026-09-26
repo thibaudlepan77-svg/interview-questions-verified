@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ten pandas answers that changed in pandas 3, and what 3.0.5 actually prints</title>
-<meta name="description" content="str dtype, Copy-on-Write, freq aliases, groupby apply, fillna method and five more. Every snippet run on pandas 3.0.5.">
+<meta name="description" content="pandas 3.0.5, &#x27;M&#x27; is no longer supported for offsets, ChainedAssignmentError, fillna method removed, str dtype, groupby apply and more, each snippet run.">
 <style>
   :root { --fond: #fbfaf7; --texte: #1d1f24; --doux: #5d6470; --code: #f3f1ec; --accent: #2d5bd7; }
   @media (prefers-color-scheme: dark) {
@@ -48,10 +48,10 @@
 <p>Older versions dropped the NaN and returned 1 entry. If a count downstream depends on <code>stack()</code>, it just went up.</p>
 <h2>6. freq='M' is gone</h2>
 <pre>pd.date_range('2024-01-31', periods=2, freq='M')   # ValueError<br>pd.date_range('2024-01-31', periods=2, freq='ME')  # 2024-01-31, 2024-02-29</pre>
-<p>Month end is <code>'ME'</code> now, and <code>'M'</code> raises a ValueError. Same story for quarter and year end, <code>'Q'</code> and <code>'Y'</code> raise, <code>'QE'</code> and <code>'YE'</code> work.</p>
+<p>Month end is <code>'ME'</code> now, and <code>'M'</code> raises a ValueError whose message ends with <code>'M' is no longer supported for offsets. Please use 'ME' instead.</code> Same story for quarter and year end, <code>'Q'</code> and <code>'Y'</code> raise, <code>'QE'</code> and <code>'YE'</code> work.</p>
 <h2>7. freq='H' is gone too</h2>
 <pre>pd.date_range('2024-01-01', periods=2, freq='H')   # ValueError<br>pd.date_range('2024-01-01', periods=2, freq='h')   # 00:00, 01:00</pre>
-<p>Hours and seconds went lowercase, <code>'h'</code> and <code>'s'</code>, and minutes are <code>'min'</code>. The old <code>'H'</code>, <code>'T'</code> and <code>'S'</code> all raise.</p>
+<p>Hours and seconds went lowercase, <code>'h'</code> and <code>'s'</code>, and minutes are <code>'min'</code>. The old <code>'H'</code>, <code>'T'</code> and <code>'S'</code> all raise, and for <code>'H'</code> the message ends with <code>Did you mean h?</code></p>
 <h2>8. groupby().apply() no longer sees the grouping column</h2>
 <pre>df = pd.DataFrame({'k': ['a', 'a', 'b'], 'v': [1, 2, 3]})<br>print(df.groupby('k').apply(lambda g: list(g.columns)).tolist())</pre>
 <pre>[['v'], ['v']]</pre>
@@ -59,11 +59,11 @@
 <h2>9. fillna(method=...) raises</h2>
 <pre>s = pd.Series([1.0, None, 3.0])<br>s.fillna(method='ffill')   # TypeError<br>print(s.ffill().tolist())</pre>
 <pre>[1.0, 1.0, 3.0]</pre>
-<p>The <code>method</code> argument was removed. <code>ffill()</code> and <code>bfill()</code> are the only way now.</p>
+<p>The <code>method</code> argument was removed, and the error reads <code>NDFrame.fillna() got an unexpected keyword argument 'method'</code>. <code>ffill()</code> and <code>bfill()</code> are the only way now.</p>
 <h2>10. Adding a number to a text column raises</h2>
 <pre>s = pd.Series(['id'])<br>s + 1        # TypeError<br>print((s + '1').tolist())</pre>
 <pre>['id1']</pre>
-<p>The <code>str</code> dtype refuses to mix text and numbers. Convert explicitly, <code>s + str(1)</code>, or <code>s + other.astype(str)</code> for a whole column.</p>
+<p>The <code>str</code> dtype refuses to mix text and numbers, with <code>operation 'add' not supported for dtype 'str' with object of type &lt;class 'int'&gt;</code>. Convert explicitly, <code>s + str(1)</code>, or <code>s + other.astype(str)</code> for a whole column.</p>
 <h2>Where this came from</h2>
 <p>These are from a bank of 255 pandas questions that I rebuilt on 3.0.5, where every option comes with the reason it is right or wrong. Twenty of them are free to play in the browser at <a href="https://thibaudlepan77-svg.github.io/interview-questions-verified/#pandas">thibaudlepan77-svg.github.io/interview-questions-verified</a>, no account. The full set is a PDF on <a href="https://ko-fi.com/s/4b32c5be4f">Ko-fi</a>, and there is a <a href="https://ko-fi.com/s/8151d45764">data bundle</a> with SQL, Python and NumPy alongside.</p>
 <p>If one of these prints something different on your machine, tell me your version and the output. I would rather fix the question than defend it.</p>
