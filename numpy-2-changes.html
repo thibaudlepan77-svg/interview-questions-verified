@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why NumPy 2 prints np.float64(1.5), and nine other answers that changed</title>
+<meta name="description" content="Scalar repr, NEP 50 promotion, removed aliases, copy=False and six more. Every snippet run on NumPy 2.4.4.">
+<style>
+  :root { --fond: #fbfaf7; --texte: #1d1f24; --doux: #5d6470; --code: #f3f1ec; --accent: #2d5bd7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fond: #15171b; --texte: #e8e6e1; --doux: #9aa1ad; --code: #111317; --accent: #7ea2ff; }
+  }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 17px/1.65 Georgia, "Iowan Old Style", serif; }
+  main { max-width: 700px; margin: 0 auto; padding: 36px 18px 72px; }
+  h1 { font: 700 1.9rem/1.2 system-ui, "Segoe UI", sans-serif; margin: 0 0 18px; }
+  h2 { font: 650 1.2rem/1.3 system-ui, "Segoe UI", sans-serif; margin: 34px 0 8px; }
+  a { color: var(--accent); }
+  code { font: .88em ui-monospace, "Cascadia Code", Consolas, monospace; background: var(--code); padding: 1px 4px; border-radius: 4px; }
+  pre { background: var(--code); padding: 12px 14px; border-radius: 8px; overflow-x: auto; }
+  pre code { padding: 0; background: none; }
+  footer { margin-top: 40px; color: var(--doux); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Why NumPy 2 prints np.float64(1.5), and nine other answers that changed</h1>
+<p>I write practice questions for NumPy, and every snippet has to run before its answer is kept. Moving the bank to NumPy 2.4.4 broke more of my answers than I expected. A few changes raise an error, which is the easy case. Two of them quietly give you a different number.</p>
+<p>Each snippet below was run in a fresh interpreter on NumPy 2.4.4. This article was written with the assistance of an AI writing program, and every output in it comes from actually running the code.</p>
+<h2>1. Scalars print with their type</h2>
+<pre>a = np.array([1.5, 2.5])<br>print([x for x in a])<br>print(a[0])</pre>
+<pre>[np.float64(1.5), np.float64(2.5)]<br>1.5</pre>
+<p><code>print</code> on a single scalar still shows <code>1.5</code>. The type appears in the repr, which is what you see inside a list, a dict, a tuple or a notebook cell. Nothing is broken, but a doctest or a snapshot test that compares printed lists fails. Call <code>.tolist()</code> when you want plain Python numbers.</p>
+<h2>2. Reductions show it too</h2>
+<pre>print(repr(np.array([1, 5, 3]).max()))</pre>
+<pre>np.int64(5)</pre>
+<p>Same cause. <code>max</code>, <code>sum</code> and friends return NumPy scalars, and their repr now says so.</p>
+<h2>3. A Python int that does not fit raises</h2>
+<pre>a = np.array([1], dtype=np.int8)<br>try:<br>    a + 300<br>except OverflowError as e:<br>    print(type(e).__name__)<br>    print(e)</pre>
+<pre>OverflowError<br>Python integer 300 out of bounds for int8</pre>
+<p>NumPy 1 looked at the value 300, decided it needed int16 and quietly widened the result. NumPy 2 keeps the array's dtype and refuses a Python integer that cannot fit in it.</p>
+<h2>4. A Python int that fits can still overflow</h2>
+<pre>a = np.array([100], dtype=np.int8)<br>print(a + 100)</pre>
+<pre>[-56]</pre>
+<p>This is the dangerous one. 100 fits in int8, so there is no error, the result stays int8, and 200 wraps around to -56 without a warning. If a small integer dtype came from reading a file, cast before doing arithmetic.</p>
+<h2>5. float32 stays float32</h2>
+<pre>print((np.float32(3) + 3.0).dtype)</pre>
+<pre>float32</pre>
+<p>Under NumPy 1 this was float64, because the Python float was treated as a float64. Now a Python float adopts the NumPy side's precision. Results computed in float32 can differ in the last digits from what the same code gave you before.</p>
+<h2>6. np.float_, np.NaN and np.Inf are gone</h2>
+<pre>`np.float_` was removed in the NumPy 2.0 release. Use `np.float64` instead.<br>`np.NaN` was removed in the NumPy 2.0 release. Use `np.nan` instead.<br>`np.Inf` was removed in the NumPy 2.0 release. Use `np.inf` instead.</pre>
+<p>These are AttributeErrors, and the messages tell you the replacement, which is kind of them.</p>
+<h2>7. np.trapz no longer exists</h2>
+<pre>print(hasattr(np, 'trapz'), np.trapezoid([1, 2, 3]))</pre>
+<pre>False 4.0</pre>
+<p>It is <code>np.trapezoid</code> now, and plenty of older tutorials on numerical integration still use the removed name.</p>
+<h2>8. np.in1d no longer exists</h2>
+<pre>print(hasattr(np, 'in1d'), np.isin([1, 2], [2]))</pre>
+<pre>False [False  True]</pre>
+<p>Use <code>np.isin</code>, which also works on arrays of any shape.</p>
+<h2>9. copy=False means never copy</h2>
+<pre>try:<br>    np.array([1, 2], copy=False)<br>except ValueError as e:<br>    print(type(e).__name__)<br>    print(str(e).splitlines()[0])</pre>
+<pre>ValueError<br>Unable to avoid copy while creating an array as requested.</pre>
+<p>In NumPy 1, <code>copy=False</code> meant copy only if needed. In NumPy 2 it means never copy, and building an array from a list always needs a copy. <code>np.asarray</code> has the old behaviour.</p>
+<h2>10. tostring is gone</h2>
+<pre>a = np.array([1], dtype=np.int16)<br>print(hasattr(a, 'tostring'), a.tobytes())</pre>
+<pre>False b'\x01\x00'</pre>
+<p><code>tobytes</code> does the same thing and has for years.</p>
+<h2>Where this came from</h2>
+<p>These are from a bank of 279 NumPy questions rebuilt on 2.4.4, where every option comes with the reason it is right or wrong. Twenty are free to play in the browser at <a href="https://thibaudlepan77-svg.github.io/interview-questions-verified/#numpy">thibaudlepan77-svg.github.io/interview-questions-verified</a>, no account. The full set is a PDF on <a href="https://ko-fi.com/s/bc22cdcdd3">Ko-fi</a>, and there is a <a href="https://ko-fi.com/s/8151d45764">data bundle</a> with SQL, Python and pandas alongside. I also wrote up <a href="https://thibaudlepan77-svg.github.io/interview-questions-verified/pandas-3-changes.html">ten pandas answers that changed in pandas 3</a>.</p>
+<p>If one of these prints something different on your machine, tell me your version and the output. I would rather fix the question than defend it.</p>
+<footer>September 2026. Every output produced by running the snippet in a fresh interpreter on NumPy 2.4.4.</footer>
+</main>
+<script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+document.addEventListener('click', e => {
+  const lien = e.target.closest('a[href*="ko-fi.com/s/"]');
+  if (lien && window.goatcounter && goatcounter.count)
+    goatcounter.count({ path: 'kofi-' + lien.href.split('/s/')[1], title: lien.innerText.trim(), event: true });
+});
+</script>
+</body>
+</html>
