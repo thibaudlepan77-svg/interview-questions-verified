@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ten pandas answers that changed in pandas 3, and what 3.0.5 actually prints</title>
+<meta name="description" content="str dtype, Copy-on-Write, freq aliases, groupby apply, fillna method and five more. Every snippet run on pandas 3.0.5.">
+<style>
+  :root { --fond: #fbfaf7; --texte: #1d1f24; --doux: #5d6470; --code: #f3f1ec; --accent: #2d5bd7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fond: #15171b; --texte: #e8e6e1; --doux: #9aa1ad; --code: #111317; --accent: #7ea2ff; }
+  }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 17px/1.65 Georgia, "Iowan Old Style", serif; }
+  main { max-width: 700px; margin: 0 auto; padding: 36px 18px 72px; }
+  h1 { font: 700 1.9rem/1.2 system-ui, "Segoe UI", sans-serif; margin: 0 0 18px; }
+  h2 { font: 650 1.2rem/1.3 system-ui, "Segoe UI", sans-serif; margin: 34px 0 8px; }
+  a { color: var(--accent); }
+  code { font: .88em ui-monospace, "Cascadia Code", Consolas, monospace; background: var(--code); padding: 1px 4px; border-radius: 4px; }
+  pre { background: var(--code); padding: 12px 14px; border-radius: 8px; overflow-x: auto; }
+  pre code { padding: 0; background: none; }
+  footer { margin-top: 40px; color: var(--doux); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Ten pandas answers that changed in pandas 3, and what 3.0.5 actually prints</h1>
+<p>I write practice questions for pandas, and every snippet has to run before its answer is kept. When I moved the whole bank to pandas 3.0.5, a surprising number of answers I had written from memory stopped being true. Some changes are loud and raise an error. The worse ones just give you a different result.</p>
+<p>Here are ten, each run in a fresh interpreter on pandas 3.0.5. This story was written with the assistance of an AI writing program, and every output in it comes from actually running the snippet.</p>
+<h2>1. Text columns are no longer object</h2>
+<pre>s = pd.Series(['a', 'b', None])
+print(s.dtype)
+print(s.tolist())</pre>
+<pre>str
+['a', 'b', nan]</pre>
+<p>The dtype is <code>str</code>, and the missing value comes back as <code>nan</code>, not <code>None</code>. Code that checks <code>s.dtype == object</code> to find text columns now finds nothing. Use <code>pd.api.types.is_string_dtype(s)</code>.</p>
+<h2>2. Chained assignment does nothing</h2>
+<pre>df = pd.DataFrame({'a': [1, 2, 3]})
+df['a'][0] = 100
+print(df['a'].tolist())</pre>
+<pre>[1, 2, 3]</pre>
+<p>Copy-on-Write is the default, so <code>df['a']</code> hands you something that behaves like a copy and the write never reaches <code>df</code>. pandas does emit a ChainedAssignmentError warning, but it is easy to miss in a notebook. Write <code>df.loc[0, 'a'] = 100</code>.</p>
+<h2>3. inplace=True does not always return None</h2>
+<pre>df = pd.DataFrame({'a': [3.0, None, 1.0]})
+print(type(df.fillna(0, inplace=True)).__name__)
+print(df.sort_values('a', inplace=True))</pre>
+<pre>DataFrame
+None</pre>
+<p><code>fillna</code> with <code>inplace=True</code> now returns the frame, <code>sort_values</code> still returns None. The old habit of <code>df = df.something(inplace=True)</code> works for one and wipes out your frame with the other. Drop <code>inplace</code> and assign the result.</p>
+<h2>4. Dates parse to microseconds</h2>
+<pre>print(pd.to_datetime(pd.Series(['2024-01-01', '2024-02-01'])).dtype)</pre>
+<pre>datetime64[us]</pre>
+<p>Not <code>datetime64[ns]</code> any more. It matters when you compare dtypes in a test, or write to parquet and read the file back with another tool.</p>
+<h2>5. stack keeps missing values</h2>
+<pre>df = pd.DataFrame({'x': [1.0, np.nan]})
+print(len(df.stack()))</pre>
+<pre>2</pre>
+<p>Older versions dropped the NaN and returned 1 entry. If a count downstream depends on <code>stack()</code>, it just went up.</p>
+<h2>6. freq='M' is gone</h2>
+<pre>pd.date_range('2024-01-31', periods=2, freq='M')   # ValueError
+pd.date_range('2024-01-31', periods=2, freq='ME')  # 2024-01-31, 2024-02-29</pre>
+<p>Month end is <code>'ME'</code> now, and <code>'M'</code> raises a ValueError. Same story for quarter and year end, <code>'Q'</code> and <code>'Y'</code> raise, <code>'QE'</code> and <code>'YE'</code> work.</p>
+<h2>7. freq='H' is gone too</h2>
+<pre>pd.date_range('2024-01-01', periods=2, freq='H')   # ValueError
+pd.date_range('2024-01-01', periods=2, freq='h')   # 00:00, 01:00</pre>
+<p>Hours and seconds went lowercase, <code>'h'</code> and <code>'s'</code>, and minutes are <code>'min'</code>. The old <code>'H'</code>, <code>'T'</code> and <code>'S'</code> all raise.</p>
+<h2>8. groupby().apply() no longer sees the grouping column</h2>
+<pre>df = pd.DataFrame({'k': ['a', 'a', 'b'], 'v': [1, 2, 3]})
+print(df.groupby('k').apply(lambda g: list(g.columns)).tolist())</pre>
+<pre>[['v'], ['v']]</pre>
+<p>Inside the function each group now holds only <code>v</code>. A lambda that reads <code>g['k']</code> raises a KeyError. If you need the key, it is in <code>g.name</code>.</p>
+<h2>9. fillna(method=...) raises</h2>
+<pre>s = pd.Series([1.0, None, 3.0])
+s.fillna(method='ffill')   # TypeError
+print(s.ffill().tolist())</pre>
+<pre>[1.0, 1.0, 3.0]</pre>
+<p>The <code>method</code> argument was removed. <code>ffill()</code> and <code>bfill()</code> are the only way now.</p>
+<h2>10. Adding a number to a text column raises</h2>
+<pre>s = pd.Series(['id'])
+s + 1        # TypeError
+print((s + '1').tolist())</pre>
+<pre>['id1']</pre>
+<p>The <code>str</code> dtype refuses to mix text and numbers. Convert explicitly, <code>s + str(1)</code>, or <code>s + other.astype(str)</code> for a whole column.</p>
+<h2>Where this came from</h2>
+<p>These are from a bank of 255 pandas questions that I rebuilt on 3.0.5, where every option comes with the reason it is right or wrong. Twenty of them are free to play in the browser at <a href="https://thibaudlepan77-svg.github.io/interview-questions-verified/#pandas">thibaudlepan77-svg.github.io/interview-questions-verified</a>, no account. The full set is a PDF on <a href="https://ko-fi.com/s/4b32c5be4f">Ko-fi</a>, and there is a <a href="https://ko-fi.com/s/8151d45764">data bundle</a> with SQL, Python and NumPy alongside.</p>
+<p>If one of these prints something different on your machine, tell me your version and the output. I would rather fix the question than defend it.</p>
+<footer>September 2026. Every output produced by running the snippet in a fresh interpreter on pandas 3.0.5.</footer>
+</main>
+<script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+document.addEventListener('click', e => {
+  const lien = e.target.closest('a[href*="ko-fi.com/s/"]');
+  if (lien && window.goatcounter && goatcounter.count)
+    goatcounter.count({ path: 'kofi-' + lien.href.split('/s/')[1], title: lien.innerText.trim(), event: true });
+});
+</script>
+</body>
+</html>
