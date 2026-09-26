@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Six SQL mistakes that give you a wrong number and no error</title>
+<meta name="description" content="NOT IN with a NULL, COUNT of a column, WHERE after a LEFT JOIN, &lt;&gt; and NULL, GROUP BY NULL, integer division. Checked on SQLite and DuckDB.">
+<style>
+  :root { --fond: #fbfaf7; --texte: #1d1f24; --doux: #5d6470; --code: #f3f1ec; --accent: #2d5bd7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fond: #15171b; --texte: #e8e6e1; --doux: #9aa1ad; --code: #111317; --accent: #7ea2ff; }
+  }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 17px/1.65 Georgia, "Iowan Old Style", serif; }
+  main { max-width: 700px; margin: 0 auto; padding: 36px 18px 72px; }
+  h1 { font: 700 1.9rem/1.2 system-ui, "Segoe UI", sans-serif; margin: 0 0 18px; }
+  h2 { font: 650 1.2rem/1.3 system-ui, "Segoe UI", sans-serif; margin: 34px 0 8px; }
+  a { color: var(--accent); }
+  code { font: .88em ui-monospace, "Cascadia Code", Consolas, monospace; background: var(--code); padding: 1px 4px; border-radius: 4px; }
+  pre { background: var(--code); padding: 12px 14px; border-radius: 8px; overflow-x: auto; }
+  pre code { padding: 0; background: none; }
+  footer { margin-top: 40px; color: var(--doux); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Six SQL mistakes that give you a wrong number and no error</h1>
+<p>This article was written with the assistance of an AI writing program, and every number in it comes from running the query on SQLite 3.50.4 and DuckDB 1.5.5.</p>
+<p>None of these fail. They return a clean result that happens to be wrong, which is worse. Small tables so you can check the counts by hand. <code>customers</code> has 4 rows, one with a NULL region. <code>orders</code> has 4 rows, one with a NULL amount and one with a NULL customer_id. <code>blocked</code> holds customer 2 and a NULL.</p>
+<pre>CREATE TABLE customers (id INTEGER, region TEXT);<br>INSERT INTO customers VALUES (1, 'north'), (2, 'south'), (3, NULL), (4, 'north');<br>CREATE TABLE orders (id INTEGER, customer_id INTEGER, amount INTEGER, status TEXT);<br>INSERT INTO orders VALUES (10, 1, 100, 'paid'), (11, 1, NULL, 'paid'), (12, 2, 50, 'refunded'), (13, NULL, 30, 'paid');<br>CREATE TABLE blocked (customer_id INTEGER);<br>INSERT INTO blocked VALUES (2), (NULL);</pre>
+<p><strong>1. NOT IN with a NULL in the list returns nothing.</strong></p>
+<pre>SELECT COUNT(*) FROM customers WHERE id NOT IN (SELECT customer_id FROM blocked)</pre>
+<p>Returns 0, not 3. One NULL in the subquery makes every comparison unknown. <code>NOT EXISTS</code> returns 3.</p>
+<p><strong>2. COUNT(column) skips NULLs, and AVG divides by that smaller count.</strong> <code>COUNT(*)</code> is 4, <code>COUNT(amount)</code> is 3, <code>SUM(amount)</code> is 180, <code>AVG(amount)</code> is 60. If a missing amount really means zero, the average you wanted was 45.</p>
+<p><strong>3. A WHERE on the right table of a LEFT JOIN turns it into an inner join.</strong></p>
+<pre>... LEFT JOIN orders o ON o.customer_id = c.id WHERE o.status = 'paid'</pre>
+<p>gives 2 rows. Customers without a paid order vanish. Move the condition into the ON clause and you get 5, every customer kept.</p>
+<p><strong>4. <code>&lt;&gt;</code> silently drops NULLs.</strong> <code>WHERE region &lt;&gt; 'north'</code> returns 1 row, even though two customers are not in the north. The one with no region is neither equal nor unequal.</p>
+<p><strong>5. GROUP BY keeps NULL as its own group.</strong> Counts per region come out as NULL 1, north 2, south 1. Useful, but if you then join that back on region, the NULL group matches nothing.</p>
+<p><strong>6. The one where the engines disagree.</strong> <code>SELECT 7 / 2</code> returns 3 on SQLite and 3.5 on DuckDB. Integer division depends on the database, so a ratio computed on one can differ on another. Cast to a decimal when it matters.</p>
+<p>I write practice questions in this "what does the query return" format and only keep the ones where both engines agree. Twenty are free in the browser, each option explained, at</p>
+<p><a href="https://thibaudlepan77-svg.github.io/interview-questions-verified/#sql">thibaudlepan77-svg.github.io/interview-questions-verified</a>.</p>
+<p>The full set of 502 is a <a href="https://ko-fi.com/s/5128d84869">PDF on Ko-fi</a>. The six above stand on their own, and if you see a different number on your database, I'd like to hear which one.</p>
+
+<p class="pourboire">Did this save you a lookup? <a href="https://ko-fi.com/verifiedprep">Buy me a coffee on Ko-fi</a>.</p>
+<footer>September 2026. Every number produced by running the query on SQLite 3.50.4 and DuckDB 1.5.5.</footer>
+</main>
+<script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+document.addEventListener('click', e => {
+  const lien = e.target.closest('a[href*="ko-fi.com/"]');
+  if (lien && window.goatcounter && goatcounter.count)
+    goatcounter.count({ path: 'kofi-' + (lien.href.split('/s/')[1] || 'pourboire'), title: lien.innerText.trim(), event: true });
+});
+</script>
+</body>
+</html>
