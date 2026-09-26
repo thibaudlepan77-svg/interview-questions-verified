@@ -505,6 +505,15 @@ print(r, a.tolist())
 
 </details>
 
+## Articles
+
+Longer write-ups, every output produced by running the code.
+
+- [Ten pandas answers that changed in pandas 3, and what 3.0.5 actually prints](https://thibaudlepan77-svg.github.io/interview-questions-verified/pandas-3-changes.html)
+- [Why NumPy 2 prints np.float64(1.5), and nine other answers that changed](https://thibaudlepan77-svg.github.io/interview-questions-verified/numpy-2-changes.html)
+- [Six SQL mistakes that give you a wrong number and no error](https://thibaudlepan77-svg.github.io/interview-questions-verified/sql-null-traps.html)
+- [Eight one-line queries where SQLite and DuckDB disagree](https://thibaudlepan77-svg.github.io/interview-questions-verified/sqlite-vs-duckdb.html)
+
 ## The full banks
 
 The samples come from larger banks sold as PDFs, questions first and the answer key after, with the same four explanations on every question.
