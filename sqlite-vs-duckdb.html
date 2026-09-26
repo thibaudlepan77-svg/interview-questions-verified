@@ -26,12 +26,7 @@
 <h1>Eight one-line queries where SQLite and DuckDB disagree</h1>
 <p>I built a bank of SQL practice questions with one hard rule. Every query had to return exactly the same rows on SQLite and on DuckDB, two engines that share no code, or the question was thrown out. The point was to make sure no answer depended on which database the reader happened to have open.</p>
 <p>Here are eight of the differences that rule exists to catch, measured on SQLite 3.50.4 and DuckDB 1.5.5 through their Python bindings, same table on both. This story was written with the assistance of an AI writing program, and every result in it comes from actually running the statement on both engines.</p>
-<pre>CREATE TABLE t (name VARCHAR, dept VARCHAR, pay INTEGER);
-INSERT INTO t VALUES
-  ('Ann', 'ops', 10),
-  ('bob', 'ops', NULL),
-  ('Cy',  'dev', 7),
-  (NULL,  'dev', 3);</pre>
+<pre>CREATE TABLE t (name VARCHAR, dept VARCHAR, pay INTEGER);<br>INSERT INTO t VALUES<br>  ('Ann', 'ops', 10),<br>  ('bob', 'ops', NULL),<br>  ('Cy',  'dev', 7),<br>  (NULL,  'dev', 3);</pre>
 <h2>1. Integer division</h2>
 <pre>SELECT 7 / 2;</pre>
 <p>SQLite returns 3. DuckDB returns 3.5, because its <code>/</code> always divides as floating point. When you want the truncated result in DuckDB you write <code>7 // 2</code>, which gives 3.</p>

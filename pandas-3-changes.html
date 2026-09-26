@@ -27,57 +27,41 @@
 <p>I write practice questions for pandas, and every snippet has to run before its answer is kept. When I moved the whole bank to pandas 3.0.5, a surprising number of answers I had written from memory stopped being true. Some changes are loud and raise an error. The worse ones just give you a different result.</p>
 <p>Here are ten, each run in a fresh interpreter on pandas 3.0.5. This story was written with the assistance of an AI writing program, and every output in it comes from actually running the snippet.</p>
 <h2>1. Text columns are no longer object</h2>
-<pre>s = pd.Series(['a', 'b', None])
-print(s.dtype)
-print(s.tolist())</pre>
-<pre>str
-['a', 'b', nan]</pre>
+<pre>s = pd.Series(['a', 'b', None])<br>print(s.dtype)<br>print(s.tolist())</pre>
+<pre>str<br>['a', 'b', nan]</pre>
 <p>The dtype is <code>str</code>, and the missing value comes back as <code>nan</code>, not <code>None</code>. Code that checks <code>s.dtype == object</code> to find text columns now finds nothing. Use <code>pd.api.types.is_string_dtype(s)</code>.</p>
 <h2>2. Chained assignment does nothing</h2>
-<pre>df = pd.DataFrame({'a': [1, 2, 3]})
-df['a'][0] = 100
-print(df['a'].tolist())</pre>
+<pre>df = pd.DataFrame({'a': [1, 2, 3]})<br>df['a'][0] = 100<br>print(df['a'].tolist())</pre>
 <pre>[1, 2, 3]</pre>
 <p>Copy-on-Write is the default, so <code>df['a']</code> hands you something that behaves like a copy and the write never reaches <code>df</code>. pandas does emit a ChainedAssignmentError warning, but it is easy to miss in a notebook. Write <code>df.loc[0, 'a'] = 100</code>.</p>
 <h2>3. inplace=True does not always return None</h2>
-<pre>df = pd.DataFrame({'a': [3.0, None, 1.0]})
-print(type(df.fillna(0, inplace=True)).__name__)
-print(df.sort_values('a', inplace=True))</pre>
-<pre>DataFrame
-None</pre>
+<pre>df = pd.DataFrame({'a': [3.0, None, 1.0]})<br>print(type(df.fillna(0, inplace=True)).__name__)<br>print(df.sort_values('a', inplace=True))</pre>
+<pre>DataFrame<br>None</pre>
 <p><code>fillna</code> with <code>inplace=True</code> now returns the frame, <code>sort_values</code> still returns None. The old habit of <code>df = df.something(inplace=True)</code> works for one and wipes out your frame with the other. Drop <code>inplace</code> and assign the result.</p>
 <h2>4. Dates parse to microseconds</h2>
 <pre>print(pd.to_datetime(pd.Series(['2024-01-01', '2024-02-01'])).dtype)</pre>
 <pre>datetime64[us]</pre>
 <p>Not <code>datetime64[ns]</code> any more. It matters when you compare dtypes in a test, or write to parquet and read the file back with another tool.</p>
 <h2>5. stack keeps missing values</h2>
-<pre>df = pd.DataFrame({'x': [1.0, np.nan]})
-print(len(df.stack()))</pre>
+<pre>df = pd.DataFrame({'x': [1.0, np.nan]})<br>print(len(df.stack()))</pre>
 <pre>2</pre>
 <p>Older versions dropped the NaN and returned 1 entry. If a count downstream depends on <code>stack()</code>, it just went up.</p>
 <h2>6. freq='M' is gone</h2>
-<pre>pd.date_range('2024-01-31', periods=2, freq='M')   # ValueError
-pd.date_range('2024-01-31', periods=2, freq='ME')  # 2024-01-31, 2024-02-29</pre>
+<pre>pd.date_range('2024-01-31', periods=2, freq='M')   # ValueError<br>pd.date_range('2024-01-31', periods=2, freq='ME')  # 2024-01-31, 2024-02-29</pre>
 <p>Month end is <code>'ME'</code> now, and <code>'M'</code> raises a ValueError. Same story for quarter and year end, <code>'Q'</code> and <code>'Y'</code> raise, <code>'QE'</code> and <code>'YE'</code> work.</p>
 <h2>7. freq='H' is gone too</h2>
-<pre>pd.date_range('2024-01-01', periods=2, freq='H')   # ValueError
-pd.date_range('2024-01-01', periods=2, freq='h')   # 00:00, 01:00</pre>
+<pre>pd.date_range('2024-01-01', periods=2, freq='H')   # ValueError<br>pd.date_range('2024-01-01', periods=2, freq='h')   # 00:00, 01:00</pre>
 <p>Hours and seconds went lowercase, <code>'h'</code> and <code>'s'</code>, and minutes are <code>'min'</code>. The old <code>'H'</code>, <code>'T'</code> and <code>'S'</code> all raise.</p>
 <h2>8. groupby().apply() no longer sees the grouping column</h2>
-<pre>df = pd.DataFrame({'k': ['a', 'a', 'b'], 'v': [1, 2, 3]})
-print(df.groupby('k').apply(lambda g: list(g.columns)).tolist())</pre>
+<pre>df = pd.DataFrame({'k': ['a', 'a', 'b'], 'v': [1, 2, 3]})<br>print(df.groupby('k').apply(lambda g: list(g.columns)).tolist())</pre>
 <pre>[['v'], ['v']]</pre>
 <p>Inside the function each group now holds only <code>v</code>. A lambda that reads <code>g['k']</code> raises a KeyError. If you need the key, it is in <code>g.name</code>.</p>
 <h2>9. fillna(method=...) raises</h2>
-<pre>s = pd.Series([1.0, None, 3.0])
-s.fillna(method='ffill')   # TypeError
-print(s.ffill().tolist())</pre>
+<pre>s = pd.Series([1.0, None, 3.0])<br>s.fillna(method='ffill')   # TypeError<br>print(s.ffill().tolist())</pre>
 <pre>[1.0, 1.0, 3.0]</pre>
 <p>The <code>method</code> argument was removed. <code>ffill()</code> and <code>bfill()</code> are the only way now.</p>
 <h2>10. Adding a number to a text column raises</h2>
-<pre>s = pd.Series(['id'])
-s + 1        # TypeError
-print((s + '1').tolist())</pre>
+<pre>s = pd.Series(['id'])<br>s + 1        # TypeError<br>print((s + '1').tolist())</pre>
 <pre>['id1']</pre>
 <p>The <code>str</code> dtype refuses to mix text and numbers. Convert explicitly, <code>s + str(1)</code>, or <code>s + other.astype(str)</code> for a whole column.</p>
 <h2>Where this came from</h2>
