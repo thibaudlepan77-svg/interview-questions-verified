@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does print(a.reshape(4, -1).shape) print? NumPy Views, Copies and Reshape</title>
+<meta name="description" content="Just like reshape(-1, 4), fixing one axis and asking for -1 on the other only succeeds when the total element count divides evenly by the fixed size.">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/q/numpy-10.html">
+<style>
+  :root {
+    --fond: #fbfaf7; --carte: #ffffff; --texte: #1d1f24; --doux: #5d6470;
+    --bord: #e3e0d8; --code: #f3f1ec; --juste: #1f7a4d; --accent: #2d5bd7; --sur-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #15171b; --carte: #1d2026; --texte: #e8e6e1; --doux: #9aa1ad;
+      --bord: #30343c; --code: #111317; --juste: #4cc38a; --accent: #7ea2ff; --sur-accent: #10131a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+  h1 { font-size: 1.45rem; line-height: 1.3; margin: 8px 0 6px; overflow-wrap: anywhere; }
+  .fil, .bloc { color: var(--doux); font-size: .9rem; margin: 0; }
+  pre {
+    background: var(--code); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font: 14px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; margin: 14px 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  ol.options { padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  ol.options li { border: 1px solid var(--bord); background: var(--carte); border-radius: 8px; padding: 9px 12px; white-space: pre-wrap; }
+  details { margin: 18px 0; border-top: 1px solid var(--bord); padding-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .juste { color: var(--juste); font-weight: 600; }
+  dl dt { font-weight: 600; margin-top: 10px; white-space: pre-wrap; }
+  dl dd { margin: 2px 0 0 0; color: var(--doux); }
+  .offre { margin-top: 26px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 16px 18px; }
+  .offre p { margin: 0 0 10px; }
+  .bouton { display: inline-block; background: var(--accent); color: var(--sur-accent); border-radius: 8px; padding: 8px 15px; font-weight: 600; text-decoration: none; }
+  .suite { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; font-size: .95rem; }
+  ul.liste { padding-left: 18px; }
+  ul.liste li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<main>
+  <p class="fil"><a href="../questions.html">All sample questions</a> / NumPy</p>
+  <h1>What does print(a.reshape(4, -1).shape) print? NumPy Views, Copies and Reshape</h1>
+  <p class="bloc">Block 4, Views, Copies and Reshape, question 10 of the NumPy sample</p>
+  <pre><code>import numpy as np
+a = np.arange(6)
+print(a.reshape(4, -1).shape)</code></pre>
+  <p>What does this print?</p>
+  <ol class="options">
+    <li>A. (4, 2)</li>
+    <li>B. (4, 1)</li>
+    <li>C. ValueError</li>
+    <li>D. (4, 6)</li>
+  </ol>
+  <details>
+  <summary>Show the answer and why each option is right or wrong</summary>
+  <p>Answer, <span class="juste">C. ValueError</span></p>
+  <dl>
+    <dt>A. (4, 2)</dt>
+    <dd>Assumes -1 rounds up to the nearest whole number of columns instead of requiring an exact division.</dd>
+    <dt>B. (4, 1)</dt>
+    <dd>Assumes a single column is produced regardless of whether the element count actually divides evenly by the fixed axis.</dd>
+    <dt class="juste">C. ValueError</dt>
+    <dd>Correct. 6 elements split across 4 rows would need 1.5 columns, which is not a whole number, so NumPy raises ValueError instead of producing a shape that could not hold every element exactly once.</dd>
+    <dt>D. (4, 6)</dt>
+    <dd>Assumes reshape repeats some elements to fill out an inexact shape.</dd>
+  </dl>
+  <p>Just like reshape(-1, 4), fixing one axis and asking for -1 on the other only succeeds when the total element count divides evenly by the fixed size. Four does not divide six evenly, so there is no valid whole number for the other axis and the call fails.</p>
+  </details>
+  <section class="offre">
+    <p>The answer above is what NumPy 2.4.4 printed when the snippet was run, not what someone expected it to do.</p>
+    <p>This question comes from a bank of 279 NumPy interview questions, all built the same way, sold as one PDF with the full answer key.</p>
+    <p><a class="bouton" href="https://ko-fi.com/s/bc22cdcdd3">Get the 279 NumPy questions, 9 euros</a></p>
+    <p>Or <a href="../index.html#numpy">play the free NumPy sample</a>, twenty questions in the browser, also as a <a href="../numpy-interview-questions-free-sample.pdf">free PDF</a>.</p>
+  </section>
+  <p class="suite">
+    <span><a href="numpy-09.html">Previous question</a></span>
+    <span><a href="numpy-11.html">Next question</a></span>
+  </p>
+</main>
+<script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+document.addEventListener('click', e => {
+  const lien = e.target.closest('a[href*="ko-fi.com/s/"]');
+  if (lien && window.goatcounter && goatcounter.count)
+    goatcounter.count({ path: 'kofi-' + lien.href.split('/s/')[1], title: lien.innerText.trim(), event: true });
+});
+</script>
+</body>
+</html>

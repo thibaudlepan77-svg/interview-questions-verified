@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eighty JavaScript, Python, SQL and pandas interview questions with real outputs</title>
-<meta name="description" content="Eighty interview questions, twenty per language, each run before its answer was written, with a reason for every wrong option.">
+<title>A hundred JavaScript, Python, SQL, pandas and NumPy interview questions with real outputs</title>
+<meta name="description" content="A hundred interview questions, twenty per language, each run before its answer was written, with a reason for every wrong option.">
 <link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/questions.html">
 <style>
   :root {
@@ -46,7 +46,7 @@
 <body>
 <main>
   <p class="fil"><a href="index.html">Play the sample</a></p>
-  <h1>Eighty JavaScript, Python, SQL and pandas interview questions, each with its real output</h1>
+  <h1>A hundred JavaScript, Python, SQL, pandas and NumPy interview questions, each with its real output</h1>
   <p>Every snippet below was run before its answer was written. Each page gives the four options, the answer, and a reason for every wrong option.</p>
   <h2>JavaScript</h2>
   <ul class="liste">
@@ -140,6 +140,37 @@
     <li><a href="q/pandas-19.html">What does print(s.str.startswith(&#x27;a&#x27;).tolist()) print? pandas Strings, Dates and apply</a></li>
     <li><a href="q/pandas-20.html">pandas Strings, Dates and apply, what does print(out.shape) print after df = pd.DataFrame({&#x27;a&#x27;: [1, 2], &#x27;b&#x27;: [3, 4]})?</a></li>
   </ul>
+  <h2>NumPy</h2>
+  <ul class="liste">
+    <li><a href="q/numpy-01.html">NumPy Arrays, dtypes and Scalars, what does print(a.dtype) print after a = np.array([1, 2.5, True])?</a></li>
+    <li><a href="q/numpy-02.html">NumPy Arrays, dtypes and Scalars, what does print(a) print after a = [np.int64(1), np.int64(2)]?</a></li>
+    <li><a href="q/numpy-03.html">NumPy Arrays, dtypes and Scalars, what does print(b.dtype) print after a = np.array([1, 2, 3], dtype=np.float32)?</a></li>
+    <li><a href="q/numpy-04.html">What does print(m[1, 2]) print? NumPy Indexing, Slicing and Masks</a></li>
+    <li><a href="q/numpy-05.html">NumPy Indexing, Slicing and Masks, what does print(a.tolist()) print after a = np.array([10, 20, 30, 40, 50])?</a></li>
+    <li><a href="q/numpy-06.html">NumPy Indexing, Slicing and Masks, what does print(a.tolist()) print after a = np.array([10, 20, 30, 40, 50]), sample question 6?</a></li>
+    <li><a href="q/numpy-07.html">What does print((a + b).tolist()) print? NumPy Broadcasting and Shapes</a></li>
+    <li><a href="q/numpy-08.html">What does print(a[np.newaxis, :].shape) print? NumPy Broadcasting and Shapes</a></li>
+    <li><a href="q/numpy-09.html">What does print(b.base is None) print? NumPy Views, Copies and Reshape</a></li>
+    <li><a href="q/numpy-10.html">What does print(a.reshape(4, -1).shape) print? NumPy Views, Copies and Reshape</a></li>
+    <li><a href="q/numpy-11.html">What does print(a.sum(axis=1).tolist()) print? NumPy Reductions and the axis Argument</a></li>
+    <li><a href="q/numpy-12.html">What does print(h.cumsum(axis=1).tolist()) print? NumPy Reductions and the axis Argument</a></li>
+    <li><a href="q/numpy-13.html">NumPy Reductions and the axis Argument, what does print(b.argmax()) print after b = np.array([[1, 2], [3, 4], [5, 6]])?</a></li>
+    <li><a href="q/numpy-14.html">NumPy NaN, Overflow and Type Promotion, what does print(a.max()) print after a = np.array([1.0, np.nan, 3.0])?</a></li>
+    <li><a href="q/numpy-15.html">What does print((a + 127).tolist()) print? NumPy NaN, Overflow and Type Promotion</a></li>
+    <li><a href="q/numpy-16.html">What does print(r, a.tolist()) print? NumPy Sorting, Searching and unique</a></li>
+    <li><a href="q/numpy-17.html">What does print(np.sort(a, axis=1).tolist()) print? NumPy Sorting, Searching and unique</a></li>
+    <li><a href="q/numpy-18.html">What does print(np.argsort(a, axis=1).tolist()) print? NumPy Sorting, Searching and unique</a></li>
+    <li><a href="q/numpy-19.html">What does print(np.split(a, 3)) print? NumPy Stacking, Splitting and Concatenation</a></li>
+    <li><a href="q/numpy-20.html">What does print(np.concatenate([a, b]).tolist()) print? NumPy Stacking, Splitting and Concatenation</a></li>
+  </ul>
 </main>
+<script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+document.addEventListener('click', e => {
+  const lien = e.target.closest('a[href*="ko-fi.com/s/"]');
+  if (lien && window.goatcounter && goatcounter.count)
+    goatcounter.count({ path: 'kofi-' + lien.href.split('/s/')[1], title: lien.innerText.trim(), event: true });
+});
+</script>
 </body>
 </html>
