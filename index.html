@@ -87,6 +87,7 @@
     <a href="pandas-3-changes.html">ten pandas answers that changed in pandas 3</a>,
     <a href="numpy-2-changes.html">ten NumPy answers that changed in NumPy 2</a>,
     and <a href="questions.html">every sample question on its own page</a>, answers included.
+    If the free questions helped, you can <a href="https://ko-fi.com/verifiedprep">buy me a coffee on Ko-fi</a>.
   </footer>
 </main>
 
@@ -181,9 +182,9 @@ dessiner();
 <script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 document.addEventListener('click', e => {
-  const lien = e.target.closest('a[href*="ko-fi.com/s/"]');
+  const lien = e.target.closest('a[href*="ko-fi.com/"]');
   if (lien && window.goatcounter && goatcounter.count)
-    goatcounter.count({ path: 'kofi-' + lien.href.split('/s/')[1], title: lien.innerText.trim(), event: true });
+    goatcounter.count({ path: 'kofi-' + (lien.href.split('/s/')[1] || 'pourboire'), title: lien.innerText.trim(), event: true });
 });
 </script>
 </body>

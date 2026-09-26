@@ -163,13 +163,15 @@
     <li><a href="q/numpy-19.html">What does print(np.split(a, 3)) print? NumPy Stacking, Splitting and Concatenation</a></li>
     <li><a href="q/numpy-20.html">What does print(np.concatenate([a, b]).tolist()) print? NumPy Stacking, Splitting and Concatenation</a></li>
   </ul>
+
+<p class="pourboire">Did this save you a lookup? <a href="https://ko-fi.com/verifiedprep">Buy me a coffee on Ko-fi</a>.</p>
 </main>
 <script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 document.addEventListener('click', e => {
-  const lien = e.target.closest('a[href*="ko-fi.com/s/"]');
+  const lien = e.target.closest('a[href*="ko-fi.com/"]');
   if (lien && window.goatcounter && goatcounter.count)
-    goatcounter.count({ path: 'kofi-' + lien.href.split('/s/')[1], title: lien.innerText.trim(), event: true });
+    goatcounter.count({ path: 'kofi-' + (lien.href.split('/s/')[1] || 'pourboire'), title: lien.innerText.trim(), event: true });
 });
 </script>
 </body>

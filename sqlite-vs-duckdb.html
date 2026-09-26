@@ -55,14 +55,16 @@
 <p>None of this is a bug, each engine documents what it does. It matters when you learn on one engine and are tested on another. Points 1, 3 and 5 are the ones that most often change an answer without any error to warn you.</p>
 <p>The script that produces every result above is short, open both engines in memory, run the same statements, print the two outputs side by side. Anything that prints differently is a question that cannot have a single correct answer.</p>
 <p>The questions that survived the rule are in a quiz. Twenty of them are free to play in the browser, no account needed, each wrong option with its own explanation. <a href="https://thibaudlepan77-svg.github.io/interview-questions-verified/#sql">thibaudlepan77-svg.github.io/interview-questions-verified/#sql</a></p>
+
+<p class="pourboire">Did this save you a lookup? <a href="https://ko-fi.com/verifiedprep">Buy me a coffee on Ko-fi</a>.</p>
 <footer>September 2026. Results produced by running each statement on both engines in memory.</footer>
 </main>
 <script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 document.addEventListener('click', e => {
-  const lien = e.target.closest('a[href*="ko-fi.com/s/"]');
+  const lien = e.target.closest('a[href*="ko-fi.com/"]');
   if (lien && window.goatcounter && goatcounter.count)
-    goatcounter.count({ path: 'kofi-' + lien.href.split('/s/')[1], title: lien.innerText.trim(), event: true });
+    goatcounter.count({ path: 'kofi-' + (lien.href.split('/s/')[1] || 'pourboire'), title: lien.innerText.trim(), event: true });
 });
 </script>
 </body>

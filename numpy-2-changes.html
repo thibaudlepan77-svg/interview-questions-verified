@@ -68,14 +68,16 @@
 <h2>Where this came from</h2>
 <p>These are from a bank of 279 NumPy questions rebuilt on 2.4.4, where every option comes with the reason it is right or wrong. Twenty are free to play in the browser at <a href="https://thibaudlepan77-svg.github.io/interview-questions-verified/#numpy">thibaudlepan77-svg.github.io/interview-questions-verified</a>, no account. The full set is a PDF on <a href="https://ko-fi.com/s/bc22cdcdd3">Ko-fi</a>, and there is a <a href="https://ko-fi.com/s/8151d45764">data bundle</a> with SQL, Python and pandas alongside. I also wrote up <a href="https://thibaudlepan77-svg.github.io/interview-questions-verified/pandas-3-changes.html">ten pandas answers that changed in pandas 3</a>.</p>
 <p>If one of these prints something different on your machine, tell me your version and the output. I would rather fix the question than defend it.</p>
+
+<p class="pourboire">Did this save you a lookup? <a href="https://ko-fi.com/verifiedprep">Buy me a coffee on Ko-fi</a>.</p>
 <footer>September 2026. Every output produced by running the snippet in a fresh interpreter on NumPy 2.4.4.</footer>
 </main>
 <script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 document.addEventListener('click', e => {
-  const lien = e.target.closest('a[href*="ko-fi.com/s/"]');
+  const lien = e.target.closest('a[href*="ko-fi.com/"]');
   if (lien && window.goatcounter && goatcounter.count)
-    goatcounter.count({ path: 'kofi-' + lien.href.split('/s/')[1], title: lien.innerText.trim(), event: true });
+    goatcounter.count({ path: 'kofi-' + (lien.href.split('/s/')[1] || 'pourboire'), title: lien.innerText.trim(), event: true });
 });
 </script>
 </body>
