@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>30 free AZ-900 Azure Fundamentals practice questions, every answer sourced</title>
+<meta name="description" content="30 AZ-900 practice questions on the July 2026 skills outline. Each answer quotes the Microsoft Learn page that backs it, and each wrong option is explained.">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/az-900-azure-fundamentals-practice-questions.html">
+<style>
+  :root { --fond: #fbfaf7; --texte: #1d1f24; --doux: #5d6470; --carte: #f3f1ec; --accent: #2d5bd7; --bon: #1f7a4d; --mauvais: #b3261e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fond: #15171b; --texte: #e8e6e1; --doux: #9aa1ad; --carte: #1d2026; --accent: #7ea2ff; --bon: #5fd39a; --mauvais: #f0776a; }
+  }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 17px/1.6 Georgia, "Iowan Old Style", serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 36px 18px 72px; }
+  h1 { font: 700 1.8rem/1.2 system-ui, "Segoe UI", sans-serif; margin: 0 0 16px; }
+  a { color: var(--accent); }
+  .q { background: var(--carte); border-radius: 10px; padding: 16px 18px; margin: 22px 0; }
+  .meta { font: .8rem system-ui, sans-serif; color: var(--doux); margin: 0 0 6px; }
+  .enonce { margin: 0 0 10px; font-weight: 600; }
+  .options { list-style: none; padding: 0; margin: 0 0 12px; }
+  .options li { margin: 6px 0; }
+  .options label { cursor: pointer; display: block; }
+  button { font: 600 .95rem system-ui, sans-serif; padding: 6px 16px; border-radius: 6px; border: 1px solid var(--doux); background: none; color: var(--texte); cursor: pointer; }
+  .verdict.bon { color: var(--bon); font-weight: 700; }
+  .verdict.mauvais { color: var(--mauvais); font-weight: 700; }
+  .faux { color: var(--doux); padding-left: 18px; }
+  blockquote a { word-break: break-all; }
+  blockquote { margin: 10px 0 0; padding-left: 12px; border-left: 3px solid var(--accent); font-size: .92rem; color: var(--doux); }
+  .apercus { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .apercus img { width: 100%; height: auto; border-radius: 8px; display: block; }
+  .achat { border-top: 1px solid var(--doux); margin-top: 36px; padding-top: 18px; }
+  footer { margin-top: 36px; color: var(--doux); font-size: .88rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>30 free Microsoft Azure Fundamentals (AZ-900) practice questions</h1>
+<p>Thirty questions split roughly the way the official study guide weights the three skill areas, 8 on cloud concepts, 12 on Azure architecture and services and 10 on management and governance. They follow the skills measured as of July 20, 2026, with current names such as Microsoft Entra ID. Some ask for two answers.</p>
+<p>The part that matters to me is the proof. After you check an answer, you get the sentence from Microsoft Learn that backs it, with the link. If Microsoft changes a page and a question goes stale, you will see it before I do, and I would like to hear about it.</p>
+
+<section class="q" data-juste="D">
+  <p class="meta">Question 1 &middot; Describe cloud concepts</p>
+  <p class="enonce">Under the shared responsibility model, who is responsible for the power, cooling and physical security of a cloud datacenter?</p>
+  <ul class="options"><li><label><input type="radio" name="q1" value="A"> <b>A.</b> The customer</label></li><li><label><input type="radio" name="q1" value="B"> <b>B.</b> The customer and the provider equally</label></li><li><label><input type="radio" name="q1" value="C"> <b>C.</b> The customer&#x27;s internet service provider</label></li><li><label><input type="radio" name="q1" value="D"> <b>D.</b> The cloud provider</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> Physical security, power, cooling and network connectivity of the datacenter always belong to the cloud provider. The customer has no physical presence there, so these tasks cannot reasonably fall on them.</p>
+    <ul class="faux"><li><b>A.</b> Customers are not located in the provider&#x27;s datacenter, so they do not handle its physical facilities.</li><li><b>B.</b> These physical items are not shared, they belong entirely to the provider.</li><li><b>C.</b> An internet service provider supplies connectivity to the customer, not datacenter facilities.</li></ul>
+    <blockquote>&ldquo;Physical security, power, cooling, and network connectivity are the responsibility of the cloud provider.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-cloud-compute/4-describe-shared-responsibility-model" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-cloud-compute/4-describe-shared-responsibility-model</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="AD">
+  <p class="meta">Question 2 &middot; Describe cloud concepts</p>
+  <p class="enonce">Which TWO statements are characteristics of a public cloud? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q2" value="A"> <b>A.</b> There is no capital expenditure to scale up</label></li><li><label><input type="checkbox" name="q2" value="B"> <b>B.</b> Hardware must be purchased for startup and maintenance</label></li><li><label><input type="checkbox" name="q2" value="C"> <b>C.</b> You have complete control over resources and security</label></li><li><label><input type="checkbox" name="q2" value="D"> <b>D.</b> You pay only for what you use</label></li><li><label><input type="checkbox" name="q2" value="E"> <b>E.</b> Your data is never collocated with other tenants&#x27; data</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A, D.</b> In a public cloud the provider owns the hardware, so scaling up needs no capital spending. You are billed only for the resources you consume.</p>
+    <ul class="faux"><li><b>B.</b> Buying hardware is a characteristic of a private cloud.</li><li><b>C.</b> Complete control is a characteristic of a private cloud.</li><li><b>E.</b> Keeping data away from other tenants is a characteristic of a private cloud.</li></ul>
+    <blockquote>&ldquo;No capital expenditures to scale up [...] You pay only for what you use&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-cloud-compute/5-define-cloud-models" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-cloud-compute/5-define-cloud-models</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="AE">
+  <p class="meta">Question 3 &middot; Describe cloud concepts</p>
+  <p class="enonce">Which TWO are benefits of the consumption-based model? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q3" value="A"> <b>A.</b> No upfront costs for hardware or datacenter infrastructure</label></li><li><label><input type="checkbox" name="q3" value="B"> <b>B.</b> A fixed monthly fee whatever the usage</label></li><li><label><input type="checkbox" name="q3" value="C"> <b>C.</b> Ownership of the hardware after the contract ends</label></li><li><label><input type="checkbox" name="q3" value="D"> <b>D.</b> The need to buy capacity before demand arrives</label></li><li><label><input type="checkbox" name="q3" value="E"> <b>E.</b> The ability to release resources when demand decreases</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A, E.</b> With the consumption-based model you avoid up-front hardware costs and you can add or release resources as demand changes. You pay only for what you use.</p>
+    <ul class="faux"><li><b>B.</b> The consumption-based model charges for actual use, not a flat fee.</li><li><b>C.</b> The provider keeps the hardware, you rent compute and storage.</li><li><b>D.</b> Buying capacity in advance is the traditional model the cloud avoids.</li></ul>
+    <blockquote>&ldquo;No upfront costs for hardware or datacenter infrastructure. [...] The ability to release resources when demand decreases.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-cloud-compute/6-describe-consumption-based-model" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-cloud-compute/6-describe-consumption-based-model</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 4 &middot; Describe cloud concepts</p>
+  <p class="enonce">What best describes serverless computing?</p>
+  <ul class="options"><li><label><input type="radio" name="q4" value="A"> <b>A.</b> A model where the provider manages the servers so developers focus on code</label></li><li><label><input type="radio" name="q4" value="B"> <b>B.</b> A model where code runs without any physical servers at all</label></li><li><label><input type="radio" name="q4" value="C"> <b>C.</b> A model where developers patch the operating systems themselves</label></li><li><label><input type="radio" name="q4" value="D"> <b>D.</b> A model where each application gets a dedicated physical server</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Serverless computing removes the need for developers to manage servers. The provider handles infrastructure, scaling and maintenance, while servers still run the code behind the scenes.</p>
+    <ul class="faux"><li><b>B.</b> Servers still run the code, they are just managed by the provider.</li><li><b>C.</b> Removing that server work from developers is the point of serverless.</li><li><b>D.</b> Serverless does not give each application its own physical server.</li></ul>
+    <blockquote>&ldquo;Serverless computing is a cloud execution model that removes the need to manage servers.&rdquo;<br>
+    <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-serverless-computing" rel="nofollow">azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-serverless-computing</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 5 &middot; Describe cloud concepts</p>
+  <p class="enonce">A company runs its app in several Azure regions. A natural disaster takes one region offline, yet the app keeps running from the others. Which cloud characteristic makes this possible?</p>
+  <ul class="options"><li><label><input type="radio" name="q5" value="A"> <b>A.</b> Vertical scaling of virtual machines</label></li><li><label><input type="radio" name="q5" value="B"> <b>B.</b> Consumption-based pricing</label></li><li><label><input type="radio" name="q5" value="C"> <b>C.</b> The decentralized, global design of the cloud</label></li><li><label><input type="radio" name="q5" value="D"> <b>D.</b> Cloud-based compliance auditing</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> Cloud resources can be deployed in regions around the world. If one region fails, the others keep serving, which improves reliability.</p>
+    <ul class="faux"><li><b>A.</b> Bigger VMs in one region do not survive the loss of that region.</li><li><b>B.</b> Pricing affects cost, not survival of a regional outage.</li><li><b>D.</b> Auditing flags noncompliant resources, it does not keep an app online.</li></ul>
+    <blockquote>&ldquo;With this global scale, even if one region has a catastrophic event other regions are still up and running.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-benefits-use-cloud-services/3-reliability-predictability-cloud" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-benefits-use-cloud-services/3-reliability-predictability-cloud</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 6 &middot; Describe cloud concepts</p>
+  <p class="enonce">Which Azure service helps an organization enforce its standards and assess compliance across many resources?</p>
+  <ul class="options"><li><label><input type="radio" name="q6" value="A"> <b>A.</b> Azure Policy</label></li><li><label><input type="radio" name="q6" value="B"> <b>B.</b> The Azure Pricing Calculator</label></li><li><label><input type="radio" name="q6" value="C"> <b>C.</b> Azure Monitor autoscale</label></li><li><label><input type="radio" name="q6" value="D"> <b>D.</b> Azure Load Balancer</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Azure Policy compares resources with business rules. It shows compliance in a dashboard and can remediate noncompliant resources.</p>
+    <ul class="faux"><li><b>B.</b> The Pricing Calculator estimates cost.</li><li><b>C.</b> Autoscale adjusts the number of instances to load.</li><li><b>D.</b> Load Balancer distributes network traffic.</li></ul>
+    <blockquote>&ldquo;This overview describes how Azure Policy helps to enforce organizational standards and to assess compliance at-scale.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/azure/governance/policy/overview" rel="nofollow">learn.microsoft.com/en-us/azure/governance/policy/overview</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 7 &middot; Describe cloud concepts</p>
+  <p class="enonce">A team building its own web app wants to stop handling licensing and patching for operating systems and databases. Which service type fits?</p>
+  <ul class="options"><li><label><input type="radio" name="q7" value="A"> <b>A.</b> Infrastructure as a service (IaaS)</label></li><li><label><input type="radio" name="q7" value="B"> <b>B.</b> Platform as a service (PaaS)</label></li><li><label><input type="radio" name="q7" value="C"> <b>C.</b> Software as a service (SaaS)</label></li><li><label><input type="radio" name="q7" value="D"> <b>D.</b> An on-premises datacenter</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> PaaS takes over the operating system and database layer. The team deploys its own code without patching that layer.</p>
+    <ul class="faux"><li><b>A.</b> In IaaS you still license and patch the operating system yourself.</li><li><b>C.</b> SaaS rents a finished application, so the team could not run its own code.</li><li><b>D.</b> On premises the team handles all licensing and patching.</li></ul>
+    <blockquote>&ldquo;In a PaaS scenario, you don&#x27;t have to worry about the licensing or patching for operating systems and databases.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/3-describe-platform-service" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/3-describe-platform-service</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="DE">
+  <p class="meta">Question 8 &middot; Describe cloud concepts</p>
+  <p class="enonce">Which TWO statements about software as a service are true? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q8" value="A"> <b>A.</b> It gives the customer the most control over the operating system</label></li><li><label><input type="checkbox" name="q8" value="B"> <b>B.</b> It is the most flexible cloud service type</label></li><li><label><input type="checkbox" name="q8" value="C"> <b>C.</b> It requires the customer to patch the application</label></li><li><label><input type="checkbox" name="q8" value="D"> <b>D.</b> It is the most complete service model from a product perspective</label></li><li><label><input type="checkbox" name="q8" value="E"> <b>E.</b> It has the lowest operational overhead for customers</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D, E.</b> With SaaS you rent a fully developed application. The provider handles almost everything, so customers carry the least operational work.</p>
+    <ul class="faux"><li><b>A.</b> Control over the OS is a feature of IaaS.</li><li><b>B.</b> SaaS is the least flexible type, IaaS is the most flexible.</li><li><b>C.</b> The provider updates the application in SaaS.</li></ul>
+    <blockquote>&ldquo;Software as a service (SaaS) is the most complete cloud service model from a product perspective. [...] SaaS has the lowest operational overhead for customers.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/4-describe-software-service" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/4-describe-software-service</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 9 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">A company plans disaster recovery using Azure region pairs. How far apart are the two regions in most pairs?</p>
+  <ul class="options"><li><label><input type="radio" name="q9" value="A"> <b>A.</b> At least 300 miles</label></li><li><label><input type="radio" name="q9" value="B"> <b>B.</b> Less than 10 miles</label></li><li><label><input type="radio" name="q9" value="C"> <b>C.</b> Exactly 1,000 miles</label></li><li><label><input type="radio" name="q9" value="D"> <b>D.</b> On different continents in every case</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Most Azure regions are paired with another region in the same geography that is at least 300 miles away. This distance keeps one regional disaster from hitting both.</p>
+    <ul class="faux"><li><b>B.</b> Regions this close would share the same disasters, which defeats the purpose of pairing.</li><li><b>C.</b> Azure does not use a fixed distance of 1,000 miles.</li><li><b>D.</b> Most pairs stay within the same geography, such as US, Europe or Asia.</li></ul>
+    <blockquote>&ldquo;Most Azure regions are paired with another region within the same geography (such as US, Europe, or Asia) at least 300 miles away.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-core-architectural-components-of-azure/5-describe-azure-physical-infrastructure" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-core-architectural-components-of-azure/5-describe-azure-physical-infrastructure</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 10 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">A team deploys zonal virtual machines in zone 1 and zone 2. Zone 1 has an outage. Who is responsible for failing the workload over to zone 2?</p>
+  <ul class="options"><li><label><input type="radio" name="q10" value="A"> <b>A.</b> Microsoft fails it over automatically</label></li><li><label><input type="radio" name="q10" value="B"> <b>B.</b> The customer</label></li><li><label><input type="radio" name="q10" value="C"> <b>C.</b> The region pair partner</label></li><li><label><input type="radio" name="q10" value="D"> <b>D.</b> The Tenant Root Group owner at Microsoft</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Zonal resources are placed in a zone you pick, and Microsoft does not manage failover between them. The customer designs and performs the failover.</p>
+    <ul class="faux"><li><b>A.</b> Automatic failover by Microsoft applies to zone-redundant deployments, not zonal ones.</li><li><b>C.</b> Region pairs work across regions and do not handle zone failover.</li><li><b>D.</b> The Tenant Root Group is a management group in your own tenant, not a failover service.</li></ul>
+    <blockquote>&ldquo;If an outage occurs in an availability zone, you&#x27;re responsible for failover to another zone.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview" rel="nofollow">learn.microsoft.com/en-us/azure/reliability/availability-zones-overview</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 11 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">An Azure Policy on the Production management group allows virtual machines only in West US. A subscription owner under that group tries to change the rule for one subscription. What happens?</p>
+  <ul class="options"><li><label><input type="radio" name="q11" value="A"> <b>A.</b> The owner can remove the policy for that subscription</label></li><li><label><input type="radio" name="q11" value="B"> <b>B.</b> The policy stops applying once the owner creates a new resource group</label></li><li><label><input type="radio" name="q11" value="C"> <b>C.</b> The owner can&#x27;t override the inherited policy</label></li><li><label><input type="radio" name="q11" value="D"> <b>D.</b> The policy applies only to resources created before the change</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> Policies set on a management group are inherited by all subscriptions and resources beneath it. Resource and subscription owners cannot override them, which strengthens governance.</p>
+    <ul class="faux"><li><b>A.</b> Owners lower in the hierarchy cannot override an inherited management group policy.</li><li><b>B.</b> New resource groups in the subscription still inherit the policy.</li><li><b>D.</b> Inherited policies apply to all VMs in the subscriptions under the group.</li></ul>
+    <blockquote>&ldquo;The resource or subscription owner can&#x27;t override it, which strengthens governance.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-core-architectural-components-of-azure/6-describe-azure-management-infrastructure" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-core-architectural-components-of-azure/6-describe-azure-management-infrastructure</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 12 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">Which statement correctly describes a difference between containers and virtual machines in Azure?</p>
+  <ul class="options"><li><label><input type="radio" name="q12" value="A"> <b>A.</b> Each container runs its own full operating system that you patch and manage</label></li><li><label><input type="radio" name="q12" value="B"> <b>B.</b> Containers can run only on physical hosts, never on a virtual host</label></li><li><label><input type="radio" name="q12" value="C"> <b>C.</b> You don&#x27;t manage the operating system of a container, but you manage the OS of each VM</label></li><li><label><input type="radio" name="q12" value="D"> <b>D.</b> Virtual machines start, scale and stop faster than containers</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> Each VM has its own operating system that you connect to and manage. A container does not give you an OS to manage, which makes it lighter and quicker to start.</p>
+    <ul class="faux"><li><b>A.</b> That describes a VM. A container shares the host and you don&#x27;t manage its OS.</li><li><b>B.</b> Containers can run on a physical or a virtual host.</li><li><b>D.</b> Containers are the lighter and more agile option, they restart quickly.</li></ul>
+    <blockquote>&ldquo;Unlike virtual machines, you don&#x27;t manage the operating system for a container. Each virtual machine runs its own operating system that you can connect to and manage.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-azure-compute-networking-services/5-containers" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-azure-compute-networking-services/5-containers</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 13 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">A team wants to host a Python web app and a REST API without managing servers, with automatic scaling and continuous deployment from GitHub. Which service fits?</p>
+  <ul class="options"><li><label><input type="radio" name="q13" value="A"> <b>A.</b> Azure Virtual Machines</label></li><li><label><input type="radio" name="q13" value="B"> <b>B.</b> Azure Virtual Desktop</label></li><li><label><input type="radio" name="q13" value="C"> <b>C.</b> Azure App Service</label></li><li><label><input type="radio" name="q13" value="D"> <b>D.</b> Azure ExpressRoute</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> App Service is a managed platform for web apps, APIs and mobile back ends. It scales automatically and deploys from GitHub, Azure DevOps or any Git repo.</p>
+    <ul class="faux"><li><b>A.</b> VMs would make the team manage the OS and infrastructure.</li><li><b>B.</b> Azure Virtual Desktop delivers desktops, it does not host web apps.</li><li><b>D.</b> ExpressRoute is a private network connection, not a hosting service.</li></ul>
+    <blockquote>&ldquo;App Service lets you build and host web apps, background jobs, mobile back-ends, and RESTful APIs in the programming language of your choice without managing infrastructure.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-azure-compute-networking-services/7-describe-application-hosting-options" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-azure-compute-networking-services/7-describe-application-hosting-options</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 14 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">A remote employee needs an encrypted connection from a laptop to an Azure virtual network. Which VPN Gateway connection type fits?</p>
+  <ul class="options"><li><label><input type="radio" name="q14" value="A"> <b>A.</b> Site-to-site</label></li><li><label><input type="radio" name="q14" value="B"> <b>B.</b> Network-to-network</label></li><li><label><input type="radio" name="q14" value="C"> <b>C.</b> Point-to-site</label></li><li><label><input type="radio" name="q14" value="D"> <b>D.</b> ExpressRoute Global Reach</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> VPN Gateway supports site-to-site, point-to-site and network-to-network connections. Point-to-site is the one for individual devices.</p>
+    <ul class="faux"><li><b>A.</b> Site-to-site links a whole on-premises datacenter, not a single device.</li><li><b>B.</b> Network-to-network links two virtual networks.</li><li><b>D.</b> Global Reach links ExpressRoute circuits, not single laptops.</li></ul>
+    <blockquote>&ldquo;Connect individual devices to virtual networks through a point-to-site connection.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-azure-networking-services/3-virtual-private-networks" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-azure-networking-services/3-virtual-private-networks</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="AC">
+  <p class="meta">Question 15 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">A developer is designing an app on Azure Storage. It needs a NoSQL store for structured, non-relational customer data and a separate store for messages passed between the web tier and a background worker. Which two services meet these needs? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q15" value="A"> <b>A.</b> Azure Tables</label></li><li><label><input type="checkbox" name="q15" value="B"> <b>B.</b> Azure Disks</label></li><li><label><input type="checkbox" name="q15" value="C"> <b>C.</b> Azure Queues</label></li><li><label><input type="checkbox" name="q15" value="D"> <b>D.</b> Azure Files</label></li><li><label><input type="checkbox" name="q15" value="E"> <b>E.</b> Azure Data Box</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A, C.</b> Azure Tables stores structured, non-relational data without a fixed schema. Azure Queues stores messages so that application components can work asynchronously.</p>
+    <ul class="faux"><li><b>B.</b> Disks are block volumes for virtual machines, not a NoSQL store or a message store.</li><li><b>D.</b> Files provides SMB and NFS file shares, not messaging or NoSQL tables.</li><li><b>E.</b> Data Box is a physical device for moving data into Azure, not a storage service for an app.</li></ul>
+    <blockquote>&ldquo;A messaging store for reliable messaging between application components. [...] NoSQL table option for structured, non-relational data.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-azure-storage-services/4-describe-azure-storage-services" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-azure-storage-services/4-describe-azure-storage-services</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 16 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">A reporting app must be able to read data from the secondary region at any time, even when no failover has happened. Which redundancy option provides this?</p>
+  <ul class="options"><li><label><input type="radio" name="q16" value="A"> <b>A.</b> Geo-redundant storage (GRS)</label></li><li><label><input type="radio" name="q16" value="B"> <b>B.</b> Zone-redundant storage (ZRS)</label></li><li><label><input type="radio" name="q16" value="C"> <b>C.</b> Read-access geo-redundant storage (RA-GRS)</label></li><li><label><input type="radio" name="q16" value="D"> <b>D.</b> Locally redundant storage (LRS)</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> GRS and GZRS keep a copy in a secondary region, but by default it is not readable. The read-access versions, RA-GRS and RA-GZRS, let you read that copy before any failover.</p>
+    <ul class="faux"><li><b>A.</b> With GRS the secondary copy cannot be read until a failover occurs.</li><li><b>B.</b> ZRS has no secondary region at all.</li><li><b>D.</b> LRS keeps every copy in a single datacenter in the primary region.</li></ul>
+    <blockquote>&ldquo;To read secondary-region data before failover, enable read-access geo-redundant storage (RA-GRS) or read-access geo-zone-redundant storage (RA-GZRS).&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-azure-storage-services/3-redundancy" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-azure-storage-services/3-redundancy</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="AD">
+  <p class="meta">Question 17 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">An operations team is comparing AzCopy and Azure Storage Explorer. Which two statements are correct? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q17" value="A"> <b>A.</b> AzCopy synchronization copies changes in one direction, from source to destination.</label></li><li><label><input type="checkbox" name="q17" value="B"> <b>B.</b> AzCopy synchronizes in both directions based on timestamps.</label></li><li><label><input type="checkbox" name="q17" value="C"> <b>C.</b> Azure Storage Explorer runs only on Windows.</label></li><li><label><input type="checkbox" name="q17" value="D"> <b>D.</b> Azure Storage Explorer uses AzCopy in the background for its file and blob tasks.</label></li><li><label><input type="checkbox" name="q17" value="E"> <b>E.</b> AzCopy can only copy data within a single storage account.</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A, D.</b> When AzCopy synchronizes, it copies from the source you name to the destination, never the other way. Storage Explorer gives a graphical front end and relies on AzCopy for the actual transfers.</p>
+    <ul class="faux"><li><b>B.</b> AzCopy does not sync both ways, you choose a source and a destination.</li><li><b>C.</b> Storage Explorer also runs on macOS and Linux.</li><li><b>E.</b> AzCopy can copy between storage accounts and even work with other cloud providers.</li></ul>
+    <blockquote>&ldquo;Synchronizing blobs or files with AzCopy is one-direction synchronization. [...] It works on Windows, macOS, and Linux operating systems and uses AzCopy on the backend to perform all of the file and blob management tasks.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-azure-storage-services/7-identify-azure-file-movement-options" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-azure-storage-services/7-identify-azure-file-movement-options</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 18 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">A security lead says single sign-on is only as strong as one part of the process. Which part does she mean?</p>
+  <ul class="options"><li><label><input type="radio" name="q18" value="A"> <b>A.</b> The number of apps connected to SSO</label></li><li><label><input type="radio" name="q18" value="B"> <b>B.</b> The password expiry policy of each app</label></li><li><label><input type="radio" name="q18" value="C"> <b>C.</b> The security of the initial authenticator</label></li><li><label><input type="radio" name="q18" value="D"> <b>D.</b> The Azure region that hosts the tenant</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> Every connection after the first sign-in relies on that first authentication. If the initial sign-in is weak, all the apps reached through SSO are exposed, which is why SSO is often paired with MFA.</p>
+    <ul class="faux"><li><b>A.</b> Adding or removing apps does not change how secure the first sign-in is.</li><li><b>B.</b> With SSO users do not sign in to each app separately, so per app passwords are not the weak point.</li><li><b>D.</b> The tenant region has no link to the strength of the sign-in.</li></ul>
+    <blockquote>&ldquo;Single sign-on is only as secure as the initial authenticator because the subsequent connections are all based on the security of the initial authenticator.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security/3-authentication-methods" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security/3-authentication-methods</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 19 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">A company wants to give permissions by placing people in roles such as Reader or Owner, rather than setting access for each person one by one. Which Azure feature does this?</p>
+  <ul class="options"><li><label><input type="radio" name="q19" value="A"> <b>A.</b> Azure Policy</label></li><li><label><input type="radio" name="q19" value="B"> <b>B.</b> Resource locks</label></li><li><label><input type="radio" name="q19" value="C"> <b>C.</b> Microsoft Entra Conditional Access</label></li><li><label><input type="radio" name="q19" value="D"> <b>D.</b> Azure role-based access control</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> Azure RBAC uses built-in or custom roles, each with a set of permissions. Anyone assigned to a role, alone or through a group, receives those permissions.</p>
+    <ul class="faux"><li><b>A.</b> Azure Policy checks that resources follow rules, it does not grant people permissions.</li><li><b>B.</b> Resource locks stop deletion or changes to a resource, they do not assign access.</li><li><b>C.</b> Conditional Access decides whether a sign-in is allowed, not what a user can do on resources.</li></ul>
+    <blockquote>&ldquo;When you assign individuals or groups to one or more roles, they receive all the associated access permissions.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security/6-role-based-access-control" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security/6-role-based-access-control</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 20 &middot; Describe Azure architecture and services</p>
+  <p class="enonce">A team segments its Azure resources so they can talk to each other only when required and denies other traffic by default. Which defense-in-depth layer is this?</p>
+  <ul class="options"><li><label><input type="radio" name="q20" value="A"> <b>A.</b> Physical security</label></li><li><label><input type="radio" name="q20" value="B"> <b>B.</b> Application</label></li><li><label><input type="radio" name="q20" value="C"> <b>C.</b> Identity and access</label></li><li><label><input type="radio" name="q20" value="D"> <b>D.</b> Network</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> The network layer limits connectivity between resources to what is needed. Segmentation and deny by default stop an attack from spreading to other systems.</p>
+    <ul class="faux"><li><b>A.</b> Physical security protects buildings and hardware in the datacenter.</li><li><b>B.</b> The application layer keeps apps free of vulnerabilities and secrets stored safely.</li><li><b>C.</b> Identity and access secures identities and logs sign-in events and changes.</li></ul>
+    <blockquote>&ldquo;The network layer limits communication between resources through segmentation and access controls.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security/8-describe-defense-depth" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security/8-describe-defense-depth</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 21 &middot; Describe Azure management and governance</p>
+  <p class="enonce">A student reads that outbound data transfer prices depend on billing zones. What is a billing zone?</p>
+  <ul class="options"><li><label><input type="radio" name="q21" value="A"> <b>A.</b> A group of physically separate datacenters inside one region</label></li><li><label><input type="radio" name="q21" value="B"> <b>B.</b> A geographical grouping of Azure regions used for data transfer pricing</label></li><li><label><input type="radio" name="q21" value="C"> <b>C.</b> A pair of regions that replicate data to each other</label></li><li><label><input type="radio" name="q21" value="D"> <b>D.</b> A management group that collects several subscriptions</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> A billing zone groups Azure regions for the purpose of pricing data transfers. It should not be confused with an availability zone, which is about resiliency inside a region.</p>
+    <ul class="faux"><li><b>A.</b> That describes an availability zone, which is different from a billing zone.</li><li><b>C.</b> That describes a region pair, which is not a pricing concept.</li><li><b>D.</b> Management groups organize subscriptions for governance, not data transfer pricing.</li></ul>
+    <blockquote>&ldquo;Billing zones are different from availability zones; a billing zone is a geographical grouping of Azure regions used specifically for data-transfer pricing.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-cost-management-azure/2-describe-factors-affect-costs-azure" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-cost-management-azure/2-describe-factors-affect-costs-azure</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 22 &middot; Describe Azure management and governance</p>
+  <p class="enonce">An architect built an estimate in the Azure pricing calculator and wants to send it to the finance team as a file. What can she do?</p>
+  <ul class="options"><li><label><input type="radio" name="q22" value="A"> <b>A.</b> Export the estimate to an Excel file</label></li><li><label><input type="radio" name="q22" value="B"> <b>B.</b> Apply the estimate as a tag on the subscription</label></li><li><label><input type="radio" name="q22" value="C"> <b>C.</b> Assign the estimate as an Azure Policy</label></li><li><label><input type="radio" name="q22" value="D"> <b>D.</b> Lock the estimate with a ReadOnly lock</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> The pricing calculator can export an estimate to an Excel file that you can share. It can also create a unique link to the estimate.</p>
+    <ul class="faux"><li><b>B.</b> Tags are metadata on resources and cannot hold a calculator estimate.</li><li><b>C.</b> Azure Policy enforces rules and does not store estimates.</li><li><b>D.</b> Resource locks apply to Azure resources, not to calculator estimates.</li></ul>
+    <blockquote>&ldquo;Exports the current estimate to an Excel file.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/pricing-calculator" rel="nofollow">learn.microsoft.com/en-us/azure/cost-management-billing/costs/pricing-calculator</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 23 &middot; Describe Azure management and governance</p>
+  <p class="enonce">A company requires that every new resource has an Owner tag. Which service can enforce this rule as resources are created?</p>
+  <ul class="options"><li><label><input type="radio" name="q23" value="A"> <b>A.</b> Microsoft Cost Management</label></li><li><label><input type="radio" name="q23" value="B"> <b>B.</b> Azure Policy</label></li><li><label><input type="radio" name="q23" value="C"> <b>C.</b> The pricing calculator</label></li><li><label><input type="radio" name="q23" value="D"> <b>D.</b> Resource locks</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Azure Policy can enforce tagging rules and conventions. It can require tags on new resources and reapply tags that were removed.</p>
+    <ul class="faux"><li><b>A.</b> Cost Management reports on costs but does not enforce tagging rules.</li><li><b>C.</b> The calculator estimates costs and has no control over deployments.</li><li><b>D.</b> Locks block deletion or changes, they do not add or require tags.</li></ul>
+    <blockquote>&ldquo;You can use Azure Policy to enforce tagging rules and conventions.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-cost-management-azure/7-describe-purpose-of-tags" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-cost-management-azure/7-describe-purpose-of-tags</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 24 &middot; Describe Azure management and governance</p>
+  <p class="enonce">A company wants to make sure that only certain virtual machine sizes can be used, both when VMs are created and when they are resized. Which service should it use?</p>
+  <ul class="options"><li><label><input type="radio" name="q24" value="A"> <b>A.</b> Resource locks</label></li><li><label><input type="radio" name="q24" value="B"> <b>B.</b> Azure Policy</label></li><li><label><input type="radio" name="q24" value="C"> <b>C.</b> Microsoft Purview</label></li><li><label><input type="radio" name="q24" value="D"> <b>D.</b> Resource tags</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Azure Policy can define a rule that allows only certain VM sizes. The rule is checked when a new VM is created and whenever an existing VM is resized.</p>
+    <ul class="faux"><li><b>A.</b> Locks prevent deletion or changes but cannot limit VM sizes.</li><li><b>C.</b> Purview governs data, not VM configurations.</li><li><b>D.</b> Tags add metadata and do not restrict VM sizes.</li></ul>
+    <blockquote>&ldquo;For example, if you define a policy that allows only a certain size for the virtual machines (VMs) to be used in your environment, that policy is invoked when you create a new VM and whenever you resize existing VMs.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance/3-describe-purpose-azure-policy" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance/3-describe-purpose-azure-policy</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 25 &middot; Describe Azure management and governance</p>
+  <p class="enonce">A Delete lock is placed on a storage account. What can authorized users still do with the account?</p>
+  <ul class="options"><li><label><input type="radio" name="q25" value="A"> <b>A.</b> Read it only, without any changes</label></li><li><label><input type="radio" name="q25" value="B"> <b>B.</b> Delete it, but not modify it</label></li><li><label><input type="radio" name="q25" value="C"> <b>C.</b> Read and modify it, but not delete it</label></li><li><label><input type="radio" name="q25" value="D"> <b>D.</b> Nothing until the lock expires</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> With a Delete lock, users keep their normal read and modify rights. The only thing blocked is deleting the resource.</p>
+    <ul class="faux"><li><b>A.</b> That describes a ReadOnly lock.</li><li><b>B.</b> A Delete lock is designed to block deletion.</li><li><b>D.</b> Locks do not expire and still allow reading and changes.</li></ul>
+    <blockquote>&ldquo;Delete means authorized users can still read and modify a resource, but they can&#x27;t delete the resource.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance/4-describe-purpose-resource-locks" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance/4-describe-purpose-resource-locks</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 26 &middot; Describe Azure management and governance</p>
+  <p class="enonce">A contractor works on a locked-down laptop where he cannot install any software. He needs to run Azure CLI commands against the company subscription today. What should he use?</p>
+  <ul class="options"><li><label><input type="radio" name="q26" value="A"> <b>A.</b> Azure Cloud Shell</label></li><li><label><input type="radio" name="q26" value="B"> <b>B.</b> Azure Arc</label></li><li><label><input type="radio" name="q26" value="C"> <b>C.</b> Azure Advisor</label></li><li><label><input type="radio" name="q26" value="D"> <b>D.</b> A local Azure PowerShell installation</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Azure Cloud Shell runs in the browser. Nothing has to be installed or configured on the laptop, and the Azure CLI is ready to use.</p>
+    <ul class="faux"><li><b>B.</b> Azure Arc brings resources outside Azure under Azure management, it is not a shell.</li><li><b>C.</b> Azure Advisor gives recommendations and cannot run commands.</li><li><b>D.</b> A local installation is exactly what the locked-down laptop does not allow.</li></ul>
+    <blockquote>&ldquo;It is a browser-based shell experience, with no local installation or configuration required.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-features-tools-manage-deploy-azure-resources/2-describe-interacting-azure" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-features-tools-manage-deploy-azure-resources/2-describe-interacting-azure</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 27 &middot; Describe Azure management and governance</p>
+  <p class="enonce">Which description matches infrastructure as code (IaC)?</p>
+  <ul class="options"><li><label><input type="radio" name="q27" value="A"> <b>A.</b> Installing servers by following a written checklist</label></li><li><label><input type="radio" name="q27" value="B"> <b>B.</b> Managing infrastructure through code and templates instead of manual configuration</label></li><li><label><input type="radio" name="q27" value="C"> <b>C.</b> Writing application code that runs on serverless infrastructure</label></li><li><label><input type="radio" name="q27" value="D"> <b>D.</b> Buying infrastructure through a pay-as-you-go subscription</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Infrastructure as code describes networks, virtual machines and other resources in code or templates. Tools then create the infrastructure from that description, so nobody configures it by hand.</p>
+    <ul class="faux"><li><b>A.</b> A written checklist is still manual configuration.</li><li><b>C.</b> Serverless application code is about running apps, not defining infrastructure.</li><li><b>D.</b> Pay-as-you-go is a billing model, not a way to define infrastructure.</li></ul>
+    <blockquote>&ldquo;Infrastructure as code (IaC) means managing infrastructure through code and templates instead of manual configuration.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-features-tools-manage-deploy-azure-resources/4-describe-azure-resource-manager-azure-arm-templates" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-features-tools-manage-deploy-azure-resources/4-describe-azure-resource-manager-azure-arm-templates</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 28 &middot; Describe Azure management and governance</p>
+  <p class="enonce">A developer finds JSON templates hard to read and asks about Bicep. How do Bicep files relate to ARM templates?</p>
+  <ul class="options"><li><label><input type="radio" name="q28" value="A"> <b>A.</b> Bicep replaces Azure Resource Manager with a separate deployment engine</label></li><li><label><input type="radio" name="q28" value="B"> <b>B.</b> Each Bicep file is automatically converted to an ARM template during deployment</label></li><li><label><input type="radio" name="q28" value="C"> <b>C.</b> Bicep files can only deploy resources that ARM templates do not support</label></li><li><label><input type="radio" name="q28" value="D"> <b>D.</b> Bicep files must be converted to PowerShell scripts before deployment</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Bicep offers the same capabilities as ARM templates with a simpler syntax. During deployment each Bicep file becomes an ARM template, so Resource Manager still does the work.</p>
+    <ul class="faux"><li><b>A.</b> Bicep still deploys through Azure Resource Manager.</li><li><b>C.</b> Bicep covers the same resources as ARM templates.</li><li><b>D.</b> Bicep files are converted to ARM templates, not to PowerShell scripts.</li></ul>
+    <blockquote>&ldquo;Each Bicep file is automatically converted to an ARM template during deployment.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/overview" rel="nofollow">learn.microsoft.com/en-us/azure/azure-resource-manager/templates/overview</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="BD">
+  <p class="meta">Question 29 &middot; Describe Azure management and governance</p>
+  <p class="enonce">Azure Service Health brings together three separate services. Which two of the following are among them? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q29" value="A"> <b>A.</b> Azure Advisor</label></li><li><label><input type="checkbox" name="q29" value="B"> <b>B.</b> Azure status</label></li><li><label><input type="checkbox" name="q29" value="C"> <b>C.</b> Log Analytics</label></li><li><label><input type="checkbox" name="q29" value="D"> <b>D.</b> Resource health</label></li><li><label><input type="checkbox" name="q29" value="E"> <b>E.</b> Application Insights</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B, D.</b> Azure Service Health combines Azure status, Service Health and Resource Health. Together they go from a global view down to a single resource.</p>
+    <ul class="faux"><li><b>A.</b> Azure Advisor is a separate recommendation service.</li><li><b>C.</b> Log Analytics is a query tool in Azure Monitor.</li><li><b>E.</b> Application Insights is an Azure Monitor feature for applications.</li></ul>
+    <blockquote>&ldquo;Azure Service Health is a combination of three separate services. [...] Azure status informs you of service outages in Azure on the Azure Status page. [...] Resource health provides information about the health of your individual cloud resources, such as a specific virtual machine instance.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/azure/service-health/overview" rel="nofollow">learn.microsoft.com/en-us/azure/service-health/overview</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 30 &middot; Describe Azure management and governance</p>
+  <p class="enonce">An administrator wants an email whenever a virtual machine&#x27;s CPU stays above 80 percent. Which type of Azure Monitor alert fits this need best?</p>
+  <ul class="options"><li><label><input type="radio" name="q30" value="A"> <b>A.</b> A metric alert</label></li><li><label><input type="radio" name="q30" value="B"> <b>B.</b> A Service Health alert</label></li><li><label><input type="radio" name="q30" value="C"> <b>C.</b> An Advisor alert</label></li><li><label><input type="radio" name="q30" value="D"> <b>D.</b> A budget alert</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> CPU usage is a metric. A metric alert can send an email when the CPU of a virtual machine stays above a threshold.</p>
+    <ul class="faux"><li><b>B.</b> Service Health alerts report Azure incidents and maintenance, not CPU usage.</li><li><b>C.</b> Advisor alerts report new recommendations, not CPU thresholds.</li><li><b>D.</b> Budget alerts in Cost Management track spending, not performance.</li></ul>
+    <blockquote>&ldquo;For example, a metric alert can send you an email when a VM&#x27;s CPU stays above 80%, while a log alert can watch for a specific error pattern across multiple resources.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/describe-monitoring-tools-azure/4-describe-azure-monitor" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-monitoring-tools-azure/4-describe-azure-monitor</a></blockquote>
+  </div>
+</section>
+<div class="achat">
+<p>These 30 come from a set of 300, four full 60 question exams at the same weights plus a 60 question drill, in one PDF with the same sourced answer key. It is <a href="https://ko-fi.com/s/43bc8b8b2e">12 euros on Ko-fi</a>, no account needed to buy.</p>
+<p>If you would rather sit them timed in the browser with a score by domain at the end, the same 300 questions are also <a href="https://www.udemy.com/course/microsoft-az-900-azure-fundamentals-practice-exams-2026-g/?couponCode=F667843D60F9049C4E9B">a Udemy practice test course</a>, 12.99 dollars with that link until November 4.</p>
+<div class="apercus">
+  <a href="https://ko-fi.com/s/43bc8b8b2e"><img src="img/az-900-exam-page.jpg" width="900" height="900" loading="lazy" alt="First page of Practice Exam 1, 60 questions at the official weights"></a>
+  <a href="https://ko-fi.com/s/43bc8b8b2e"><img src="img/az-900-answer-key.jpg" width="900" height="900" loading="lazy" alt="Answer key page, each wrong option explained and the Microsoft Learn quote with its link"></a>
+</div>
+</div>
+<footer>October 2026. Quotes matched word for word against the live Microsoft Learn pages on October 5, 2026. Independent study aid, not affiliated with or endorsed by Microsoft. Microsoft and Azure are trademarks of the Microsoft group of companies.<br><a href="./">More free practice questions</a></footer>
+</main>
+<script>
+document.querySelectorAll('.q').forEach(carte => {
+  carte.querySelector('button').addEventListener('click', () => {
+    const choisies = [...carte.querySelectorAll('input:checked')].map(i => i.value).sort().join('');
+    if (!choisies) return;
+    const juste = carte.dataset.juste;
+    const verdict = carte.querySelector('.verdict');
+    verdict.textContent = choisies === juste ? 'Correct.' : 'Not quite, you picked ' + choisies.split('').join(', ') + '.';
+    verdict.className = 'verdict ' + (choisies === juste ? 'bon' : 'mauvais');
+    carte.querySelector('.corrige').hidden = false;
+  });
+});
+</script>
+<script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+document.addEventListener('click', e => {
+  const lien = e.target.closest('a[href*="ko-fi.com/"], a[href*="udemy.com/"]');
+  if (!lien || !window.goatcounter || !goatcounter.count) return;
+  const chemin = lien.href.includes('udemy.com') ? 'udemy-az900' : 'kofi-' + (lien.href.split('/s/')[1] || 'pourboire');
+  goatcounter.count({ path: chemin, title: lien.innerText.trim(), event: true });
+});
+</script>
+</body>
+</html>
