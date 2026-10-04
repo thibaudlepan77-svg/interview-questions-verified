@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>30 free DP-900 Azure Data Fundamentals practice questions, every answer sourced</title>
+<meta name="description" content="30 DP-900 practice questions on the July 2026 skills outline. Each answer quotes the Microsoft Learn page that backs it, and each wrong option is explained.">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/dp-900-azure-data-fundamentals-practice-questions.html">
+<style>
+  :root { --fond: #fbfaf7; --texte: #1d1f24; --doux: #5d6470; --carte: #f3f1ec; --accent: #2d5bd7; --bon: #1f7a4d; --mauvais: #b3261e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fond: #15171b; --texte: #e8e6e1; --doux: #9aa1ad; --carte: #1d2026; --accent: #7ea2ff; --bon: #5fd39a; --mauvais: #f0776a; }
+  }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 17px/1.6 Georgia, "Iowan Old Style", serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 36px 18px 72px; }
+  h1 { font: 700 1.8rem/1.2 system-ui, "Segoe UI", sans-serif; margin: 0 0 16px; }
+  a { color: var(--accent); }
+  .q { background: var(--carte); border-radius: 10px; padding: 16px 18px; margin: 22px 0; }
+  .meta { font: .8rem system-ui, sans-serif; color: var(--doux); margin: 0 0 6px; }
+  .enonce { margin: 0 0 10px; font-weight: 600; }
+  .options { list-style: none; padding: 0; margin: 0 0 12px; }
+  .options li { margin: 6px 0; }
+  .options label { cursor: pointer; display: block; }
+  button { font: 600 .95rem system-ui, sans-serif; padding: 6px 16px; border-radius: 6px; border: 1px solid var(--doux); background: none; color: var(--texte); cursor: pointer; }
+  .verdict.bon { color: var(--bon); font-weight: 700; }
+  .verdict.mauvais { color: var(--mauvais); font-weight: 700; }
+  .faux { color: var(--doux); padding-left: 18px; }
+  blockquote a { word-break: break-all; }
+  blockquote { margin: 10px 0 0; padding-left: 12px; border-left: 3px solid var(--accent); font-size: .92rem; color: var(--doux); }
+  .apercus { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .apercus img { width: 100%; height: auto; border-radius: 8px; display: block; }
+  .achat { border-top: 1px solid var(--doux); margin-top: 36px; padding-top: 18px; }
+  footer { margin-top: 36px; color: var(--doux); font-size: .88rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>30 free Microsoft Azure Data Fundamentals (DP-900) practice questions</h1>
+<p>Thirty questions split roughly the way the official study guide weights the four skill areas, 9 on core data concepts, 7 on relational data, 5 on non-relational data and 9 on analytics. They follow the skills measured as of July 21, 2026, with current names such as Microsoft Fabric. Some ask for two answers.</p>
+<p>The part that matters to me is the proof. After you check an answer, you get the sentence from Microsoft Learn that backs it, with the link. If Microsoft changes a page and a question goes stale, you will see it before I do, and I would like to hear about it.</p>
+
+<section class="q" data-juste="AB">
+  <p class="meta">Question 1 &middot; Describe core data concepts</p>
+  <p class="enonce">Which two statements describe structured data? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q1" value="A"> <b>A.</b> All records share the same fields because the schema is fixed</label></li><li><label><input type="checkbox" name="q1" value="B"> <b>B.</b> The data is most often represented as tables of rows and columns</label></li><li><label><input type="checkbox" name="q1" value="C"> <b>C.</b> Each record can add new fields without changing any schema</label></li><li><label><input type="checkbox" name="q1" value="D"> <b>D.</b> It has no recognizable organization, like audio recordings</label></li><li><label><input type="checkbox" name="q1" value="E"> <b>E.</b> Its schema is defined separately inside every single document</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A, B.</b> Structured data adheres to a fixed schema, so every record has the same fields. Most commonly that schema is tabular, with rows and columns.</p>
+    <ul class="faux"><li><b>C.</b> Fields that vary between records describe semi-structured data.</li><li><b>D.</b> Data without a specific structure is unstructured data.</li><li><b>E.</b> A per-document schema is a feature of document stores and semi-structured data.</li></ul>
+    <blockquote>&ldquo;Structured data is data that adheres to a fixed schema , so all of the data has the same fields or properties. Most commonly, the schema for structured data entities is tabular&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/2-data-formats" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/2-data-formats</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 2 &middot; Describe core data concepts</p>
+  <p class="enonce">A file stores one record per line, with fields separated by commas and an optional first line of field names. Which format is this?</p>
+  <ul class="options"><li><label><input type="radio" name="q2" value="A"> <b>A.</b> Extensible Markup Language (XML)</label></li><li><label><input type="radio" name="q2" value="B"> <b>B.</b> Comma-separated values (CSV)</label></li><li><label><input type="radio" name="q2" value="C"> <b>C.</b> Apache Parquet</label></li><li><label><input type="radio" name="q2" value="D"> <b>D.</b> Apache Avro</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> CSV is the most common delimited text format. Commas separate the fields and a new line ends each row.</p>
+    <ul class="faux"><li><b>A.</b> XML uses tags in angle brackets, not commas between fields.</li><li><b>C.</b> Parquet is a binary columnar format, not plain text lines.</li><li><b>D.</b> Avro stores records as binary blocks with a JSON header.</li></ul>
+    <blockquote>&ldquo;The most common format for delimited data is comma-separated values (CSV) in which fields are separated by commas, and rows are terminated by a carriage return / new line.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/3-file-storage" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/3-file-storage</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 3 &middot; Describe core data concepts</p>
+  <p class="enonce">In a relational database, what uniquely identifies each row of an entity and lets other tables refer to it?</p>
+  <ul class="options"><li><label><input type="radio" name="q3" value="A"> <b>A.</b> A column family</label></li><li><label><input type="radio" name="q3" value="B"> <b>B.</b> A primary key</label></li><li><label><input type="radio" name="q3" value="C"> <b>C.</b> A JSON header</label></li><li><label><input type="radio" name="q3" value="D"> <b>D.</b> A row group</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Each entity instance in a relational table gets a primary key. Other tables use that key to reference it, such as an order referencing a customer.</p>
+    <ul class="faux"><li><b>A.</b> Column families group columns in nonrelational column-family databases.</li><li><b>C.</b> A JSON header describes the structure of an Avro file.</li><li><b>D.</b> Row groups organize data inside Parquet files.</li></ul>
+    <blockquote>&ldquo;Each instance of an entity is assigned a primary key that uniquely identifies it; and these keys are used to reference the entity instance in other tables.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/4-databases" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/4-databases</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 4 &middot; Describe core data concepts</p>
+  <p class="enonce">A company needs low-cost storage on Azure for product images, documents and backups, with access tiers to reduce cost. Which service fits best?</p>
+  <ul class="options"><li><label><input type="radio" name="q4" value="A"> <b>A.</b> Azure SQL Database</label></li><li><label><input type="radio" name="q4" value="B"> <b>B.</b> Azure Managed Redis</label></li><li><label><input type="radio" name="q4" value="C"> <b>C.</b> Azure Blob Storage</label></li><li><label><input type="radio" name="q4" value="D"> <b>D.</b> Azure Cosmos DB for Table</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> Blob Storage is an object store for unstructured data such as images, documents and backups. It includes access tiers to manage cost.</p>
+    <ul class="faux"><li><b>A.</b> Azure SQL Database is a relational database, not an object store for files.</li><li><b>B.</b> Azure Managed Redis is an in-memory cache, not long-term file storage.</li><li><b>D.</b> Azure Cosmos DB for Table stores key-value entities, not images and backups.</li></ul>
+    <blockquote>&ldquo;Blob Storage is a scalable object store for unstructured data like images, documents, and backups that includes tiered access for cost optimization.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview" rel="nofollow">learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 5 &middot; Describe core data concepts</p>
+  <p class="enonce">A banking app moves $200 from a savings account to a checking account. The debit and the credit must both succeed, or neither must happen. Which ACID property guarantees this?</p>
+  <ul class="options"><li><label><input type="radio" name="q5" value="A"> <b>A.</b> Durability</label></li><li><label><input type="radio" name="q5" value="B"> <b>B.</b> Isolation</label></li><li><label><input type="radio" name="q5" value="C"> <b>C.</b> Consistency</label></li><li><label><input type="radio" name="q5" value="D"> <b>D.</b> Atomicity</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> Atomicity treats the whole transaction as one unit. If one step fails, the other step fails too, so money is never debited without being credited.</p>
+    <ul class="faux"><li><b>A.</b> Durability keeps committed changes after a restart. It does not tie the two steps together.</li><li><b>B.</b> Isolation stops concurrent transactions from interfering with each other.</li><li><b>C.</b> Consistency moves data from one valid state to another, but the all or nothing rule is atomicity.</li></ul>
+    <blockquote>&ldquo;each transaction is treated as a single unit, which succeeds completely or fails completely.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/5-transactional-data-processing" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/5-transactional-data-processing</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 6 &middot; Describe core data concepts</p>
+  <p class="enonce">A ticketing system mainly records sales, but managers also want real-time reports run against the same operational system. What is this mixed workload called?</p>
+  <ul class="options"><li><label><input type="radio" name="q6" value="A"> <b>A.</b> Hybrid transactional and analytical processing (HTAP)</label></li><li><label><input type="radio" name="q6" value="B"> <b>B.</b> Online analytical processing (OLAP)</label></li><li><label><input type="radio" name="q6" value="C"> <b>C.</b> Extract, transform, and load (ETL)</label></li><li><label><input type="radio" name="q6" value="D"> <b>D.</b> Batch processing</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Most workloads are not purely OLTP. When real-time reporting runs against the operational system as well, the workload is called HTAP.</p>
+    <ul class="faux"><li><b>B.</b> OLAP alone covers the analytical side, not a mix with live transactions.</li><li><b>C.</b> ETL is a process that moves data between systems, not a workload type.</li><li><b>D.</b> Batch processing works on groups of data later, not real-time reports on live data.</li></ul>
+    <blockquote>&ldquo;They often include an analytical component as well and require real-time reporting, such as running reports against the operational system. This workload is referred to as hybrid transactional and analytical processing (HTAP).&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/online-transaction-processing" rel="nofollow">learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/online-transaction-processing</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="BC">
+  <p class="meta">Question 7 &middot; Describe core data concepts</p>
+  <p class="enonce">Which two statements describe analytical (OLAP) databases? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q7" value="A"> <b>A.</b> They are optimized for individual record entries</label></li><li><label><input type="checkbox" name="q7" value="B"> <b>B.</b> They are optimized for heavy-read and low-write tasks</label></li><li><label><input type="checkbox" name="q7" value="C"> <b>C.</b> They often keep historical data for time-series analysis</label></li><li><label><input type="checkbox" name="q7" value="D"> <b>D.</b> They must make each new order visible to apps instantly</label></li><li><label><input type="checkbox" name="q7" value="E"> <b>E.</b> They avoid any data cleansing before analysis</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B, C.</b> Analytical databases are read far more than written. They keep history so that trends over time can be analyzed.</p>
+    <ul class="faux"><li><b>A.</b> Individual record entries are what OLTP databases are optimized for.</li><li><b>D.</b> Instant visibility for apps is an OLTP requirement.</li><li><b>E.</b> OLAP data is modeled and cleansed for effective analysis.</li></ul>
+    <blockquote>&ldquo;OLAP databases are optimized for heavy-read and low-write tasks. [...] OLAP databases often preserve historical data for time-series analysis.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/online-analytical-processing" rel="nofollow">learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/online-analytical-processing</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 8 &middot; Describe core data concepts</p>
+  <p class="enonce">Which role designs and implements data ingestion pipelines, cleansing and transformation activities, and data stores for analytical workloads?</p>
+  <ul class="options"><li><label><input type="radio" name="q8" value="A"> <b>A.</b> Database administrator</label></li><li><label><input type="radio" name="q8" value="B"> <b>B.</b> Data engineer</label></li><li><label><input type="radio" name="q8" value="C"> <b>C.</b> Data analyst</label></li><li><label><input type="radio" name="q8" value="D"> <b>D.</b> Business user</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Data engineers build the path data takes from sources to analytical stores. That includes ingestion, cleansing, transformation, and the stores themselves.</p>
+    <ul class="faux"><li><b>A.</b> Database administrators run operational databases, security, and backups.</li><li><b>C.</b> Data analysts use the prepared data to build models and reports.</li><li><b>D.</b> Business users consume reports and dashboards.</li></ul>
+    <blockquote>&ldquo;A data engineer collaborates with stakeholders to design and implement data-related workloads, including data ingestion pipelines, cleansing and transformation activities, and data stores for analytical workloads.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-roles-responsibilities-world-of-data/2-explore-job-roles" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-roles-responsibilities-world-of-data/2-explore-job-roles</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 9 &middot; Describe core data concepts</p>
+  <p class="enonce">Which role uses Power BI to connect to data sources, build interactive reports and dashboards, and share insights across the organization?</p>
+  <ul class="options"><li><label><input type="radio" name="q9" value="A"> <b>A.</b> Database administrator</label></li><li><label><input type="radio" name="q9" value="B"> <b>B.</b> Data engineer</label></li><li><label><input type="radio" name="q9" value="C"> <b>C.</b> AI engineer</label></li><li><label><input type="radio" name="q9" value="D"> <b>D.</b> Data analyst</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> Power BI is the business intelligence tool of the data analyst. Analysts connect it to data, build reports and dashboards, and share them.</p>
+    <ul class="faux"><li><b>A.</b> Database administrators manage databases, not interactive reports.</li><li><b>B.</b> Data engineers prepare data, while analysts build the Power BI reports.</li><li><b>C.</b> AI engineers work with models and AI features, not report building.</li></ul>
+    <blockquote>&ldquo;Data analysts use Power BI to connect to data sources, build interactive reports and dashboards, and share insights across their organization.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-roles-responsibilities-world-of-data/3-data-services" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-roles-responsibilities-world-of-data/3-data-services</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 10 &middot; Relational data on Azure</p>
+  <p class="enonce">A team moves a database design from one relational database system to another. What should they expect about column data types?</p>
+  <ul class="options"><li><label><input type="radio" name="q10" value="A"> <b>A.</b> Available types depend on the system, but most support ANSI standard types</label></li><li><label><input type="radio" name="q10" value="B"> <b>B.</b> Every system offers exactly the same set of types</label></li><li><label><input type="radio" name="q10" value="C"> <b>C.</b> Data types are optional in relational tables</label></li><li><label><input type="radio" name="q10" value="D"> <b>D.</b> Only text types exist, numbers are stored as text</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Each relational database system has its own list of data types. Most of them also support the standard types defined by ANSI, which makes a design easier to move.</p>
+    <ul class="faux"><li><b>B.</b> The available types vary between systems.</li><li><b>C.</b> Every column stores data of a specific type.</li><li><b>D.</b> Relational systems offer numeric and date types as well as text.</li></ul>
+    <blockquote>&ldquo;The available datatypes that you can use when defining a table depend on the database system you&#x27;re using; though there are standard datatypes defined by the American National Standards Institute (ANSI) that are supported by most database systems.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/2-understand-relational-data" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/2-understand-relational-data</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 11 &middot; Relational data on Azure</p>
+  <p class="enonce">A LineItem table identifies each row by the combination of OrderNo and ItemNo. What is this kind of key called?</p>
+  <ul class="options"><li><label><input type="radio" name="q11" value="A"> <b>A.</b> A composite key</label></li><li><label><input type="radio" name="q11" value="B"> <b>B.</b> A surrogate index</label></li><li><label><input type="radio" name="q11" value="C"> <b>C.</b> A natural view</label></li><li><label><input type="radio" name="q11" value="D"> <b>D.</b> A partition key</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> A key can be built from more than one column when no single column is unique on its own. A key made from a unique combination of columns is a composite key.</p>
+    <ul class="faux"><li><b>B.</b> This is not a standard key type.</li><li><b>C.</b> A view is a virtual table, not a key.</li><li><b>D.</b> Partition keys distribute data, they do not combine columns to identify a row here.</li></ul>
+    <blockquote>&ldquo;In some cases, a key (primary or foreign) can be defined as a composite key based on a unique combination of multiple columns.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/3-normalization" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/3-normalization</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 12 &middot; Relational data on Azure</p>
+  <p class="enonce">A report needs the order number from the Order table and the address from the Customer table in one result. What should the SELECT statement use?</p>
+  <ul class="options"><li><label><input type="radio" name="q12" value="A"> <b>A.</b> A series of DELETE statements on both tables</label></li><li><label><input type="radio" name="q12" value="B"> <b>B.</b> An ALTER statement on both tables</label></li><li><label><input type="radio" name="q12" value="C"> <b>C.</b> A REVOKE statement on the Order table</label></li><li><label><input type="radio" name="q12" value="D"> <b>D.</b> A JOIN clause that matches the foreign key to the primary key</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> A JOIN lets one SELECT read from several tables. A typical join condition matches a foreign key in one table with the primary key in the other.</p>
+    <ul class="faux"><li><b>A.</b> DELETE removes rows, it does not combine tables.</li><li><b>B.</b> ALTER changes structure, it does not retrieve data.</li><li><b>C.</b> REVOKE removes permissions and returns no data.</li></ul>
+    <blockquote>&ldquo;You can also run SELECT statements that retrieve data from multiple tables using a JOIN clause.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/4-query-with-sql" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/4-query-with-sql</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 13 &middot; Relational data on Azure</p>
+  <p class="enonce">A database designer plans indexes for a table in Azure SQL Database. How many clustered indexes can the table have?</p>
+  <ul class="options"><li><label><input type="radio" name="q13" value="A"> <b>A.</b> Up to two</label></li><li><label><input type="radio" name="q13" value="B"> <b>B.</b> One per column</label></li><li><label><input type="radio" name="q13" value="C"> <b>C.</b> Only one</label></li><li><label><input type="radio" name="q13" value="D"> <b>D.</b> As many as needed</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> A clustered index stores the table rows themselves in key order. Rows can be stored in only one order, so a table has at most one clustered index.</p>
+    <ul class="faux"><li><b>A.</b> A clustered index sets the physical order of rows, so only one is allowed.</li><li><b>B.</b> Columns do not each get a clustered index.</li><li><b>D.</b> That applies to nonclustered indexes, not clustered ones.</li></ul>
+    <blockquote>&ldquo;You can have only one clustered index per table, because the data rows themselves can be stored in only one order.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver17" rel="nofollow">learn.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver17</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 14 &middot; Relational data on Azure</p>
+  <p class="enonce">Before moving on-premises SQL Server databases to Azure SQL Managed Instance, a DBA wants a report of any issues that could block the migration. Which tool should the DBA run?</p>
+  <ul class="options"><li><label><input type="radio" name="q14" value="A"> <b>A.</b> Data Migration Assistant</label></li><li><label><input type="radio" name="q14" value="B"> <b>B.</b> Microsoft Purview</label></li><li><label><input type="radio" name="q14" value="C"> <b>C.</b> Power BI Desktop</label></li><li><label><input type="radio" name="q14" value="D"> <b>D.</b> Azure Monitor</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Data Migration Assistant analyzes SQL Server databases and lists compatibility issues. It tells you what could block a move to a managed instance before you start.</p>
+    <ul class="faux"><li><b>B.</b> Microsoft Purview handles data governance and cataloging, not migration checks.</li><li><b>C.</b> Power BI Desktop builds reports on data, it does not assess databases for migration.</li><li><b>D.</b> Azure Monitor collects metrics and logs from running resources, not migration blockers.</li></ul>
+    <blockquote>&ldquo;This tool analyzes your databases on SQL Server and reports any issues that could block migration to a managed instance.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-relational-database-offerings-azure/2-azure-sql" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-provision-deploy-relational-database-offerings-azure/2-azure-sql</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="AC">
+  <p class="meta">Question 15 &middot; Relational data on Azure</p>
+  <p class="enonce">Which two tasks does Azure SQL Managed Instance automate for you? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q15" value="A"> <b>A.</b> Backups</label></li><li><label><input type="checkbox" name="q15" value="B"> <b>B.</b> Installing extra software on the host operating system</label></li><li><label><input type="checkbox" name="q15" value="C"> <b>C.</b> Software patching</label></li><li><label><input type="checkbox" name="q15" value="D"> <b>D.</b> Choosing the virtual machine disk layout</label></li><li><label><input type="checkbox" name="q15" value="E"> <b>E.</b> Writing the queries for your reports</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A, C.</b> SQL Managed Instance automates backups, software patching, monitoring and other routine work. You keep control of security and resource allocation for your databases.</p>
+    <ul class="faux"><li><b>B.</b> There is no access to the host operating system in a managed instance.</li><li><b>D.</b> Disk layout is something you control on a SQL Server virtual machine, not a managed instance task.</li><li><b>E.</b> Queries are written by users and developers, no service writes them for you.</li></ul>
+    <blockquote>&ldquo;SQL Managed Instance automates backups, software patching, database monitoring, and other general tasks, but you have full control over security and resource allocation for your databases.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-relational-database-offerings-azure/2-azure-sql" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-provision-deploy-relational-database-offerings-azure/2-azure-sql</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 16 &middot; Relational data on Azure</p>
+  <p class="enonce">A DBA connects to Azure Database for PostgreSQL with pgAdmin. Which task can the DBA not perform through pgAdmin on this service?</p>
+  <ul class="options"><li><label><input type="radio" name="q16" value="A"> <b>A.</b> Querying the tables in a database</label></li><li><label><input type="radio" name="q16" value="B"> <b>B.</b> Running a server backup and restore</label></li><li><label><input type="radio" name="q16" value="C"> <b>C.</b> Monitoring the database</label></li><li><label><input type="radio" name="q16" value="D"> <b>D.</b> Connecting to the databases on the server</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> You can keep using pgAdmin to connect to and manage the service. Server-focused tasks such as backup and restore are not available, because Microsoft manages the server.</p>
+    <ul class="faux"><li><b>A.</b> Querying tables works normally through pgAdmin.</li><li><b>C.</b> pgAdmin can still be used to monitor a PostgreSQL database on Azure.</li><li><b>D.</b> pgAdmin connects to Azure Database for PostgreSQL like any PostgreSQL server.</li></ul>
+    <blockquote>&ldquo;However, some server-focused functionality, such as performing server backup and restore, aren&#x27;t available because the server is managed and maintained by Microsoft.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-relational-database-offerings-azure/3-azure-database-open-source" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-provision-deploy-relational-database-offerings-azure/3-azure-database-open-source</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 17 &middot; Non-relational data on Azure</p>
+  <p class="enonce">Which type of blob does Azure use to provide the virtual disks of virtual machines?</p>
+  <ul class="options"><li><label><input type="radio" name="q17" value="A"> <b>A.</b> Block blob</label></li><li><label><input type="radio" name="q17" value="B"> <b>B.</b> Page blob</label></li><li><label><input type="radio" name="q17" value="C"> <b>C.</b> Append blob</label></li><li><label><input type="radio" name="q17" value="D"> <b>D.</b> Cold blob</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Page blobs are made of fixed size 512-byte pages and support random read and write operations. That is why Azure uses them as virtual machine disks.</p>
+    <ul class="faux"><li><b>A.</b> Block blobs suit large files that change infrequently, not random disk access.</li><li><b>C.</b> Append blobs only allow new blocks at the end, which does not fit a disk.</li><li><b>D.</b> Cold is an access tier, not a blob type.</li></ul>
+    <blockquote>&ldquo;Azure uses page blobs to implement virtual disk storage for virtual machines.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-non-relational-data-services-azure/2-azure-blob-storage" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-provision-deploy-non-relational-data-services-azure/2-azure-blob-storage</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 18 &middot; Non-relational data on Azure</p>
+  <p class="enonce">An office has staff on Windows, macOS and Linux computers, and all of them must open the same Azure file share. Which protocol should the share use?</p>
+  <ul class="options"><li><label><input type="radio" name="q18" value="A"> <b>A.</b> NFS</label></li><li><label><input type="radio" name="q18" value="B"> <b>B.</b> OData</label></li><li><label><input type="radio" name="q18" value="C"> <b>C.</b> AMQP</label></li><li><label><input type="radio" name="q18" value="D"> <b>D.</b> SMB</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> SMB works across Windows, Linux and macOS. That makes it the right choice when one share must serve all three.</p>
+    <ul class="faux"><li><b>A.</b> NFS Azure file shares are used by Linux and are not supported on Windows or macOS.</li><li><b>B.</b> OData is a protocol to query data such as Azure tables, not to mount file shares.</li><li><b>C.</b> AMQP is a messaging protocol and does not provide file shares.</li></ul>
+    <blockquote>&ldquo;Server Message Block (SMB) file sharing is commonly used across multiple operating systems (Windows, Linux, macOS).&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-non-relational-data-services-azure/4-azure-files" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-provision-deploy-non-relational-data-services-azure/4-azure-files</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 19 &middot; Non-relational data on Azure</p>
+  <p class="enonce">A table in Azure Table Storage holds customers. Each row stores the name, several phone numbers and several addresses of one customer. How is this data modeled?</p>
+  <ul class="options"><li><label><input type="radio" name="q19" value="A"> <b>A.</b> Normalized across several related tables</label></li><li><label><input type="radio" name="q19" value="B"> <b>B.</b> Stored as unstructured binary objects</label></li><li><label><input type="radio" name="q19" value="C"> <b>C.</b> Denormalized, with each row holding the entire data for one entity</label></li><li><label><input type="radio" name="q19" value="D"> <b>D.</b> Split into fixed size 512-byte pages</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> Table Storage data is usually denormalized. One row holds all the details of a logical entity, so the number of fields can differ between rows.</p>
+    <ul class="faux"><li><b>A.</b> A relational database would split the data across tables, but Table Storage keeps it in one row.</li><li><b>B.</b> Table rows hold named fields, not binary objects.</li><li><b>D.</b> 512-byte pages describe page blobs.</li></ul>
+    <blockquote>&ldquo;Data in Azure Table storage is usually denormalized, with each row holding the entire data for a logical entity.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-non-relational-data-services-azure/5-azure-tables" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-provision-deploy-non-relational-data-services-azure/5-azure-tables</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 20 &middot; Non-relational data on Azure</p>
+  <p class="enonce">A travel booking app has users in Europe, Asia and the Americas. The team adds several Azure regions to its Azure Cosmos DB account. What benefit do the users get?</p>
+  <ul class="options"><li><label><input type="radio" name="q20" value="A"> <b>A.</b> They each read and write to the nearest regional replica</label></li><li><label><input type="radio" name="q20" value="B"> <b>B.</b> They all connect to a single primary region</label></li><li><label><input type="radio" name="q20" value="C"> <b>C.</b> They need a separate account per country</label></li><li><label><input type="radio" name="q20" value="D"> <b>D.</b> They must choose a different API per region</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Azure Cosmos DB replicates data automatically to every region added to the account. Users then work with the closest replica, which keeps latency low wherever they are.</p>
+    <ul class="faux"><li><b>B.</b> Global distribution exists precisely so users do not all go through one far-away region.</li><li><b>C.</b> One account can span many regions, there is no need for one account per country.</li><li><b>D.</b> The API is chosen for the account, it does not change from region to region.</li></ul>
+    <blockquote>&ldquo;Users in different locations read from and write to the nearest regional replica, which keeps latency low no matter where they are.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-non-relational-data-stores-azure/2-describe-azure-cosmos-db" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-non-relational-data-stores-azure/2-describe-azure-cosmos-db</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 21 &middot; Non-relational data on Azure</p>
+  <p class="enonce">In which Azure Cosmos DB API is each row identified by the combination of a PartitionKey and a RowKey?</p>
+  <ul class="options"><li><label><input type="radio" name="q21" value="A"> <b>A.</b> Azure Cosmos DB for NoSQL</label></li><li><label><input type="radio" name="q21" value="B"> <b>B.</b> Azure Cosmos DB for Apache Gremlin</label></li><li><label><input type="radio" name="q21" value="C"> <b>C.</b> Azure Cosmos DB for MongoDB</label></li><li><label><input type="radio" name="q21" value="D"> <b>D.</b> Azure Cosmos DB for Table</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> Azure Cosmos DB for Table stores key-value data in tables. Each row, or entity, is found through its PartitionKey and RowKey pair.</p>
+    <ul class="faux"><li><b>A.</b> The NoSQL API stores JSON documents, it does not identify rows by a RowKey.</li><li><b>B.</b> The Gremlin API stores vertices and edges, not rows with a RowKey.</li><li><b>C.</b> The MongoDB API stores BSON documents in collections, not rows with a RowKey.</li></ul>
+    <blockquote>&ldquo;Each row is identified by a PartitionKey and RowKey combination.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-non-relational-data-stores-azure/3-cosmos-db-apis" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-non-relational-data-stores-azure/3-cosmos-db-apis</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 22 &middot; Analytics workloads on Azure</p>
+  <p class="enonce">Analysts using Azure Databricks need a dedicated SQL endpoint that their BI tools can query, with many users running queries at the same time. What should they use?</p>
+  <ul class="options"><li><label><input type="radio" name="q22" value="A"> <b>A.</b> A Databricks SQL Warehouse</label></li><li><label><input type="radio" name="q22" value="B"> <b>B.</b> Databricks Notebooks</label></li><li><label><input type="radio" name="q22" value="C"> <b>C.</b> Unity Catalog</label></li><li><label><input type="radio" name="q22" value="D"> <b>D.</b> Auto Loader</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Azure Databricks offers a Databricks SQL Warehouse for SQL reporting and BI. It is tuned for BI tools and for many concurrent queries.</p>
+    <ul class="faux"><li><b>B.</b> Notebooks are for code-based engineering and exploration, not a dedicated BI endpoint.</li><li><b>C.</b> Unity Catalog governs access and lineage. It does not run queries for BI tools.</li><li><b>D.</b> Auto Loader ingests files from cloud storage. It is not a query endpoint.</li></ul>
+    <blockquote>&ldquo;For SQL-based reporting and business intelligence, Azure Databricks provides a Databricks SQL Warehouse [...] a dedicated SQL endpoint optimized for BI tools and concurrent query workloads.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/examine-components-of-modern-data-warehouse/4-analytical-data-stores" rel="nofollow">learn.microsoft.com/en-us/training/modules/examine-components-of-modern-data-warehouse/4-analytical-data-stores</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="BD">
+  <p class="meta">Question 23 &middot; Analytics workloads on Azure</p>
+  <p class="enonce">Which TWO Fabric features make external data available in OneLake without you building any data movement or transformation logic? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q23" value="A"> <b>A.</b> Fabric Data Factory pipelines</label></li><li><label><input type="checkbox" name="q23" value="B"> <b>B.</b> OneLake shortcuts</label></li><li><label><input type="checkbox" name="q23" value="C"> <b>C.</b> Dataflows Gen2</label></li><li><label><input type="checkbox" name="q23" value="D"> <b>D.</b> Mirroring</label></li><li><label><input type="checkbox" name="q23" value="E"> <b>E.</b> Fabric notebooks</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B, D.</b> A shortcut references external data in place, with no pipeline and no copy. Mirroring replicates a database after you set up the source connection once, and Fabric handles the changes.</p>
+    <ul class="faux"><li><b>A.</b> Pipelines require you to design the activities that move and transform data.</li><li><b>C.</b> Dataflows Gen2 require you to build the transformation steps, even without code.</li><li><b>E.</b> Notebooks require you to write the ingestion code yourself.</li></ul>
+    <blockquote>&ldquo;No pipelines, no movement, no duplication. [...] You configure the source connection once and Fabric handles change tracking and replication automatically, without any pipeline authoring.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/examine-components-of-modern-data-warehouse/3-data-ingestion-pipelines" rel="nofollow">learn.microsoft.com/en-us/training/modules/examine-components-of-modern-data-warehouse/3-data-ingestion-pipelines</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 24 &middot; Analytics workloads on Azure</p>
+  <p class="enonce">Raw data stays as files in a data lake, and a SQL analytics endpoint exposes those files as tables. What is this hybrid design called?</p>
+  <ul class="options"><li><label><input type="radio" name="q24" value="A"> <b>A.</b> A data mart</label></li><li><label><input type="radio" name="q24" value="B"> <b>B.</b> A data lakehouse</label></li><li><label><input type="radio" name="q24" value="C"> <b>C.</b> A multidimensional cube</label></li><li><label><input type="radio" name="q24" value="D"> <b>D.</b> A snowflake schema</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> A data lakehouse combines a data lake with warehouse features. Files remain in the lake while SQL can query them as tables.</p>
+    <ul class="faux"><li><b>A.</b> A data mart is a subset of a warehouse for one business area.</li><li><b>C.</b> A cube holds pre-aggregated values. It does not expose lake files as tables.</li><li><b>D.</b> A snowflake schema is a table layout inside a warehouse.</li></ul>
+    <blockquote>&ldquo;You can use a hybrid approach that combines features of data lakes and data warehouses in a data lakehouse. [...] The raw data is stored as files in a data lake, and a SQL analytics endpoint exposes those files as tables you can query with SQL.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/examine-components-of-modern-data-warehouse/4-analytical-data-stores" rel="nofollow">learn.microsoft.com/en-us/training/modules/examine-components-of-modern-data-warehouse/4-analytical-data-stores</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 25 &middot; Analytics workloads on Azure</p>
+  <p class="enonce">A team compares the delay between data arriving and being processed. What latency is typical for stream processing?</p>
+  <ul class="options"><li><label><input type="radio" name="q25" value="A"> <b>A.</b> Seconds or milliseconds</label></li><li><label><input type="radio" name="q25" value="B"> <b>B.</b> A few hours</label></li><li><label><input type="radio" name="q25" value="C"> <b>C.</b> About one day</label></li><li><label><input type="radio" name="q25" value="D"> <b>D.</b> Roughly one week</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Stream processing works on data as soon as it is received. Its latency is usually in the order of seconds or milliseconds, far shorter than batch processing.</p>
+    <ul class="faux"><li><b>B.</b> A few hours is the typical latency of batch processing, not stream processing.</li><li><b>C.</b> A daily delay matches a scheduled batch job, not a stream.</li><li><b>D.</b> A weekly delay is far longer than any streaming scenario.</li></ul>
+    <blockquote>&ldquo;Stream processing typically occurs immediately, with latency in the order of seconds or milliseconds.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-fundamentals-stream-processing/2-batch-stream" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-fundamentals-stream-processing/2-batch-stream</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 26 &middot; Analytics workloads on Azure</p>
+  <p class="enonce">A company does not need live dashboards. It still uses a streaming technology to capture events from devices. What is the most likely reason?</p>
+  <ul class="options"><li><label><input type="radio" name="q26" value="A"> <b>A.</b> To capture the data and store it for later batch processing</label></li><li><label><input type="radio" name="q26" value="B"> <b>B.</b> To replace the data lake with a message queue</label></li><li><label><input type="radio" name="q26" value="C"> <b>C.</b> To avoid storing the device data anywhere</label></li><li><label><input type="radio" name="q26" value="D"> <b>D.</b> To run complex analytics on each single event</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Streaming tools are good at capturing data that arrives continuously. Even without real-time analysis, they often collect the events and write them to a data store, where batch jobs process them later.</p>
+    <ul class="faux"><li><b>B.</b> A queue holds events in transit and does not replace long-term storage in a data lake.</li><li><b>C.</b> The captured data is written to a data store, so it is kept, not discarded.</li><li><b>D.</b> Complex analytics is a batch task, and streaming is used for simple calculations.</li></ul>
+    <blockquote>&ldquo;streaming technologies are often used to capture real-time data and store it in a data store for subsequent batch processing&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-fundamentals-stream-processing/2-batch-stream" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-fundamentals-stream-processing/2-batch-stream</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 27 &middot; Analytics workloads on Azure</p>
+  <p class="enonce">A data analyst needs one Windows application to import data from several sources, combine it into a model and design interactive reports. Which tool should the analyst use?</p>
+  <ul class="options"><li><label><input type="radio" name="q27" value="A"> <b>A.</b> Power BI Desktop</label></li><li><label><input type="radio" name="q27" value="B"> <b>B.</b> The Power BI phone app</label></li><li><label><input type="radio" name="q27" value="C"> <b>C.</b> A Power BI dashboard</label></li><li><label><input type="radio" name="q27" value="D"> <b>D.</b> The Power BI Q&amp;A visual</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Power BI Desktop is the Windows application where a typical Power BI solution starts. You import data, organize it in a model and build reports there.</p>
+    <ul class="faux"><li><b>B.</b> The phone app is for consuming reports on mobile devices, not for building models.</li><li><b>C.</b> A dashboard is a single page of pinned tiles, not a tool for importing and modeling data.</li><li><b>D.</b> The Q&amp;A visual answers questions inside a report. It does not import or model data.</li></ul>
+    <blockquote>&ldquo;A typical workflow for creating a data visualization solution starts with Power BI Desktop, a Microsoft Windows application in which you can import data from a wide range of data sources&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-fundamentals-data-visualization/2-power-bi" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-fundamentals-data-visualization/2-power-bi</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 28 &middot; Analytics workloads on Azure</p>
+  <p class="enonce">Sales data already sits in OneLake. The analyst wants a Power BI semantic model with in-memory query speed and no separate import step. Which storage mode fits?</p>
+  <ul class="options"><li><label><input type="radio" name="q28" value="A"> <b>A.</b> Import</label></li><li><label><input type="radio" name="q28" value="B"> <b>B.</b> DirectQuery</label></li><li><label><input type="radio" name="q28" value="C"> <b>C.</b> Direct Lake</label></li><li><label><input type="radio" name="q28" value="D"> <b>D.</b> Snowflake</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> Direct Lake mode connects a semantic model directly to files in OneLake. It gives in-memory query performance without importing the data first.</p>
+    <ul class="faux"><li><b>A.</b> Import copies the data into the model and needs refreshes, which is the step the analyst wants to avoid.</li><li><b>B.</b> DirectQuery sends queries to the source each time and does not give in-memory speed.</li><li><b>D.</b> Snowflake is a way to design dimension tables, not a storage mode.</li></ul>
+    <blockquote>&ldquo;use Direct Lake storage mode to connect your semantic model directly to the lake files. [...] This gives you in-memory query performance without a separate data import step.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/training/modules/explore-fundamentals-data-visualization/3-data-modeling" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-fundamentals-data-visualization/3-data-modeling</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="BE">
+  <p class="meta">Question 29 &middot; Analytics workloads on Azure</p>
+  <p class="enonce">A retailer builds a sales model in Power BI. Which TWO of these would be dimension tables? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q29" value="A"> <b>A.</b> Sales transactions</label></li><li><label><input type="checkbox" name="q29" value="B"> <b>B.</b> Product</label></li><li><label><input type="checkbox" name="q29" value="C"> <b>C.</b> Daily stock balances</label></li><li><label><input type="checkbox" name="q29" value="D"> <b>D.</b> Order lines with quantity and revenue</label></li><li><label><input type="checkbox" name="q29" value="E"> <b>E.</b> Store location</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B, E.</b> Dimension tables describe business entities such as products, people and places. Sales, order lines and stock balances are facts.</p>
+    <ul class="faux"><li><b>A.</b> Sales transactions are recorded events with measures, so they belong in a fact table.</li><li><b>C.</b> Stock balances are observations that go in a fact table.</li><li><b>D.</b> Order lines carry numeric measures, so they form a fact table.</li></ul>
+    <blockquote>&ldquo;Entities can include products, people, places, and concepts including time itself.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/power-bi/guidance/star-schema" rel="nofollow">learn.microsoft.com/en-us/power-bi/guidance/star-schema</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 30 &middot; Analytics workloads on Azure</p>
+  <p class="enonce">An auditor needs to read the exact invoice amount for each of several hundred customers in a report. Which visual is most suitable?</p>
+  <ul class="options"><li><label><input type="radio" name="q30" value="A"> <b>A.</b> A pie chart</label></li><li><label><input type="radio" name="q30" value="B"> <b>B.</b> A line chart</label></li><li><label><input type="radio" name="q30" value="C"> <b>C.</b> A radial gauge</label></li><li><label><input type="radio" name="q30" value="D"> <b>D.</b> A table</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> Tables present data in rows and columns. They are the right choice when users need exact values for many items.</p>
+    <ul class="faux"><li><b>A.</b> A pie chart with hundreds of slices cannot show exact amounts.</li><li><b>B.</b> A line chart shows trends and does not display exact values for each customer.</li><li><b>C.</b> A gauge shows a single value against a target.</li></ul>
+    <blockquote>&ldquo;They&#x27;re ideal when you need to see exact values and make quantitative comparisons across many values for a single category.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-types-for-reports-and-q-and-a" rel="nofollow">learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-types-for-reports-and-q-and-a</a></blockquote>
+  </div>
+</section>
+<div class="achat">
+<p>These 30 come from a set of 300, four full 60 question exams at the same weights plus a 60 question drill, in one PDF with the same sourced answer key. It is <a href="https://ko-fi.com/s/d0f0b558d1">12 euros on Ko-fi</a>, no account needed to buy.</p>
+<p>If you would rather sit them timed in the browser with a score by domain at the end, the same 300 questions are also <a href="https://www.udemy.com/course/microsoft-dp-900-azure-data-fundamentals-practice-exams-2026/?couponCode=FE04D3FD94F3B9C644D5">a Udemy practice test course</a>, 12.99 dollars with that link until November 4.</p>
+<div class="apercus">
+  <a href="https://ko-fi.com/s/d0f0b558d1"><img src="img/dp-900-exam-page.jpg" width="900" height="900" loading="lazy" alt="First page of Practice Exam 1, 60 questions at the official weights"></a>
+  <a href="https://ko-fi.com/s/d0f0b558d1"><img src="img/dp-900-answer-key.jpg" width="900" height="900" loading="lazy" alt="Answer key page, each wrong option explained and the Microsoft Learn quote with its link"></a>
+</div>
+</div>
+<footer>October 2026. Quotes matched word for word against the live Microsoft Learn pages on October 5, 2026. Independent study aid, not affiliated with or endorsed by Microsoft. Microsoft, Azure and Power BI are trademarks of the Microsoft group of companies.<br><a href="./">More free practice questions</a></footer>
+</main>
+<script>
+document.querySelectorAll('.q').forEach(carte => {
+  carte.querySelector('button').addEventListener('click', () => {
+    const choisies = [...carte.querySelectorAll('input:checked')].map(i => i.value).sort().join('');
+    if (!choisies) return;
+    const juste = carte.dataset.juste;
+    const verdict = carte.querySelector('.verdict');
+    verdict.textContent = choisies === juste ? 'Correct.' : 'Not quite, you picked ' + choisies.split('').join(', ') + '.';
+    verdict.className = 'verdict ' + (choisies === juste ? 'bon' : 'mauvais');
+    carte.querySelector('.corrige').hidden = false;
+  });
+});
+</script>
+<script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+document.addEventListener('click', e => {
+  const lien = e.target.closest('a[href*="ko-fi.com/"], a[href*="udemy.com/"]');
+  if (!lien || !window.goatcounter || !goatcounter.count) return;
+  const chemin = lien.href.includes('udemy.com') ? 'udemy-dp900' : 'kofi-' + (lien.href.split('/s/')[1] || 'pourboire');
+  goatcounter.count({ path: chemin, title: lien.innerText.trim(), event: true });
+});
+</script>
+</body>
+</html>
