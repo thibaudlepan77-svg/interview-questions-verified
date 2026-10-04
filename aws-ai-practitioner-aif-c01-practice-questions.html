@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>30 free AWS AI Practitioner AIF-C01 practice questions, every answer sourced</title>
+<meta name="description" content="30 AIF-C01 practice questions on exam guide version 1.1, at the official domain weights. Each answer quotes the AWS documentation page that backs it, and each wrong option is explained.">
+<link rel="canonical" href="https://thibaudlepan77-svg.github.io/interview-questions-verified/aws-ai-practitioner-aif-c01-practice-questions.html">
+<style>
+  :root { --fond: #fbfaf7; --texte: #1d1f24; --doux: #5d6470; --carte: #f3f1ec; --accent: #2d5bd7; --bon: #1f7a4d; --mauvais: #b3261e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fond: #15171b; --texte: #e8e6e1; --doux: #9aa1ad; --carte: #1d2026; --accent: #7ea2ff; --bon: #5fd39a; --mauvais: #f0776a; }
+  }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 17px/1.6 Georgia, "Iowan Old Style", serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 36px 18px 72px; }
+  h1 { font: 700 1.8rem/1.2 system-ui, "Segoe UI", sans-serif; margin: 0 0 16px; }
+  a { color: var(--accent); }
+  .q { background: var(--carte); border-radius: 10px; padding: 16px 18px; margin: 22px 0; }
+  .meta { font: .8rem system-ui, sans-serif; color: var(--doux); margin: 0 0 6px; }
+  .enonce { margin: 0 0 10px; font-weight: 600; }
+  .options { list-style: none; padding: 0; margin: 0 0 12px; }
+  .options li { margin: 6px 0; }
+  .options label { cursor: pointer; display: block; }
+  button { font: 600 .95rem system-ui, sans-serif; padding: 6px 16px; border-radius: 6px; border: 1px solid var(--doux); background: none; color: var(--texte); cursor: pointer; }
+  .verdict.bon { color: var(--bon); font-weight: 700; }
+  .verdict.mauvais { color: var(--mauvais); font-weight: 700; }
+  .faux { color: var(--doux); padding-left: 18px; }
+  blockquote a { word-break: break-all; }
+  blockquote { margin: 10px 0 0; padding-left: 12px; border-left: 3px solid var(--accent); font-size: .92rem; color: var(--doux); }
+  .apercus { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .apercus img { width: 100%; height: auto; border-radius: 8px; display: block; }
+  .achat { border-top: 1px solid var(--doux); margin-top: 36px; padding-top: 18px; }
+  footer { margin-top: 36px; color: var(--doux); font-size: .88rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>30 free AWS AI Practitioner (AIF-C01) practice questions</h1>
+<p>Thirty questions split the way the official exam guide weights the five domains, 6 on AI and ML fundamentals, 7 on generative AI, 9 on foundation model applications, 4 on responsible AI and 4 on security and governance. They follow version 1.1 of the exam guide, published by AWS on April 30, 2026, which added agentic AI, Kiro, Amazon Bedrock AgentCore and Strands Agents. Some ask for two answers, like the real exam.</p>
+<p>The part that matters to me is the proof. After you check an answer, you get the sentence from the AWS documentation that backs it, with the link. If AWS changes a page and a question goes stale, you will see it before I do, and I would like to hear about it.</p>
+
+<section class="q" data-juste="B">
+  <p class="meta">Question 1 &middot; Domain 1, Fundamentals of AI and ML &middot; task 1.1</p>
+  <p class="enonce">A warehouse wants cameras to spot damaged boxes on a conveyor belt and flag them automatically. Which field of AI does this use case belong to?</p>
+  <ul class="options"><li><label><input type="radio" name="q1" value="A"> <b>A.</b> Natural language processing</label></li><li><label><input type="radio" name="q1" value="B"> <b>B.</b> Computer vision</label></li><li><label><input type="radio" name="q1" value="C"> <b>C.</b> Speech recognition</label></li><li><label><input type="radio" name="q1" value="D"> <b>D.</b> Time-series forecasting</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> The system must extract information from images or video of the boxes. Deriving meaning from visual inputs is the definition of computer vision.</p>
+    <ul class="faux"><li><b>A.</b> Natural language processing works with human language in text or speech, not images.</li><li><b>C.</b> Speech recognition converts spoken audio into text.</li><li><b>D.</b> Time-series forecasting predicts future values from ordered historical data, not from camera images.</li></ul>
+    <blockquote>&ldquo;Computer vision is a field of artificial intelligence (AI) that enables computers to derive meaningful information from digital images, videos, and other visual inputs.&rdquo;<br>
+    <a href="https://aws.amazon.com/what-is/computer-vision/" rel="nofollow">aws.amazon.com/what-is/computer-vision/</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 2 &middot; Domain 1, Fundamentals of AI and ML &middot; task 1.1</p>
+  <p class="enonce">A utility collects a reading from each smart meter every 15 minutes, each with a timestamp. It wants to use this history to study consumption patterns over the year. What type of data is this?</p>
+  <ul class="options"><li><label><input type="radio" name="q2" value="A"> <b>A.</b> Image data</label></li><li><label><input type="radio" name="q2" value="B"> <b>B.</b> Unlabeled text data</label></li><li><label><input type="radio" name="q2" value="C"> <b>C.</b> Semi-structured document data</label></li><li><label><input type="radio" name="q2" value="D"> <b>D.</b> Time-series data</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> Each value is tied to a point in time and the readings form an ordered sequence. Data recorded at regular intervals and analyzed in time order is time-series data, typical of IoT sensors.</p>
+    <ul class="faux"><li><b>A.</b> Meter readings are numeric values, not pictures.</li><li><b>B.</b> The readings are numbers with timestamps, not free text.</li><li><b>C.</b> Semi-structured data mixes unstructured content with tags, which does not describe regular numeric readings.</li></ul>
+    <blockquote>&ldquo;A time series database (TSDB) is a type of database management system that is structured for storing and analyzing time-ordered data. TSDBs are capable of handling large amounts of continuous event stream data, such as Internet of Things (IoT) sensor data from a fleet of devices.&rdquo;<br>
+    <a href="https://aws.amazon.com/what-is/time-series-database/" rel="nofollow">aws.amazon.com/what-is/time-series-database/</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 3 &middot; Domain 1, Fundamentals of AI and ML &middot; task 1.2</p>
+  <p class="enonce">A security team has months of network traffic records with no labels. It wants to discover natural groups of traffic types so analysts can spot suspicious ones. Which ML technique fits best?</p>
+  <ul class="options"><li><label><input type="radio" name="q3" value="A"> <b>A.</b> Clustering</label></li><li><label><input type="radio" name="q3" value="B"> <b>B.</b> Linear regression</label></li><li><label><input type="radio" name="q3" value="C"> <b>C.</b> Binary classification</label></li><li><label><input type="radio" name="q3" value="D"> <b>D.</b> Reinforcement learning</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> The data has no labels and the goal is to find groups of similar records. Clustering is the unsupervised technique that groups data inputs so they can be studied as a whole.</p>
+    <ul class="faux"><li><b>B.</b> Linear regression predicts a numeric value and needs a known target.</li><li><b>C.</b> Classification needs labeled examples of each class, which the team does not have.</li><li><b>D.</b> Reinforcement learning learns actions from rewards, not groups in existing records.</li></ul>
+    <blockquote>&ldquo;The clustering unsupervised learning technique groups certain data inputs together, so they may be categorized as a whole. [...] An example of clustering is identifying different types of network traffic to predict potential security incidents.&rdquo;<br>
+    <a href="https://aws.amazon.com/compare/the-difference-between-machine-learning-supervised-and-unsupervised/" rel="nofollow">aws.amazon.com/compare/the-difference-between-machine-learning-supervised-and-unsupervised/</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 4 &middot; Domain 1, Fundamentals of AI and ML &middot; task 1.2</p>
+  <p class="enonce">A marketing team wants one model that can draft campaign emails, summarize customer feedback and answer product questions, with little labeled data available. Which approach fits best?</p>
+  <ul class="options"><li><label><input type="radio" name="q4" value="A"> <b>A.</b> Train a separate regression model for each task</label></li><li><label><input type="radio" name="q4" value="B"> <b>B.</b> Build a k-means clustering model on the feedback</label></li><li><label><input type="radio" name="q4" value="C"> <b>C.</b> Use a pre-trained foundation model through prompts</label></li><li><label><input type="radio" name="q4" value="D"> <b>D.</b> Write a rule-based system for every possible request</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> The tasks are varied and generative, and the team lacks labeled data. A pre-trained foundation model handles many general tasks from prompts, while traditional ML models usually do one specific task.</p>
+    <ul class="faux"><li><b>A.</b> Regression predicts numbers and cannot write emails or summaries.</li><li><b>B.</b> Clustering groups similar feedback but does not generate text or answer questions.</li><li><b>D.</b> Hand-written rules cannot cover open language tasks like drafting emails.</li></ul>
+    <blockquote>&ldquo;The size and general-purpose nature of FMs make them different from traditional ML models, which typically perform specific tasks, like analyzing text for sentiment, classifying images, and forecasting trends.&rdquo;<br>
+    <a href="https://aws.amazon.com/what-is/foundation-models/" rel="nofollow">aws.amazon.com/what-is/foundation-models/</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 5 &middot; Domain 1, Fundamentals of AI and ML &middot; task 1.3</p>
+  <p class="enonce">An architect puts a stable API in front of a model endpoint instead of letting applications call the model code directly. What is the main benefit?</p>
+  <ul class="options"><li><label><input type="radio" name="q5" value="A"> <b>A.</b> The model no longer needs any training data</label></li><li><label><input type="radio" name="q5" value="B"> <b>B.</b> The model can change without breaking the calling applications</label></li><li><label><input type="radio" name="q5" value="C"> <b>C.</b> The model can skip evaluation before release</label></li><li><label><input type="radio" name="q5" value="D"> <b>D.</b> The model automatically becomes more accurate</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> An API layer separates consuming applications from the model behind it. The team can update or replace the model while clients keep the same contract.</p>
+    <ul class="faux"><li><b>A.</b> An API does not remove the need to train the model.</li><li><b>C.</b> Evaluation is still needed before any release.</li><li><b>D.</b> An API changes access, not model accuracy.</li></ul>
+    <blockquote>&ldquo;Expose ML endpoints through APIs so changes to the model can be introduced without disrupting upstream communications.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/mlrel01-bp01.html" rel="nofollow">docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/mlrel01-bp01.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="AC">
+  <p class="meta">Question 6 &middot; Domain 1, Fundamentals of AI and ML &middot; task 1.3</p>
+  <p class="enonce">A model has run in production for six months. Which TWO kinds of drift can Amazon SageMaker Model Monitor detect so the team knows when to retrain? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q6" value="A"> <b>A.</b> Drift in the quality of incoming data</label></li><li><label><input type="checkbox" name="q6" value="B"> <b>B.</b> Drift in the number of IAM users</label></li><li><label><input type="checkbox" name="q6" value="C"> <b>C.</b> Drift in model quality metrics such as accuracy</label></li><li><label><input type="checkbox" name="q6" value="D"> <b>D.</b> Drift in AWS invoice totals</label></li><li><label><input type="checkbox" name="q6" value="E"> <b>E.</b> Drift in the source code style</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A, C.</b> Model Monitor watches data quality and model quality, along with bias and feature attribution drift. Alerts on these deviations tell the team when to retrain the model.</p>
+    <ul class="faux"><li><b>B.</b> User counts are an account matter, not model drift.</li><li><b>D.</b> Billing is not monitored by Model Monitor.</li><li><b>E.</b> Code style has no link to model behavior in production.</li></ul>
+    <blockquote>&ldquo;Data quality - Monitor drift in data quality. Model quality - Monitor drift in model quality metrics, such as accuracy.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html" rel="nofollow">docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="AC">
+  <p class="meta">Question 7 &middot; Domain 2, Fundamentals of GenAI &middot; task 2.1</p>
+  <p class="enonce">A team is building semantic search over product descriptions. Which TWO statements about embeddings and vector databases are correct? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q7" value="A"> <b>A.</b> Embeddings capture meaning, so similar items sit close together as vectors.</label></li><li><label><input type="checkbox" name="q7" value="B"> <b>B.</b> Vector databases store data only as plain text strings for keyword matching.</label></li><li><label><input type="checkbox" name="q7" value="C"> <b>C.</b> Vector databases support fast nearest-neighbor lookup across many dimensions.</label></li><li><label><input type="checkbox" name="q7" value="D"> <b>D.</b> Embeddings can only be created from text and never from images.</label></li><li><label><input type="checkbox" name="q7" value="E"> <b>E.</b> Vector databases replace the need for any foundation model in search.</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A, C.</b> Embedding models turn data into vectors that carry meaning and context. A vector database stores these vectors and finds the nearest neighbors quickly, which is how similar items are retrieved.</p>
+    <ul class="faux"><li><b>B.</b> Vector databases store high-dimensional vectors, not just plain text for keyword match.</li><li><b>D.</b> Embeddings work for many data types, including images.</li><li><b>E.</b> The vectors come from an embedding model, so a model is still needed.</li></ul>
+    <blockquote>&ldquo;Embeddings encode all types of data into vectors that capture the meaning and context of an asset. [...] They add additional capabilities for efficient and fast lookup of nearest-neighbors in the n-dimensional space.&rdquo;<br>
+    <a href="https://aws.amazon.com/what-is/vector-databases/" rel="nofollow">aws.amazon.com/what-is/vector-databases/</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 8 &middot; Domain 2, Fundamentals of GenAI &middot; task 2.1</p>
+  <p class="enonce">An AI agent must read records from a company ticketing system and also call another agent that handles billing. Which open protocol provides a communication layer for both kinds of connection?</p>
+  <ul class="options"><li><label><input type="radio" name="q8" value="A"> <b>A.</b> Simple Mail Transfer Protocol (SMTP)</label></li><li><label><input type="radio" name="q8" value="B"> <b>B.</b> File Transfer Protocol (FTP)</label></li><li><label><input type="radio" name="q8" value="C"> <b>C.</b> Border Gateway Protocol (BGP)</label></li><li><label><input type="radio" name="q8" value="D"> <b>D.</b> Model Context Protocol (MCP)</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> MCP is an open protocol that connects agents to external data, tools, and services. It can also carry communication between agents.</p>
+    <ul class="faux"><li><b>A.</b> SMTP sends email and is not designed for agent tool access.</li><li><b>B.</b> FTP transfers files and has no notion of agent tools.</li><li><b>C.</b> BGP routes traffic between networks on the internet.</li></ul>
+    <blockquote>&ldquo;MCP provides a communication layer that enables agents to interact with external data and services and can also be used to enable agents to interact with other agents.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-frameworks/getting-started-with-mcp.html" rel="nofollow">docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-frameworks/getting-started-with-mcp.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 9 &middot; Domain 2, Fundamentals of GenAI &middot; task 2.2</p>
+  <p class="enonce">A bank&#x27;s chatbot confidently quotes a fee policy that does not exist anywhere in the bank&#x27;s documents. The team wants to track how often this happens in production. Which metric fits?</p>
+  <ul class="options"><li><label><input type="radio" name="q9" value="A"> <b>A.</b> Throughput</label></li><li><label><input type="radio" name="q9" value="B"> <b>B.</b> Hallucination rate</label></li><li><label><input type="radio" name="q9" value="C"> <b>C.</b> GPU utilization</label></li><li><label><input type="radio" name="q9" value="D"> <b>D.</b> Net promoter score</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Generating confident but false information is called hallucination. Tracking the hallucination rate shows how often the model produces false or misleading content.</p>
+    <ul class="faux"><li><b>A.</b> Throughput measures request volume, not correctness.</li><li><b>C.</b> GPU utilization measures resource use, not false answers.</li><li><b>D.</b> Net promoter score measures customer satisfaction, not factual errors.</li></ul>
+    <blockquote>&ldquo;Hallucination rates - frequency of generating false or misleading information&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/gen-ai-lifecycle-operational-excellence/prod-monitoring-performance.html" rel="nofollow">docs.aws.amazon.com/prescriptive-guidance/latest/gen-ai-lifecycle-operational-excellence/prod-monitoring-performance.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 10 &middot; Domain 2, Fundamentals of GenAI &middot; task 2.2</p>
+  <p class="enonce">A subscription app adds AI-generated personalized content. Leadership wants a business value metric for its ROI dashboard, not a technical one. Which metric fits best?</p>
+  <ul class="options"><li><label><input type="radio" name="q10" value="A"> <b>A.</b> Tokens processed per second</label></li><li><label><input type="radio" name="q10" value="B"> <b>B.</b> GPU memory utilization</label></li><li><label><input type="radio" name="q10" value="C"> <b>C.</b> Number of model parameters</label></li><li><label><input type="radio" name="q10" value="D"> <b>D.</b> Revenue lift, such as a rise in average revenue per user</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> An ROI dashboard pairs cost metrics with business value metrics such as revenue lift, hours saved, and customer satisfaction. A rise in average revenue per user is a form of revenue lift.</p>
+    <ul class="faux"><li><b>A.</b> Token throughput is a technical performance metric.</li><li><b>B.</b> GPU utilization is an infrastructure metric.</li><li><b>C.</b> Parameter count describes the model, not business results.</li></ul>
+    <blockquote>&ldquo;It should integrate financial metrics (such as cost per interaction and total infrastructure spend) with business value metrics (such as hours saved, revenue lift, and CSAT score improvements).&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/gen-ai-lifecycle-operational-excellence/prod-value.html" rel="nofollow">docs.aws.amazon.com/prescriptive-guidance/latest/gen-ai-lifecycle-operational-excellence/prod-value.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 11 &middot; Domain 2, Fundamentals of GenAI &middot; task 2.3</p>
+  <p class="enonce">A company has built several agents with LangGraph and wants an AWS platform to deploy and operate them securely at scale, with any framework and any foundation model. Which service fits best?</p>
+  <ul class="options"><li><label><input type="radio" name="q11" value="A"> <b>A.</b> Amazon Bedrock AgentCore</label></li><li><label><input type="radio" name="q11" value="B"> <b>B.</b> Amazon SageMaker JumpStart</label></li><li><label><input type="radio" name="q11" value="C"> <b>C.</b> Amazon Bedrock Knowledge Bases</label></li><li><label><input type="radio" name="q11" value="D"> <b>D.</b> Amazon Quick Sight</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Amazon Bedrock AgentCore is an agentic platform for building, deploying, and operating agents. It works with open-source frameworks such as LangGraph, CrewAI, and Strands Agents and with models inside or outside Amazon Bedrock.</p>
+    <ul class="faux"><li><b>B.</b> JumpStart is a catalog of pretrained models, not a platform to run framework-based agents.</li><li><b>C.</b> Knowledge Bases provide retrieval for RAG, they do not host and operate agents.</li><li><b>D.</b> Quick Sight is a business intelligence feature of Amazon Quick.</li></ul>
+    <blockquote>&ldquo;Amazon Bedrock AgentCore is an agentic platform for building, deploying, and operating highly effective agents securely at scale using any framework and foundation model.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html" rel="nofollow">docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 12 &middot; Domain 2, Fundamentals of GenAI &middot; task 2.3</p>
+  <p class="enonce">A board asks why the company should build its generative AI applications on AWS. Which set of benefits does AWS state for generative AI on AWS?</p>
+  <ul class="options"><li><label><input type="radio" name="q12" value="A"> <b>A.</b> Free unlimited inference and no shared security duties</label></li><li><label><input type="radio" name="q12" value="B"> <b>B.</b> A single model provider and a fixed monthly price for all services</label></li><li><label><input type="radio" name="q12" value="C"> <b>C.</b> Enterprise-grade security and privacy, access to industry-leading FMs, and a data-first approach</label></li><li><label><input type="radio" name="q12" value="D"> <b>D.</b> Exclusive ownership of the base model weights and full liability transfer to AWS</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> AWS presents generative AI on AWS as easy to build and scale. It highlights enterprise-grade security and privacy, a choice of leading foundation models, ready applications, and a data-first approach.</p>
+    <ul class="faux"><li><b>A.</b> Inference is billed and security is a shared responsibility.</li><li><b>B.</b> AWS offers models from many providers, and prices depend on usage.</li><li><b>D.</b> Customers do not own base model weights and keep their own responsibilities.</li></ul>
+    <blockquote>&ldquo;With generative AI on AWS, you get enterprise-grade security and privacy, access to industry-leading FMs, generative AI-powered applications, and a data-first approach.&rdquo;<br>
+    <a href="https://aws.amazon.com/what-is/generative-ai/" rel="nofollow">aws.amazon.com/what-is/generative-ai/</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="BD">
+  <p class="meta">Question 13 &middot; Domain 2, Fundamentals of GenAI &middot; task 2.3</p>
+  <p class="enonce">A company uses Amazon Bedrock service tiers for different workloads. Which two statements about the tiers are correct? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q13" value="A"> <b>A.</b> The Standard tier requires a capacity reservation through the AWS account team</label></li><li><label><input type="checkbox" name="q13" value="B"> <b>B.</b> The Flex tier gives a pricing discount to workloads that can accept longer processing times</label></li><li><label><input type="checkbox" name="q13" value="C"> <b>C.</b> Flex tier requests are served before Priority tier requests</label></li><li><label><input type="checkbox" name="q13" value="D"> <b>D.</b> The Priority tier gives the fastest response times for a price premium</label></li><li><label><input type="checkbox" name="q13" value="E"> <b>E.</b> The Priority tier needs a one-month minimum reservation</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B, D.</b> Flex suits jobs such as model evaluations or summarization that can wait, in exchange for a discount. Priority costs more than standard on-demand and gives the fastest responses for customer-facing workloads.</p>
+    <ul class="faux"><li><b>A.</b> Standard is the default tier and needs no reservation.</li><li><b>C.</b> Priority requests are served ahead of Standard and Flex requests.</li><li><b>E.</b> Priority needs no prior reservation, you set a request parameter.</li></ul>
+    <blockquote>&ldquo;For workloads that can handle longer processing times, the Flex tier offers cost-effective processing for a pricing discount. [...] The Priority tier delivers the fastest response times for a price premium over standard on-demand pricing.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/service-tiers-inference.html" rel="nofollow">docs.aws.amazon.com/bedrock/latest/userguide/service-tiers-inference.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 14 &middot; Domain 3, Applications of Foundation Models &middot; task 3.1</p>
+  <p class="enonce">Users of a chatbot upload a long product manual and then ask many questions about it in the same session. The company wants to cut response latency and input token costs on Amazon Bedrock. Which feature fits best?</p>
+  <ul class="options"><li><label><input type="radio" name="q14" value="A"> <b>A.</b> Model distillation into a smaller student model</label></li><li><label><input type="radio" name="q14" value="B"> <b>B.</b> Prompt caching for the repeated manual content</label></li><li><label><input type="radio" name="q14" value="C"> <b>C.</b> A higher temperature setting</label></li><li><label><input type="radio" name="q14" value="D"> <b>D.</b> Batch inference with results written to Amazon S3</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Prompt caching lets the model reuse a long prefix that repeats across requests instead of processing it each time. A manual that is queried many times is the textbook case, and it lowers both latency and input token cost.</p>
+    <ul class="faux"><li><b>A.</b> Distillation creates a new model through training. It does not avoid reprocessing the same manual on every request.</li><li><b>C.</b> Temperature changes randomness. It has no effect on cost or latency of repeated context.</li><li><b>D.</b> Batch inference is asynchronous and does not suit an interactive chat session.</li></ul>
+    <blockquote>&ldquo;Prompt caching can help when you have workloads with long and repeated contexts that are frequently reused for multiple queries.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-caching.html" rel="nofollow">docs.aws.amazon.com/bedrock/latest/userguide/prompt-caching.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 15 &middot; Domain 3, Applications of Foundation Models &middot; task 3.1</p>
+  <p class="enonce">A company wants its assistant to know about new internal reports every week. Retraining a foundation model each week is being discussed. Why is RAG usually the cheaper choice here?</p>
+  <ul class="options"><li><label><input type="radio" name="q15" value="A"> <b>A.</b> RAG permanently rewrites model weights faster than training</label></li><li><label><input type="radio" name="q15" value="B"> <b>B.</b> RAG adds new data at query time and avoids the high cost of retraining</label></li><li><label><input type="radio" name="q15" value="C"> <b>C.</b> RAG removes all inference charges for the model</label></li><li><label><input type="radio" name="q15" value="D"> <b>D.</b> RAG needs no storage for the documents or embeddings</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Retraining a model for each update requires large compute and money. RAG keeps the model as is and supplies fresh documents at inference time, which makes it the cost-effective way to add new data.</p>
+    <ul class="faux"><li><b>A.</b> RAG does not touch model weights. It supplies data in the prompt.</li><li><b>C.</b> The model still runs and is still billed for each request.</li><li><b>D.</b> RAG relies on a data source and usually a vector store, which has its own cost.</li></ul>
+    <blockquote>&ldquo;The computational and financial costs of retraining FMs for organization or domain-specific information are high. RAG is a more cost-effective approach to introducing new data to the LLM.&rdquo;<br>
+    <a href="https://aws.amazon.com/what-is/retrieval-augmented-generation/" rel="nofollow">aws.amazon.com/what-is/retrieval-augmented-generation/</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 16 &middot; Domain 3, Applications of Foundation Models &middot; task 3.2</p>
+  <p class="enonce">A user asks a model to classify a headline as positive, negative or neutral, and gives no example classifications in the prompt. Which prompting technique is this?</p>
+  <ul class="options"><li><label><input type="radio" name="q16" value="A"> <b>A.</b> Zero-shot prompting</label></li><li><label><input type="radio" name="q16" value="B"> <b>B.</b> Few-shot prompting</label></li><li><label><input type="radio" name="q16" value="C"> <b>C.</b> Single-shot prompting</label></li><li><label><input type="radio" name="q16" value="D"> <b>D.</b> Chain-of-thought prompting</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Zero-shot prompting gives the task with no examples and relies on the model&#x27;s general training. It suits simple tasks the model already handles well.</p>
+    <ul class="faux"><li><b>B.</b> Few-shot prompting includes several example input and output pairs.</li><li><b>C.</b> Single-shot prompting includes exactly one example pair.</li><li><b>D.</b> Chain-of-thought asks the model to reason step by step. The prompt here only states the task.</li></ul>
+    <blockquote>&ldquo;example of a zero-shot sentiment classification prompt where no example input-output pair is provided in the prompt text&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-engineering-guidelines.html" rel="nofollow">docs.aws.amazon.com/bedrock/latest/userguide/prompt-engineering-guidelines.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 17 &middot; Domain 3, Applications of Foundation Models &middot; task 3.2</p>
+  <p class="enonce">A bank wants to block harmful content and redact personal data in both user inputs and model responses across several foundation models on Amazon Bedrock. Which feature should it use?</p>
+  <ul class="options"><li><label><input type="radio" name="q17" value="A"> <b>A.</b> Amazon Bedrock Guardrails</label></li><li><label><input type="radio" name="q17" value="B"> <b>B.</b> Amazon Bedrock Prompt Management variables</label></li><li><label><input type="radio" name="q17" value="C"> <b>C.</b> Prompt caching</label></li><li><label><input type="radio" name="q17" value="D"> <b>D.</b> Model distillation</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Guardrails apply configurable safeguards such as content filters and sensitive information filters to inputs and outputs. They work across foundation models, which keeps safety rules consistent.</p>
+    <ul class="faux"><li><b>B.</b> Variables are placeholders in prompts. They do not filter content.</li><li><b>C.</b> Caching reduces latency and cost. It does not inspect content.</li><li><b>D.</b> Distillation trains a smaller model. It does not filter inputs or outputs.</li></ul>
+    <blockquote>&ldquo;Amazon Bedrock Guardrails provides configurable safeguards to help you build safe generative AI applications.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html" rel="nofollow">docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 18 &middot; Domain 3, Applications of Foundation Models &middot; task 3.3</p>
+  <p class="enonce">During pre-training, a foundation model learns from a huge corpus of text that nobody has labeled. How does the model get a learning signal from this data?</p>
+  <ul class="options"><li><label><input type="radio" name="q18" value="A"> <b>A.</b> Human annotators label every sentence before training starts</label></li><li><label><input type="radio" name="q18" value="B"> <b>B.</b> Self-supervised learning creates the labels from the input data itself</label></li><li><label><input type="radio" name="q18" value="C"> <b>C.</b> A reward function written by engineers scores each document</label></li><li><label><input type="radio" name="q18" value="D"> <b>D.</b> A smaller model labels the corpus and the large model copies it</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Foundation models are pre-trained with self-supervised learning. The training objective, such as predicting the next or a masked word, builds its own labels from the raw text, so no manual labeling is needed at that scale.</p>
+    <ul class="faux"><li><b>A.</b> Labeling a corpus of that size by hand is not how pre-training works.</li><li><b>C.</b> Reward functions belong to reinforcement learning methods, not to standard pre-training.</li><li><b>D.</b> That describes distillation, which happens after a capable model already exists.</li></ul>
+    <blockquote>&ldquo;Foundation models use self-supervised learning to create labels from input data.&rdquo;<br>
+    <a href="https://aws.amazon.com/what-is/foundation-models/" rel="nofollow">aws.amazon.com/what-is/foundation-models/</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 19 &middot; Domain 3, Applications of Foundation Models &middot; task 3.3</p>
+  <p class="enonce">A team will use instruction-based fine-tuning on a pre-trained model. What form should its training examples take?</p>
+  <ul class="options"><li><label><input type="radio" name="q19" value="A"> <b>A.</b> Labeled prompt and response pairs phrased as instructions</label></li><li><label><input type="radio" name="q19" value="B"> <b>B.</b> Raw unlabeled documents with no expected outputs</label></li><li><label><input type="radio" name="q19" value="C"> <b>C.</b> A list of reward scores without any prompts</label></li><li><label><input type="radio" name="q19" value="D"> <b>D.</b> Embeddings of documents stored in a vector database</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> Instruction tuning is supervised. Each example pairs an instruction style prompt with the expected response, so the model learns to follow similar requests.</p>
+    <ul class="faux"><li><b>B.</b> Raw documents with no outputs fit continued pre-training or domain adaptation.</li><li><b>C.</b> Scores alone, without prompts and responses, cannot teach the model a task.</li><li><b>D.</b> Stored embeddings support retrieval at query time, not instruction tuning.</li></ul>
+    <blockquote>&ldquo;Instruction-based fine-tuning uses labeled examples to improve the performance of a pre-trained foundation model on a specific task. The labeled examples are formatted as prompt, response pairs and phrased as instructions.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-fine-tuning-instruction-based.html" rel="nofollow">docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-fine-tuning-instruction-based.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 20 &middot; Domain 3, Applications of Foundation Models &middot; task 3.3</p>
+  <p class="enonce">A healthcare company is labeling examples to fine-tune a model. A manager wants to cut labeling time by accepting rough, unchecked labels. Why is this a risk?</p>
+  <ul class="options"><li><label><input type="radio" name="q20" value="A"> <b>A.</b> Rough labels make the training job fail to start</label></li><li><label><input type="radio" name="q20" value="B"> <b>B.</b> Rough labels increase the storage cost of the dataset</label></li><li><label><input type="radio" name="q20" value="C"> <b>C.</b> The trained model can only be as accurate as its labels</label></li><li><label><input type="radio" name="q20" value="D"> <b>D.</b> Labels are ignored during fine-tuning, so the effort is wasted</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> Labels are the ground truth the model learns from. Inaccurate labels teach the model wrong answers, so careful labeling is worth the time.</p>
+    <ul class="faux"><li><b>A.</b> The job still runs with poor labels, it just learns the wrong things.</li><li><b>B.</b> Label quality has no real effect on storage cost.</li><li><b>D.</b> Supervised fine-tuning depends directly on the labels.</li></ul>
+    <blockquote>&ldquo;The accuracy of your trained model will depend on the accuracy of your ground truth, so spending the time and resources to ensure highly accurate data labeling is essential.&rdquo;<br>
+    <a href="https://aws.amazon.com/what-is/data-labeling/" rel="nofollow">aws.amazon.com/what-is/data-labeling/</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="BE">
+  <p class="meta">Question 21 &middot; Domain 3, Applications of Foundation Models &middot; task 3.4</p>
+  <p class="enonce">A bank runs an LLM-as-a-judge evaluation in Amazon Bedrock. It wants to check whether answers respect the exact directions in the prompt and whether they suit a professional setting. Which two built-in metrics should it select? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q21" value="A"> <b>A.</b> Refusal</label></li><li><label><input type="checkbox" name="q21" value="B"> <b>B.</b> Following instructions</label></li><li><label><input type="checkbox" name="q21" value="C"> <b>C.</b> Stereotyping</label></li><li><label><input type="checkbox" name="q21" value="D"> <b>D.</b> Context coverage</label></li><li><label><input type="checkbox" name="q21" value="E"> <b>E.</b> Professional style and tone</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B, E.</b> Following instructions checks how well a response respects the directions in the prompt. Professional style and tone checks whether style, formatting and tone fit a professional setting.</p>
+    <ul class="faux"><li><b>A.</b> Refusal detects when the model declines to answer.</li><li><b>C.</b> Stereotyping looks for stereotypes in the content.</li><li><b>D.</b> Context coverage is a RAG retrieval metric, not a judge metric for model answers.</li></ul>
+    <blockquote>&ldquo;measures how well the model&#x27;s response respects the exact directions found in the prompt. [...] measures how appropriate the response&#x27;s style, formatting, and tone is for a professional setting.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-metrics.html" rel="nofollow">docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-metrics.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 22 &middot; Domain 3, Applications of Foundation Models &middot; task 3.4</p>
+  <p class="enonce">A travel booking agent holds multi-turn conversations. The team wants to know whether each session achieved everything the user wanted. Which AgentCore built-in evaluator fits?</p>
+  <ul class="options"><li><label><input type="radio" name="q22" value="A"> <b>A.</b> Tool parameter accuracy</label></li><li><label><input type="radio" name="q22" value="B"> <b>B.</b> Conciseness</label></li><li><label><input type="radio" name="q22" value="C"> <b>C.</b> Stereotyping</label></li><li><label><input type="radio" name="q22" value="D"> <b>D.</b> Goal success rate</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> Goal success rate is a session-level evaluator. It reviews the whole conversation to judge whether all user goals were met, which matches the team&#x27;s question.</p>
+    <ul class="faux"><li><b>A.</b> Tool parameter accuracy checks individual tool calls, not the whole session outcome.</li><li><b>B.</b> Conciseness judges wording length, not whether goals were met.</li><li><b>C.</b> Stereotyping looks for biased content, not task success.</li></ul>
+    <blockquote>&ldquo;The goal success rate evaluator assesses whether an AI assistant successfully completed all user goals within a conversation session.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/prompt-templates-builtin.html" rel="nofollow">docs.aws.amazon.com/bedrock-agentcore/latest/devguide/prompt-templates-builtin.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 23 &middot; Domain 4, Guidelines for Responsible AI &middot; task 4.1</p>
+  <p class="enonce">A RAG application answers employee questions from internal policy documents. Sometimes the model adds details that are not in the retrieved passages. Which Amazon Bedrock Guardrails feature helps detect and filter these answers?</p>
+  <ul class="options"><li><label><input type="radio" name="q23" value="A"> <b>A.</b> Word filters</label></li><li><label><input type="radio" name="q23" value="B"> <b>B.</b> Content filters</label></li><li><label><input type="radio" name="q23" value="C"> <b>C.</b> Denied topics</label></li><li><label><input type="radio" name="q23" value="D"> <b>D.</b> Contextual grounding checks</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> Contextual grounding checks flag responses that are not grounded in the source information or that do not answer the user&#x27;s query. This is the guardrail built for hallucinations in RAG applications.</p>
+    <ul class="faux"><li><b>A.</b> Word filters only block listed words or phrases.</li><li><b>B.</b> Content filters detect harmful categories such as hate or insults, not unsupported facts.</li><li><b>C.</b> Denied topics block subjects you define, not answers that drift from the retrieved text.</li></ul>
+    <blockquote>&ldquo;Contextual grounding checks - can help you detect and filter hallucinations in model responses if they are not grounded (factually inaccurate or add new information) in the source information or are irrelevant to the user&#x27;s query.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-components.html" rel="nofollow">docs.aws.amazon.com/bedrock/latest/userguide/guardrails-components.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="A">
+  <p class="meta">Question 24 &middot; Domain 4, Guidelines for Responsible AI &middot; task 4.1</p>
+  <p class="enonce">A data scientist checks the class imbalance (CI) metric in SageMaker Clarify for a gender facet and gets a value very close to 0. What does this value indicate about the training data?</p>
+  <ul class="options"><li><label><input type="radio" name="q24" value="A"> <b>A.</b> Members of the two facets are distributed in a balanced way</label></li><li><label><input type="radio" name="q24" value="B"> <b>B.</b> Only one facet is present in the data</label></li><li><label><input type="radio" name="q24" value="C"> <b>C.</b> The labels in the data are mostly wrong</label></li><li><label><input type="radio" name="q24" value="D"> <b>D.</b> The model is overfitting on the larger facet</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A.</b> A CI value near zero means the facets have close to equal numbers of samples, which is a balanced distribution. Values near 1 or minus 1 signal strong imbalance and a higher risk of biased predictions.</p>
+    <ul class="faux"><li><b>B.</b> A dataset with only one facet gives a CI of 1 or minus 1, not 0.</li><li><b>C.</b> CI counts samples per facet and says nothing about label accuracy.</li><li><b>D.</b> CI is a pre-training metric on the data and does not measure overfitting.</li></ul>
+    <blockquote>&ldquo;Values of CI near zero indicate a more equal distribution of members between facets and a value of zero indicates a perfectly equal partition between facets and represents a balanced distribution of samples in the training data.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-bias-metric-class-imbalance.html" rel="nofollow">docs.aws.amazon.com/sagemaker/latest/dg/clarify-bias-metric-class-imbalance.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="AD">
+  <p class="meta">Question 25 &middot; Domain 4, Guidelines for Responsible AI &middot; task 4.2</p>
+  <p class="enonce">Which two benefits does AWS list for explanations of ML model predictions? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q25" value="A"> <b>A.</b> Meeting audit and regulatory requirements</label></li><li><label><input type="checkbox" name="q25" value="B"> <b>B.</b> Removing the need for training data</label></li><li><label><input type="checkbox" name="q25" value="C"> <b>C.</b> Lower inference cost per request</label></li><li><label><input type="checkbox" name="q25" value="D"> <b>D.</b> Debugging and improving model performance</label></li><li><label><input type="checkbox" name="q25" value="E"> <b>E.</b> Guaranteeing the model has no bias</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A, D.</b> AWS says explanations support auditing and regulatory requirements, build trust and support human decisions, and help debug and improve models. An explainable model can be checked and fixed in ways a black box cannot.</p>
+    <ul class="faux"><li><b>B.</b> Explanations describe a trained model and do not replace training data.</li><li><b>C.</b> Generating explanations adds work and does not lower inference cost.</li><li><b>E.</b> Explanations can help find bias but cannot guarantee it is absent.</li></ul>
+    <blockquote>&ldquo;You can use explanations for auditing and meeting regulatory requirements, building trust in the model and supporting human decision-making, and debugging and improving model performance.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html" rel="nofollow">docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="AC">
+  <p class="meta">Question 26 &middot; Domain 4, Guidelines for Responsible AI &middot; task 4.2</p>
+  <p class="enonce">A team uses feature importance scores to interpret a complex model before a business decision. Which two statements reflect AWS guidance on these scores? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q26" value="A"> <b>A.</b> The scores can be misleading and need careful analysis</label></li><li><label><input type="checkbox" name="q26" value="B"> <b>B.</b> The scores are always exact for complex models</label></li><li><label><input type="checkbox" name="q26" value="C"> <b>C.</b> The scores should be validated with subject matter experts when possible</label></li><li><label><input type="checkbox" name="q26" value="D"> <b>D.</b> The scores remove the need to measure model accuracy</label></li><li><label><input type="checkbox" name="q26" value="E"> <b>E.</b> The scores are only useful for linear regression models</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer A, C.</b> AWS warns that feature importance scores can be misleading and should be analyzed carefully. It recommends validation with subject matter experts, because misread scores can lead to poor business decisions.</p>
+    <ul class="faux"><li><b>B.</b> Interpretation methods rely on simplifying assumptions that can themselves introduce inaccuracy.</li><li><b>D.</b> Interpretability does not replace performance metrics such as accuracy.</li><li><b>E.</b> Feature importance methods such as SHAP are used on complex models too.</li></ul>
+    <blockquote>&ldquo;Feature importance scores can be misleading and should be analyzed carefully, including validation with subject matter experts if possible.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-model-interpretability/overview.html" rel="nofollow">docs.aws.amazon.com/prescriptive-guidance/latest/ml-model-interpretability/overview.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 27 &middot; Domain 5, Security, Compliance, and Governance for AI Solutions &middot; task 5.1</p>
+  <p class="enonce">A team deploys an AI agent that must call a third-party calendar API on behalf of each signed-in user, while keeping audit trails of that access. Which capability is designed for this?</p>
+  <ul class="options"><li><label><input type="radio" name="q27" value="A"> <b>A.</b> Amazon Bedrock Guardrails</label></li><li><label><input type="radio" name="q27" value="B"> <b>B.</b> Amazon Bedrock AgentCore Identity</label></li><li><label><input type="radio" name="q27" value="C"> <b>C.</b> Amazon Macie</label></li><li><label><input type="radio" name="q27" value="D"> <b>D.</b> AWS Artifact</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> AgentCore Identity manages authentication, authorization, and credentials for agents. It lets an agent reach AWS resources and third-party services on behalf of users with security controls and audit trails.</p>
+    <ul class="faux"><li><b>A.</b> Guardrails filter content in prompts and responses, they do not manage credentials.</li><li><b>C.</b> Macie discovers sensitive data in Amazon S3.</li><li><b>D.</b> AWS Artifact provides compliance documents, not agent credentials.</li></ul>
+    <blockquote>&ldquo;It provides secure authentication, authorization, and credential management capabilities that enable agents and tools to access AWS resources and third-party services on behalf of users while helping to maintain strict security controls and audit trails.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/identity.html" rel="nofollow">docs.aws.amazon.com/bedrock-agentcore/latest/devguide/identity.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="B">
+  <p class="meta">Question 28 &middot; Domain 5, Security, Compliance, and Governance for AI Solutions &middot; task 5.1</p>
+  <p class="enonce">A data lake holds training data with a column of national ID numbers. Data scientists may read the table but must not see that column. Which service gives this fine-grained control?</p>
+  <ul class="options"><li><label><input type="radio" name="q28" value="A"> <b>A.</b> Amazon GuardDuty</label></li><li><label><input type="radio" name="q28" value="B"> <b>B.</b> AWS Lake Formation</label></li><li><label><input type="radio" name="q28" value="C"> <b>C.</b> AWS Trusted Advisor</label></li><li><label><input type="radio" name="q28" value="D"> <b>D.</b> Amazon Inspector</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer B.</b> Lake Formation lets administrators define access policies down to the column, row, and cell level. The team can grant the table while hiding the sensitive column.</p>
+    <ul class="faux"><li><b>A.</b> GuardDuty detects threats, it does not grant or restrict column access.</li><li><b>C.</b> Trusted Advisor gives best practice recommendations, not data permissions.</li><li><b>D.</b> Inspector finds software vulnerabilities in workloads.</li></ul>
+    <blockquote>&ldquo;You can define security policies that restrict access to data at the database, table, column, row, and cell levels.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/lake-formation/latest/dg/what-is-lake-formation.html" rel="nofollow">docs.aws.amazon.com/lake-formation/latest/dg/what-is-lake-formation.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="C">
+  <p class="meta">Question 29 &middot; Domain 5, Security, Compliance, and Governance for AI Solutions &middot; task 5.2</p>
+  <p class="enonce">A regulator asks a healthcare startup for the AWS SOC reports that cover the infrastructure its AI system runs on. Where can the startup download these reports?</p>
+  <ul class="options"><li><label><input type="radio" name="q29" value="A"> <b>A.</b> AWS Trusted Advisor</label></li><li><label><input type="radio" name="q29" value="B"> <b>B.</b> AWS CloudTrail</label></li><li><label><input type="radio" name="q29" value="C"> <b>C.</b> AWS Artifact</label></li><li><label><input type="radio" name="q29" value="D"> <b>D.</b> Amazon Inspector</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer C.</b> AWS Artifact gives on-demand access to AWS security and compliance documents such as SOC, ISO, and PCI reports. Customers can hand these to auditors or regulators.</p>
+    <ul class="faux"><li><b>A.</b> Trusted Advisor gives recommendations for your account, not third-party audit reports.</li><li><b>B.</b> CloudTrail records API activity.</li><li><b>D.</b> Inspector produces vulnerability findings, not AWS audit reports.</li></ul>
+    <blockquote>&ldquo;AWS Artifact provides on-demand downloads of AWS security and compliance documents.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html" rel="nofollow">docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html</a></blockquote>
+  </div>
+</section>
+<section class="q" data-juste="D">
+  <p class="meta">Question 30 &middot; Domain 5, Security, Compliance, and Governance for AI Solutions &middot; task 5.2</p>
+  <p class="enonce">A team wants AWS CloudTrail to record every InvokeAgent call made to its Amazon Bedrock agents. What must the team do?</p>
+  <ul class="options"><li><label><input type="radio" name="q30" value="A"> <b>A.</b> Nothing, because these calls are logged as management events by default</label></li><li><label><input type="radio" name="q30" value="B"> <b>B.</b> Turn on Amazon Macie for the account</label></li><li><label><input type="radio" name="q30" value="C"> <b>C.</b> Enable model invocation logging and nothing else</label></li><li><label><input type="radio" name="q30" value="D"> <b>D.</b> Configure advanced event selectors to record data events for the agent alias resource type</label></li></ul>
+  <button type="button">Check</button>
+  <div class="corrige" hidden>
+    <p class="verdict"></p>
+    <p><b>Answer D.</b> Bedrock logs agent runtime calls such as InvokeAgent as CloudTrail data events. Data events are not logged by default, so the team must add an advanced event selector for agent aliases.</p>
+    <ul class="faux"><li><b>A.</b> InvokeAgent is a data event, and CloudTrail does not log data events by default.</li><li><b>B.</b> Macie scans S3 data and does not change CloudTrail logging.</li><li><b>C.</b> Model invocation logging is a separate feature and does not create CloudTrail data events.</li></ul>
+    <blockquote>&ldquo;To log InvokeAgent calls, configure advanced event selectors to record data events for the AWS::Bedrock::AgentAlias resource type.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/logging-using-cloudtrail.html" rel="nofollow">docs.aws.amazon.com/bedrock/latest/userguide/logging-using-cloudtrail.html</a></blockquote>
+  </div>
+</section>
+<div class="achat">
+<p>These 30 come from a set of 300, four full 65 question exams at the same weights plus a 40 question drill, in one PDF with the same sourced answer key. It is <a href="https://ko-fi.com/s/76cb2752a0">12 euros on Ko-fi</a>, no account needed to buy.</p>
+<p>If you would rather sit them timed in the browser with a score by domain at the end, the same 300 questions are also <a href="https://www.udemy.com/course/aws-ai-practitioner-aif-c01-practice-exams-300-questions/?couponCode=472A6455B764390E1161">a Udemy practice test course</a>, 12.99 dollars with that link until November 4.</p>
+<div class="apercus">
+  <a href="https://ko-fi.com/s/76cb2752a0"><img src="img/aws-aif-c01-exam-page.jpg" width="900" height="900" loading="lazy" alt="First page of Practice Exam 1, 65 questions at the official domain weights"></a>
+  <a href="https://ko-fi.com/s/76cb2752a0"><img src="img/aws-aif-c01-answer-key.jpg" width="900" height="900" loading="lazy" alt="Answer key page, each wrong option explained and the AWS quote with its link"></a>
+</div>
+</div>
+<footer>October 2026. Quotes matched word for word against the live AWS pages on October 5, 2026. Independent study aid, not affiliated with or endorsed by Amazon Web Services. AWS is a trademark of Amazon.com, Inc. or its affiliates.<br><a href="./">More free practice questions</a></footer>
+</main>
+<script>
+document.querySelectorAll('.q').forEach(carte => {
+  carte.querySelector('button').addEventListener('click', () => {
+    const choisies = [...carte.querySelectorAll('input:checked')].map(i => i.value).sort().join('');
+    if (!choisies) return;
+    const juste = carte.dataset.juste;
+    const verdict = carte.querySelector('.verdict');
+    verdict.textContent = choisies === juste ? 'Correct.' : 'Not quite, you picked ' + choisies.split('').join(', ') + '.';
+    verdict.className = 'verdict ' + (choisies === juste ? 'bon' : 'mauvais');
+    carte.querySelector('.corrige').hidden = false;
+  });
+});
+</script>
+<script data-goatcounter="https://verifiedprep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+document.addEventListener('click', e => {
+  const lien = e.target.closest('a[href*="ko-fi.com/"], a[href*="udemy.com/"]');
+  if (!lien || !window.goatcounter || !goatcounter.count) return;
+  const chemin = lien.href.includes('udemy.com') ? 'udemy-aws-aif' : 'kofi-' + (lien.href.split('/s/')[1] || 'pourboire');
+  goatcounter.count({ path: chemin, title: lien.innerText.trim(), event: true });
+});
+</script>
+</body>
+</html>
