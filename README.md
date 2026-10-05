@@ -505,6 +505,16 @@ print(r, a.tolist())
 
 </details>
 
+## Certification practice
+
+Thirty free questions per exam, every answer backed by a sentence quoted word for word from the official documentation.
+
+- [AWS Certified Cloud Practitioner, CLF-C02](https://thibaudlepan77-svg.github.io/interview-questions-verified/aws-clf-c02-practice-questions.html)
+- [AWS Certified AI Practitioner, AIF-C01](https://thibaudlepan77-svg.github.io/interview-questions-verified/aws-ai-practitioner-aif-c01-practice-questions.html)
+- [Microsoft Azure Fundamentals, AZ-900](https://thibaudlepan77-svg.github.io/interview-questions-verified/az-900-azure-fundamentals-practice-questions.html)
+- [Microsoft Azure Data Fundamentals, DP-900](https://thibaudlepan77-svg.github.io/interview-questions-verified/dp-900-azure-data-fundamentals-practice-questions.html)
+- [Scrum Master, on the 2020 Scrum Guide](https://thibaudlepan77-svg.github.io/interview-questions-verified/scrum-master-practice-questions-scrum-guide.html)
+
 ## Articles
 
 Longer write-ups, every output produced by running the code.
