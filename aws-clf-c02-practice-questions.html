@@ -301,14 +301,14 @@
 </section>
 <section class="q" data-juste="D">
   <p class="meta">Question 21 &middot; Domain 3, Cloud Technology and Services &middot; task 3.4</p>
-  <p class="enonce">A company is moving an on-premises database to AWS. The source database must stay online during the move, and changes made during the migration must keep flowing to the target until cutover. Which service should the company use?</p>
-  <ul class="options"><li><label><input type="radio" name="q21" value="A"> <b>A.</b> AWS Schema Conversion Tool (AWS SCT)</label></li><li><label><input type="radio" name="q21" value="B"> <b>B.</b> AWS Storage Gateway</label></li><li><label><input type="radio" name="q21" value="C"> <b>C.</b> AWS Backup</label></li><li><label><input type="radio" name="q21" value="D"> <b>D.</b> AWS Database Migration Service (AWS DMS)</label></li></ul>
+  <p class="enonce">A company plans to use AWS Database Migration Service (AWS DMS) to move several databases to AWS. The operations team asks who provides and looks after the servers that run the migration. Which statement is correct?</p>
+  <ul class="options"><li><label><input type="radio" name="q21" value="A"> <b>A.</b> The company must buy and install a replication server in its own data center first.</label></li><li><label><input type="radio" name="q21" value="B"> <b>B.</b> The company must build and patch its own Amazon EC2 instance to run the replication software.</label></li><li><label><input type="radio" name="q21" value="C"> <b>C.</b> AWS DMS can only run when the source and the target use the same database engine.</label></li><li><label><input type="radio" name="q21" value="D"> <b>D.</b> AWS DMS deploys, manages, and monitors the hardware and software that the migration needs.</label></li></ul>
   <button type="button">Check</button>
   <div class="corrige" hidden>
     <p class="verdict"></p>
-    <p><b>Answer D.</b> AWS DMS migrates relational databases, data warehouses, NoSQL databases, and other data stores. It can perform one-time migrations or replicate ongoing changes to keep the source and target in sync.</p>
-    <ul class="faux"><li><b>A.</b> AWS SCT converts schemas between engines, it does not replicate the data changes.</li><li><b>B.</b> Storage Gateway connects on-premises applications to cloud storage, it is not a database migration tool.</li><li><b>C.</b> AWS Backup centralizes backups, it does not keep a live target database in sync.</li></ul>
-    <blockquote>&ldquo;You can perform one-time migrations or replicate ongoing changes to keep sources and targets in sync.&rdquo;<br>
+    <p><b>Answer D.</b> AWS DMS is a managed service. AWS sets up and runs the replication infrastructure, including hardware, software, and patching, so the team only defines the source, the target, and the task.</p>
+    <ul class="faux"><li><b>A.</b> No hardware purchase is needed, the replication server runs in the AWS Cloud.</li><li><b>B.</b> AWS DMS manages the replication server itself, including software patching.</li><li><b>C.</b> AWS DMS supports heterogeneous migrations between different supported engines.</li></ul>
+    <blockquote>&ldquo;AWS DMS automatically manages the deployment, management, and monitoring of all hardware and software needed for your migration.&rdquo;<br>
     <a href="https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html" rel="nofollow">docs.aws.amazon.com/dms/latest/userguide/Welcome.html</a></blockquote>
   </div>
 </section>

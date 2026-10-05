@@ -249,15 +249,15 @@
 </section>
 <section class="q" data-juste="A">
   <p class="meta">Question 17 &middot; Domain 3, Applications of Foundation Models &middot; task 3.2</p>
-  <p class="enonce">A bank wants to block harmful content and redact personal data in both user inputs and model responses across several foundation models on Amazon Bedrock. Which feature should it use?</p>
-  <ul class="options"><li><label><input type="radio" name="q17" value="A"> <b>A.</b> Amazon Bedrock Guardrails</label></li><li><label><input type="radio" name="q17" value="B"> <b>B.</b> Amazon Bedrock Prompt Management variables</label></li><li><label><input type="radio" name="q17" value="C"> <b>C.</b> Prompt caching</label></li><li><label><input type="radio" name="q17" value="D"> <b>D.</b> Model distillation</label></li></ul>
+  <p class="enonce">A developer adds an Amazon Bedrock guardrail with a prompt attack filter to an application that calls InvokeModel. The developer&#x27;s own system prompt keeps getting flagged as an attack. What should the developer do so that only user input is checked for prompt attacks?</p>
+  <ul class="options"><li><label><input type="radio" name="q17" value="A"> <b>A.</b> Wrap the user input in guardrail input tags</label></li><li><label><input type="radio" name="q17" value="B"> <b>B.</b> Lower the filter strength to None for all inputs</label></li><li><label><input type="radio" name="q17" value="C"> <b>C.</b> Move the system prompt into a Knowledge Base</label></li><li><label><input type="radio" name="q17" value="D"> <b>D.</b> Raise the temperature of the model</label></li></ul>
   <button type="button">Check</button>
   <div class="corrige" hidden>
     <p class="verdict"></p>
-    <p><b>Answer A.</b> Guardrails apply configurable safeguards such as content filters and sensitive information filters to inputs and outputs. They work across foundation models, which keeps safety rules consistent.</p>
-    <ul class="faux"><li><b>B.</b> Variables are placeholders in prompts. They do not filter content.</li><li><b>C.</b> Caching reduces latency and cost. It does not inspect content.</li><li><b>D.</b> Distillation trains a smaller model. It does not filter inputs or outputs.</li></ul>
-    <blockquote>&ldquo;Amazon Bedrock Guardrails provides configurable safeguards to help you build safe generative AI applications.&rdquo;<br>
-    <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html" rel="nofollow">docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html</a></blockquote>
+    <p><b>Answer A.</b> A system prompt and a hijacking attempt can look alike. Input tags mark which part of the prompt came from the user, so the prompt attack filter evaluates that part and leaves the developer&#x27;s system prompt alone.</p>
+    <ul class="faux"><li><b>B.</b> Setting the strength to None turns off attack detection for users too.</li><li><b>C.</b> A Knowledge Base supplies retrieved documents. It does not tell the guardrail which text is user input.</li><li><b>D.</b> Temperature changes output randomness. It has no effect on guardrail filtering.</li></ul>
+    <blockquote>&ldquo;With input tags for guardrails, the prompt attack filter will detect malicious intents in user inputs, while ensuring that the developer provided system prompts remain unaffected.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-prompt-attack.html" rel="nofollow">docs.aws.amazon.com/bedrock/latest/userguide/guardrails-prompt-attack.html</a></blockquote>
   </div>
 </section>
 <section class="q" data-juste="B">
