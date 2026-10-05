@@ -364,17 +364,17 @@
     <a href="https://learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance/4-describe-purpose-resource-locks" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance/4-describe-purpose-resource-locks</a></blockquote>
   </div>
 </section>
-<section class="q" data-juste="A">
+<section class="q" data-juste="D">
   <p class="meta">Question 26 &middot; Describe Azure management and governance</p>
-  <p class="enonce">A contractor works on a locked-down laptop where he cannot install any software. He needs to run Azure CLI commands against the company subscription today. What should he use?</p>
-  <ul class="options"><li><label><input type="radio" name="q26" value="A"> <b>A.</b> Azure Cloud Shell</label></li><li><label><input type="radio" name="q26" value="B"> <b>B.</b> Azure Arc</label></li><li><label><input type="radio" name="q26" value="C"> <b>C.</b> Azure Advisor</label></li><li><label><input type="radio" name="q26" value="D"> <b>D.</b> A local Azure PowerShell installation</label></li></ul>
+  <p class="enonce">A team that prefers scripting worries that some tasks they can do in the Azure portal will not be possible from the Azure CLI or Azure PowerShell. Which statement is correct?</p>
+  <ul class="options"><li><label><input type="radio" name="q26" value="A"> <b>A.</b> Advanced settings are available only in the Azure portal</label></li><li><label><input type="radio" name="q26" value="B"> <b>B.</b> Azure PowerShell supports portal features, but the Azure CLI does not</label></li><li><label><input type="radio" name="q26" value="C"> <b>C.</b> Scripts can only read resources that were created in the portal</label></li><li><label><input type="radio" name="q26" value="D"> <b>D.</b> Capabilities in the portal are also available through PowerShell and the Azure CLI</label></li></ul>
   <button type="button">Check</button>
   <div class="corrige" hidden>
     <p class="verdict"></p>
-    <p><b>Answer A.</b> Azure Cloud Shell runs in the browser. Nothing has to be installed or configured on the laptop, and the Azure CLI is ready to use.</p>
-    <ul class="faux"><li><b>B.</b> Azure Arc brings resources outside Azure under Azure management, it is not a shell.</li><li><b>C.</b> Azure Advisor gives recommendations and cannot run commands.</li><li><b>D.</b> A local installation is exactly what the locked-down laptop does not allow.</li></ul>
-    <blockquote>&ldquo;It is a browser-based shell experience, with no local installation or configuration required.&rdquo;<br>
-    <a href="https://learn.microsoft.com/en-us/training/modules/describe-features-tools-manage-deploy-azure-resources/2-describe-interacting-azure" rel="nofollow">learn.microsoft.com/en-us/training/modules/describe-features-tools-manage-deploy-azure-resources/2-describe-interacting-azure</a></blockquote>
+    <p><b>Answer D.</b> Every request goes through Azure Resource Manager, whatever the tool. Microsoft states that capabilities available in the portal are also available through PowerShell, the Azure CLI, REST APIs and SDKs.</p>
+    <ul class="faux"><li><b>A.</b> The portal has no exclusive capabilities compared with the command-line tools.</li><li><b>B.</b> The Azure CLI has the same access as Azure PowerShell.</li><li><b>C.</b> Scripts can create, change and delete resources, not only read them.</li></ul>
+    <blockquote>&ldquo;All capabilities that are available in the Azure portal are also available through PowerShell, the Azure CLI, REST APIs, and client SDKs.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview" rel="nofollow">learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview</a></blockquote>
   </div>
 </section>
 <section class="q" data-juste="B">

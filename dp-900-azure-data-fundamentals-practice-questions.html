@@ -210,15 +210,15 @@
 </section>
 <section class="q" data-juste="A">
   <p class="meta">Question 14 &middot; Relational data on Azure</p>
-  <p class="enonce">Before moving on-premises SQL Server databases to Azure SQL Managed Instance, a DBA wants a report of any issues that could block the migration. Which tool should the DBA run?</p>
-  <ul class="options"><li><label><input type="radio" name="q14" value="A"> <b>A.</b> Data Migration Assistant</label></li><li><label><input type="radio" name="q14" value="B"> <b>B.</b> Microsoft Purview</label></li><li><label><input type="radio" name="q14" value="C"> <b>C.</b> Power BI Desktop</label></li><li><label><input type="radio" name="q14" value="D"> <b>D.</b> Azure Monitor</label></li></ul>
+  <p class="enonce">A company runs many SQL Server instances on VMware on premises and plans to move them to Azure SQL Managed Instance. First it wants to discover and assess them, with deployment recommendations, target sizing and monthly cost estimates. Which Azure service should it use?</p>
+  <ul class="options"><li><label><input type="radio" name="q14" value="A"> <b>A.</b> Azure Migrate</label></li><li><label><input type="radio" name="q14" value="B"> <b>B.</b> Microsoft Purview</label></li><li><label><input type="radio" name="q14" value="C"> <b>C.</b> Log Replay Service</label></li><li><label><input type="radio" name="q14" value="D"> <b>D.</b> Azure Monitor</label></li></ul>
   <button type="button">Check</button>
   <div class="corrige" hidden>
     <p class="verdict"></p>
-    <p><b>Answer A.</b> Data Migration Assistant analyzes SQL Server databases and lists compatibility issues. It tells you what could block a move to a managed instance before you start.</p>
-    <ul class="faux"><li><b>B.</b> Microsoft Purview handles data governance and cataloging, not migration checks.</li><li><b>C.</b> Power BI Desktop builds reports on data, it does not assess databases for migration.</li><li><b>D.</b> Azure Monitor collects metrics and logs from running resources, not migration blockers.</li></ul>
-    <blockquote>&ldquo;This tool analyzes your databases on SQL Server and reports any issues that could block migration to a managed instance.&rdquo;<br>
-    <a href="https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-relational-database-offerings-azure/2-azure-sql" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-provision-deploy-relational-database-offerings-azure/2-azure-sql</a></blockquote>
+    <p><b>Answer A.</b> Azure Migrate discovers and assesses a SQL Server estate at scale before a move to Azure SQL. It returns deployment recommendations, target sizing and monthly estimates, which is the planning step the company needs.</p>
+    <ul class="faux"><li><b>B.</b> Microsoft Purview handles data governance and cataloging, not migration assessment.</li><li><b>C.</b> Log Replay Service restores backup files to a managed instance during the move, it does not assess or size the source servers.</li><li><b>D.</b> Azure Monitor collects metrics and logs from running resources, it does not size a migration target.</li></ul>
+    <blockquote>&ldquo;This Azure service helps you discover and assess your SQL data estate at scale on VMware. It provides Azure SQL deployment recommendations, target sizing, and monthly estimates.&rdquo;<br>
+    <a href="https://learn.microsoft.com/en-us/data-migration/sql-server/managed-instance/overview" rel="nofollow">learn.microsoft.com/en-us/data-migration/sql-server/managed-instance/overview</a></blockquote>
   </div>
 </section>
 <section class="q" data-juste="AC">
