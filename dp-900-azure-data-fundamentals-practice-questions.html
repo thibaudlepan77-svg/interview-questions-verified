@@ -289,12 +289,12 @@
 <section class="q" data-juste="A">
   <p class="meta">Question 20 &middot; Non-relational data on Azure</p>
   <p class="enonce">A travel booking app has users in Europe, Asia and the Americas. The team adds several Azure regions to its Azure Cosmos DB account. What benefit do the users get?</p>
-  <ul class="options"><li><label><input type="radio" name="q20" value="A"> <b>A.</b> They each read and write to the nearest regional replica</label></li><li><label><input type="radio" name="q20" value="B"> <b>B.</b> They all connect to a single primary region</label></li><li><label><input type="radio" name="q20" value="C"> <b>C.</b> They need a separate account per country</label></li><li><label><input type="radio" name="q20" value="D"> <b>D.</b> They must choose a different API per region</label></li></ul>
+  <ul class="options"><li><label><input type="radio" name="q20" value="A"> <b>A.</b> They read from the nearest regional replica</label></li><li><label><input type="radio" name="q20" value="B"> <b>B.</b> They all read from a single primary region</label></li><li><label><input type="radio" name="q20" value="C"> <b>C.</b> They need a separate account per country</label></li><li><label><input type="radio" name="q20" value="D"> <b>D.</b> They must choose a different API per region</label></li></ul>
   <button type="button">Check</button>
   <div class="corrige" hidden>
     <p class="verdict"></p>
-    <p><b>Answer A.</b> Azure Cosmos DB replicates data automatically to every region added to the account. Users then work with the closest replica, which keeps latency low wherever they are.</p>
-    <ul class="faux"><li><b>B.</b> Global distribution exists precisely so users do not all go through one far-away region.</li><li><b>C.</b> One account can span many regions, there is no need for one account per country.</li><li><b>D.</b> The API is chosen for the account, it does not change from region to region.</li></ul>
+    <p><b>Answer A.</b> Azure Cosmos DB replicates data automatically to every region added to the account. Users then read from the closest replica, which keeps latency low wherever they are.</p>
+    <ul class="faux"><li><b>B.</b> Global distribution exists precisely so users do not all read from one far-away region.</li><li><b>C.</b> One account can span many regions, there is no need for one account per country.</li><li><b>D.</b> The API is chosen for the account, it does not change from region to region.</li></ul>
     <blockquote>&ldquo;Users in different locations read from and write to the nearest regional replica, which keeps latency low no matter where they are.&rdquo;<br>
     <a href="https://learn.microsoft.com/en-us/training/modules/explore-non-relational-data-stores-azure/2-describe-azure-cosmos-db" rel="nofollow">learn.microsoft.com/en-us/training/modules/explore-non-relational-data-stores-azure/2-describe-azure-cosmos-db</a></blockquote>
   </div>
