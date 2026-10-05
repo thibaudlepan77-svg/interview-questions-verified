@@ -104,29 +104,29 @@
     <a href="https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html" rel="nofollow">docs.aws.amazon.com/dms/latest/userguide/Welcome.html</a></blockquote>
   </div>
 </section>
-<section class="q" data-juste="A">
+<section class="q" data-juste="C">
   <p class="meta">Question 6 &middot; Domain 1, Cloud Concepts &middot; task 1.4</p>
-  <p class="enonce">An IT manager explains that the on-premises data center always has expensive spare capacity. According to AWS, what is the main reason on-premises environments carry this extra cost compared with cloud environments?</p>
-  <ul class="options"><li><label><input type="radio" name="q6" value="A"> <b>A.</b> On-premises capacity must be provisioned for peak demand, while cloud capacity can be provisioned based on average usage</label></li><li><label><input type="radio" name="q6" value="B"> <b>B.</b> On-premises servers cannot run virtualization software</label></li><li><label><input type="radio" name="q6" value="C"> <b>C.</b> Cloud providers do not charge for compute capacity</label></li><li><label><input type="radio" name="q6" value="D"> <b>D.</b> On-premises environments cannot be monitored</label></li></ul>
+  <p class="enonce">A company&#x27;s on-premises budget includes staff time spent racking, stacking, and powering servers. Which AWS Well-Architected cost optimization design principle addresses this cost?</p>
+  <ul class="options"><li><label><input type="radio" name="q6" value="A"> <b>A.</b> Measure overall efficiency</label></li><li><label><input type="radio" name="q6" value="B"> <b>B.</b> Analyze and attribute expenditure</label></li><li><label><input type="radio" name="q6" value="C"> <b>C.</b> Stop spending money on undifferentiated heavy lifting</label></li><li><label><input type="radio" name="q6" value="D"> <b>D.</b> Implement Cloud Financial Management</label></li></ul>
   <button type="button">Check</button>
   <div class="corrige" hidden>
     <p class="verdict"></p>
-    <p><b>Answer A.</b> AWS notes that IT departments have historically had to provision for peak demand. Cloud environments minimize costs because capacity is provisioned based on average usage rather than peak usage.</p>
-    <ul class="faux"><li><b>B.</b> On-premises servers can run virtualization; this is not the reason for spare capacity.</li><li><b>C.</b> Cloud compute is charged based on usage; it is not free.</li><li><b>D.</b> On-premises environments can be monitored; monitoring is not the cause of overprovisioning.</li></ul>
-    <blockquote>&ldquo;Historically, IT departments have had to provision for peak demand. However, cloud environments minimize costs because capacity is provisioned based on average usage rather than peak usage.&rdquo;<br>
-    <a href="https://docs.aws.amazon.com/whitepapers/latest/cost-optimization-right-sizing/right-size-before-migrating.html" rel="nofollow">docs.aws.amazon.com/whitepapers/latest/cost-optimization-right-sizing/right-size-before-migrating.html</a></blockquote>
+    <p><b>Answer C.</b> AWS does the heavy lifting of data center operations like racking, stacking, and powering servers. This principle lets the company focus on customers and business projects instead of IT infrastructure.</p>
+    <ul class="faux"><li><b>A.</b> Measure overall efficiency compares business output with cost; it does not remove data center work.</li><li><b>B.</b> Analyzing and attributing expenditure assigns costs to owners but does not remove data center tasks.</li><li><b>D.</b> Cloud Financial Management builds cost capability, but it is not the principle about offloading data center operations.</li></ul>
+    <blockquote>&ldquo;AWS does the heavy lifting of data center operations like racking, stacking, and powering servers.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html" rel="nofollow">docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html</a></blockquote>
   </div>
 </section>
-<section class="q" data-juste="B">
+<section class="q" data-juste="D">
   <p class="meta">Question 7 &middot; Domain 1, Cloud Concepts &middot; task 1.4</p>
-  <p class="enonce">A small business has never used AWS and wants to model the cost of a proposed architecture before building anything. Which AWS tool should it use?</p>
-  <ul class="options"><li><label><input type="radio" name="q7" value="A"> <b>A.</b> AWS Compute Optimizer</label></li><li><label><input type="radio" name="q7" value="B"> <b>B.</b> AWS Pricing Calculator</label></li><li><label><input type="radio" name="q7" value="C"> <b>C.</b> AWS Trusted Advisor</label></li><li><label><input type="radio" name="q7" value="D"> <b>D.</b> AWS License Manager</label></li></ul>
+  <p class="enonce">Before migrating, a company wants a data-driven business case built from an inventory of its on-premises servers, including insights on reusing existing software licenses. Which AWS offering is designed for this?</p>
+  <ul class="options"><li><label><input type="radio" name="q7" value="A"> <b>A.</b> AWS Pricing Calculator</label></li><li><label><input type="radio" name="q7" value="B"> <b>B.</b> AWS Budgets</label></li><li><label><input type="radio" name="q7" value="C"> <b>C.</b> AWS Cost Explorer</label></li><li><label><input type="radio" name="q7" value="D"> <b>D.</b> Migration Evaluator</label></li></ul>
   <button type="button">Check</button>
   <div class="corrige" hidden>
     <p class="verdict"></p>
-    <p><b>Answer B.</b> AWS Pricing Calculator is a web-based service for creating cost estimates for AWS use cases. It is useful for people who have never used AWS and lets them model solutions before building.</p>
-    <ul class="faux"><li><b>A.</b> AWS Compute Optimizer needs metrics from existing resources to make recommendations.</li><li><b>C.</b> AWS Trusted Advisor inspects an existing AWS environment rather than estimating a proposed one.</li><li><b>D.</b> AWS License Manager tracks software licenses and does not estimate architecture costs.</li></ul>
-    <blockquote>&ldquo;AWS Pricing Calculator is a web-based service that you can use to create cost estimates to suit your AWS use cases.&rdquo;<br>
+    <p><b>Answer D.</b> Migration Evaluator is a complimentary service that creates data-driven business cases for AWS planning and migration. It analyzes the on-premises footprint, including eligibility for bring-your-own-license.</p>
+    <ul class="faux"><li><b>A.</b> AWS Pricing Calculator creates estimates for known AWS configurations but does not inventory on-premises servers.</li><li><b>B.</b> AWS Budgets tracks spending against budgets for existing AWS usage.</li><li><b>C.</b> AWS Cost Explorer analyzes existing AWS costs, not an on-premises footprint.</li></ul>
+    <blockquote>&ldquo;Migration Evaluator (formerly TSO Logic) is a complimentary service to create data-driven business cases for AWS Cloud planning and migration.&rdquo;<br>
     <a href="https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/aws-pricingtco-tools.html" rel="nofollow">docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/aws-pricingtco-tools.html</a></blockquote>
   </div>
 </section>
@@ -260,29 +260,29 @@
     <a href="https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html" rel="nofollow">docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html</a></blockquote>
   </div>
 </section>
-<section class="q" data-juste="C">
+<section class="q" data-juste="D">
   <p class="meta">Question 18 &middot; Domain 3, Cloud Technology and Services &middot; task 3.2</p>
-  <p class="enonce">Which statement about Availability Zones in the same AWS Region is correct?</p>
-  <ul class="options"><li><label><input type="radio" name="q18" value="A"> <b>A.</b> They share one power substation to keep latency low</label></li><li><label><input type="radio" name="q18" value="B"> <b>B.</b> They are built in the same building to simplify networking</label></li><li><label><input type="radio" name="q18" value="C"> <b>C.</b> Common points of failure such as generators and cooling equipment are not shared between them</label></li><li><label><input type="radio" name="q18" value="D"> <b>D.</b> AWS deploys service updates to all of them at the same moment</label></li></ul>
+  <p class="enonce">A company runs its web application on Amazon EC2 instances that are all in one Availability Zone. Management wants the application to survive the failure of a single data center location. What should the company do?</p>
+  <ul class="options"><li><label><input type="radio" name="q18" value="A"> <b>A.</b> Move to a larger instance type in the same Availability Zone</label></li><li><label><input type="radio" name="q18" value="B"> <b>B.</b> Attach additional Amazon EBS volumes to each instance</label></li><li><label><input type="radio" name="q18" value="C"> <b>C.</b> Run the instances in an edge location</label></li><li><label><input type="radio" name="q18" value="D"> <b>D.</b> Launch instances in multiple Availability Zones behind a load balancer</label></li></ul>
   <button type="button">Check</button>
   <div class="corrige" hidden>
     <p class="verdict"></p>
-    <p><b>Answer C.</b> Availability Zones are designed so that they do not share single points of failure. Generators and cooling equipment are not shared, and zones are supplied by different power substations.</p>
-    <ul class="faux"><li><b>A.</b> Zones are designed to be supplied by different power substations.</li><li><b>B.</b> Zones are meaningfully distant from each other to prevent correlated failures.</li><li><b>D.</b> Deployments to zones in the same Region are separated in time to prevent correlated failure.</li></ul>
-    <blockquote>&ldquo;Common points of failure, like generators and cooling equipment, are not shared across Availability Zones and are designed to be supplied by different power substations.&rdquo;<br>
-    <a href="https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/availability-zones.html" rel="nofollow">docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/availability-zones.html</a></blockquote>
+    <p><b>Answer D.</b> Launching EC2 instances in multiple Availability Zones protects the application from the failure of a single location in the Region. A load balancer then spreads traffic across the healthy instances in each zone.</p>
+    <ul class="faux"><li><b>A.</b> A bigger instance in the same zone still fails if that zone fails.</li><li><b>B.</b> EBS volumes in the same zone do not protect against the loss of that zone.</li><li><b>C.</b> Edge locations deliver cached content, they are not where EC2 application instances are launched.</li></ul>
+    <blockquote>&ldquo;By launching EC2 instances in multiple Availability Zones, you can protect your applications from the failure of a single location in the Region.&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html" rel="nofollow">docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html</a></blockquote>
   </div>
 </section>
-<section class="q" data-juste="A">
+<section class="q" data-juste="C">
   <p class="meta">Question 19 &middot; Domain 3, Cloud Technology and Services &middot; task 3.3</p>
-  <p class="enonce">A company runs a high-throughput NoSQL database on Amazon EC2 that requires millions of low-latency, random I/O operations per second on local storage. Which instance family should the company choose?</p>
-  <ul class="options"><li><label><input type="radio" name="q19" value="A"> <b>A.</b> Storage optimized</label></li><li><label><input type="radio" name="q19" value="B"> <b>B.</b> Accelerated computing</label></li><li><label><input type="radio" name="q19" value="C"> <b>C.</b> General purpose</label></li><li><label><input type="radio" name="q19" value="D"> <b>D.</b> Compute optimized</label></li></ul>
+  <p class="enonce">A video platform needs Amazon EC2 instances for media transcoding jobs that are limited by processor speed. Which instance family is the best fit?</p>
+  <ul class="options"><li><label><input type="radio" name="q19" value="A"> <b>A.</b> General purpose</label></li><li><label><input type="radio" name="q19" value="B"> <b>B.</b> Memory optimized</label></li><li><label><input type="radio" name="q19" value="C"> <b>C.</b> Compute optimized</label></li><li><label><input type="radio" name="q19" value="D"> <b>D.</b> Storage optimized</label></li></ul>
   <button type="button">Check</button>
   <div class="corrige" hidden>
     <p class="verdict"></p>
-    <p><b>Answer A.</b> Storage optimized instances deliver millions of low-latency, random I/O operations per second and are designed for high sequential read and write access to very large local data sets, such as high-throughput databases.</p>
-    <ul class="faux"><li><b>B.</b> Accelerated computing instances use hardware accelerators for tasks such as graphics processing or floating point calculations.</li><li><b>C.</b> General purpose instances balance resources and are not designed for extreme local I/O.</li><li><b>D.</b> Compute optimized instances focus on processor performance, not local storage I/O.</li></ul>
-    <blockquote>&ldquo;Storage optimized instances deliver millions of low-latency, random I/O operations per second to applications.&rdquo;<br>
+    <p><b>Answer C.</b> Compute optimized instances are ideal for compute-bound applications that benefit from high-performance processors. AWS lists media transcoding among their typical workloads.</p>
+    <ul class="faux"><li><b>A.</b> General purpose instances balance compute, memory, and networking rather than maximizing processor performance.</li><li><b>B.</b> Memory optimized instances target workloads that process large data sets in memory.</li><li><b>D.</b> Storage optimized instances target high, low-latency I/O on local storage.</li></ul>
+    <blockquote>&ldquo;Compute optimized instances are ideal for compute bound applications that benefit from high-performance processors. Some examples of workloads for compute instances are batch processing, media transcoding, and dedicated game servers.&rdquo;<br>
     <a href="https://aws.amazon.com/ec2/instance-types/" rel="nofollow">aws.amazon.com/ec2/instance-types/</a></blockquote>
   </div>
 </section>
@@ -325,16 +325,16 @@
     <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html" rel="nofollow">docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html</a></blockquote>
   </div>
 </section>
-<section class="q" data-juste="D">
+<section class="q" data-juste="C">
   <p class="meta">Question 23 &middot; Domain 3, Cloud Technology and Services &middot; task 3.6</p>
-  <p class="enonce">A hospital must retain patient records for many years to meet regulations. The records are almost never read, and a retrieval time of up to two days is acceptable. Which S3 storage class offers the lowest cost?</p>
-  <ul class="options"><li><label><input type="radio" name="q23" value="A"> <b>A.</b> S3 Glacier Instant Retrieval</label></li><li><label><input type="radio" name="q23" value="B"> <b>B.</b> S3 Standard-IA</label></li><li><label><input type="radio" name="q23" value="C"> <b>C.</b> S3 Intelligent-Tiering</label></li><li><label><input type="radio" name="q23" value="D"> <b>D.</b> S3 Glacier Deep Archive</label></li></ul>
+  <p class="enonce">A design firm archives finished projects in Amazon S3. Staff restore files from the archive once or twice a year and never need them instantly. Some restores must finish within minutes, others can wait a few hours, and large bulk restores should cost nothing extra. Which storage class is recommended for this archive?</p>
+  <ul class="options"><li><label><input type="radio" name="q23" value="A"> <b>A.</b> S3 Glacier Instant Retrieval</label></li><li><label><input type="radio" name="q23" value="B"> <b>B.</b> S3 Glacier Deep Archive</label></li><li><label><input type="radio" name="q23" value="C"> <b>C.</b> S3 Glacier Flexible Retrieval</label></li><li><label><input type="radio" name="q23" value="D"> <b>D.</b> S3 Standard</label></li></ul>
   <button type="button">Check</button>
   <div class="corrige" hidden>
     <p class="verdict"></p>
-    <p><b>Answer D.</b> S3 Glacier Deep Archive is recommended for archive data accessed less than once a year and for keeping data for years to meet compliance requirements. AWS describes it as the lowest-cost storage option in AWS.</p>
-    <ul class="faux"><li><b>A.</b> Glacier Instant Retrieval offers millisecond access and costs more than Deep Archive, which is not needed here.</li><li><b>B.</b> S3 Standard-IA keeps data available in milliseconds at a higher storage price.</li><li><b>C.</b> Intelligent-Tiering is for unknown access patterns, and the pattern here is known to be very rare.</li></ul>
-    <blockquote>&ldquo;We recommend using S3 Glacier Deep Archive for archive data that&#x27;s accessed less than once a year. This storage class is designed for retaining data sets for multiple years to meet compliance requirements&rdquo;<br>
+    <p><b>Answer C.</b> AWS recommends S3 Glacier Flexible Retrieval for archive data accessed one to two times a year that does not need immediate access. Its retrieval times range from a few minutes to hours, and bulk retrievals are free.</p>
+    <ul class="faux"><li><b>A.</b> Glacier Instant Retrieval targets data read about once a quarter that needs millisecond access, which this archive does not need.</li><li><b>B.</b> Glacier Deep Archive is meant for data read less than once a year, and its retrievals take 9 to 48 hours, too slow for restores within minutes.</li><li><b>D.</b> S3 Standard is designed for frequently accessed data, so it costs more than an archive class for files read twice a year.</li></ul>
+    <blockquote>&ldquo;We recommend using S3 Glacier Flexible Retrieval for archive data that&#x27;s accessed one to two times a year and doesn&#x27;t require immediate access. [...] with access times ranging from a few minutes to hours, and free bulk retrievals.&rdquo;<br>
     <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html" rel="nofollow">docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html</a></blockquote>
   </div>
 </section>
@@ -351,17 +351,17 @@
     <a href="https://docs.aws.amazon.com/lexv2/latest/dg/what-is.html" rel="nofollow">docs.aws.amazon.com/lexv2/latest/dg/what-is.html</a></blockquote>
   </div>
 </section>
-<section class="q" data-juste="C">
+<section class="q" data-juste="AC">
   <p class="meta">Question 25 &middot; Domain 3, Cloud Technology and Services &middot; task 3.7</p>
-  <p class="enonce">A company needs a serverless service to discover data across many sources, catalog its schema, and run extract, transform, and load (ETL) jobs that load the data into a data lake. Which service should it use?</p>
-  <ul class="options"><li><label><input type="radio" name="q25" value="A"> <b>A.</b> Amazon Kinesis</label></li><li><label><input type="radio" name="q25" value="B"> <b>B.</b> Amazon Quick Sight</label></li><li><label><input type="radio" name="q25" value="C"> <b>C.</b> AWS Glue</label></li><li><label><input type="radio" name="q25" value="D"> <b>D.</b> Amazon OpenSearch Service</label></li></ul>
+  <p class="enonce">A company has two analytics needs. It needs a petabyte-scale data warehouse for SQL analytics, and it needs a managed cluster platform to run Apache Spark and Apache Hadoop jobs on large data sets. Which services meet these needs? (Select TWO.)</p>
+  <ul class="options"><li><label><input type="checkbox" name="q25" value="A"> <b>A.</b> Amazon Redshift</label></li><li><label><input type="checkbox" name="q25" value="B"> <b>B.</b> Amazon Neptune</label></li><li><label><input type="checkbox" name="q25" value="C"> <b>C.</b> Amazon EMR</label></li><li><label><input type="checkbox" name="q25" value="D"> <b>D.</b> Amazon ElastiCache</label></li><li><label><input type="checkbox" name="q25" value="E"> <b>E.</b> Amazon Lex</label></li></ul>
   <button type="button">Check</button>
   <div class="corrige" hidden>
     <p class="verdict"></p>
-    <p><b>Answer C.</b> AWS Glue is a serverless data integration service used to discover, prepare, move, and integrate data from multiple sources. It keeps a centralized data catalog and runs ETL pipelines.</p>
-    <ul class="faux"><li><b>A.</b> Kinesis ingests streaming data, it is not a catalog and ETL service.</li><li><b>B.</b> Quick Sight builds dashboards and visualizations.</li><li><b>D.</b> OpenSearch Service runs search and analytics clusters, it is not a data catalog and ETL tool.</li></ul>
-    <blockquote>&ldquo;AWS Glue is a serverless data integration service that makes it easy for analytics users to discover, prepare, move, and integrate data from multiple sources.&rdquo;<br>
-    <a href="https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html" rel="nofollow">docs.aws.amazon.com/glue/latest/dg/what-is-glue.html</a></blockquote>
+    <p><b>Answer A, C.</b> Amazon Redshift is a cloud data warehouse that runs SQL analytic queries against terabytes to petabytes of data. Amazon EMR is a managed cluster platform that runs big data frameworks such as Apache Hadoop and Apache Spark.</p>
+    <ul class="faux"><li><b>B.</b> Neptune is a graph database, not a data warehouse or Spark platform.</li><li><b>D.</b> ElastiCache is an in-memory cache.</li><li><b>E.</b> Lex builds chatbots.</li></ul>
+    <blockquote>&ldquo;Amazon Redshift is the most widely used cloud data warehouse. [...] It allows you to run complex analytic queries against terabytes to petabytes of structured and semi-structured data [...] Amazon EMR is the industry-leading cloud big data platform for processing vast amounts of data using open source tools such as Apache Spark&rdquo;<br>
+    <a href="https://docs.aws.amazon.com/whitepapers/latest/aws-overview/analytics.html" rel="nofollow">docs.aws.amazon.com/whitepapers/latest/aws-overview/analytics.html</a></blockquote>
   </div>
 </section>
 <section class="q" data-juste="C">
